@@ -1,26 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import { client } from '../../Client';
+import React, { useContext } from 'react';
+import CarouselSlide from './CarouselSlide';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper';
+import 'swiper/scss';
+import 'swiper/scss/navigation';
+import '../../styles.scss';
+import Loader from '../Loader/Loader';
+import { Context } from '../../Context/Context';
 
 const Carousel = () => {
-    const [isCarouselLoading, setIsCarouselLoading] = useState(false);
-    const [carouselSlides, setCarouselSlides] = useState([]);
-
-    const getCarouselSlides = async () => {
-        try {
-            const response = await client.getEntries({ content_type: 'homepageCarousel' });
-            console.log('response', response);
-        } catch (error) {
-            console.log(error);
-        }
+    const { isCarouselLoading, carouselSlides } = useContext(Context);
+    // console.log('carousel slides', carouselSlides);
+    if (isCarouselLoading) {
+        return <Loader />
     }
 
-    useEffect(() => {
-        getCarouselSlides();
-    }, [getCarouselSlides]);
+    // If there are no slides to display, then do not render the component.
+    if (!Array.isArray(carouselSlides) || !carouselSlides.length) {
+        return null;
+    }
 
   return (
-    <div>
-        <h1>What we've been up to recently</h1>
+    <div className='carousel'>
+        <Swiper modules={[Navigation]} navigation>
+            {carouselSlides.map((item) => {
+                const { id, slideBgImage, slideTitle, slideDescription } = item;
+                return (
+                    <SwiperSlide key={id}>
+                        <CarouselSlide slideTitle={slideTitle} slideDescription={slideDescription} slideBgImage={slideBgImage} />
+                    </SwiperSlide>
+                )
+            })}
+        </Swiper>
     </div>
   )
 }
