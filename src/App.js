@@ -1,11 +1,13 @@
+import { Provider } from './Context/Context';
+import About from './components/About/About';
 import Carousel from './components/Carousel/Carousel';
 
 const App = () => {
   return (
-    <div className="App">
-      <h1>Hola el mundo</h1>
+    <Provider>
       <Carousel />
-    </div>
+      <About />
+    </Provider>
   );
 }
 
