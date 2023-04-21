@@ -1,0 +1,328 @@
+:root {
+    --mainColor: #f61875;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+a:hover {
+    color: #c91962;
+}
+
+.wrapper {
+    width: 100%;
+    z-index: 9999;
+    top: 0;
+    position: fixed;
+    background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5) 70%, rgba(0, 0, 0, 0));
+    padding-bottom: 20px;
+}
+.wrapper .top-nav {
+    width: 100%;
+    height: 80px;
+    padding: 40px;
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+    /* max-width: 1300px; */
+
+}
+.wrapper .top-nav .left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 3;
+    margin-left: 100px;
+}
+.centre {
+    width: 100%;
+}
+.wrapper .top-nav .centre .nav-menu {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    z-index: 9999;
+    cursor: pointer;
+}
+.wrapper .top-nav .centre ul li {
+    margin: 10px;
+}
+.wrapper .top-nav .centre ul li:hover {
+    color: #ffffff;
+}
+.nav-link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: #f61875;
+    font-size: 14px;
+    cursor: pointer;
+    background: linear-gradient(
+                    to bottom, var(--mainColor) 0%, var(--mainColor) 100%
+                );
+    background-position: 0 100%;
+    background-repeat: repeat-x;
+    background-size: 3px 3px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: background-size .2s;
+}
+.nav-link:hover {
+    background-size: 4px 20px;
+    color: #ffffff;
+}
+.wrapper .top-nav .right ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    width: 60px;
+}
+.wrapper .top-nav .right ul li {
+    margin: 0 7px;
+    color: #f61875;
+}
+
+.fas {
+    color: #f61875;
+}
+
+.fas:hover {
+    color: #c91962;
+}
+
+.fab {
+    color: #f61875;
+}
+
+.fab:hover {
+    color: #c91962;
+}
+
+.fa-brands {
+    color: #f61875;
+}
+
+.fa-brands:hover {
+    color: #c91962;
+}
+
+.icon__twitter {
+    color: #f61875;
+    display: flex;
+    align-items: center;
+}
+
+.icon__twitter:hover {
+    color: #c91962;
+}
+
+.icon__tiktok {
+    color: #f61875;
+    display: flex;
+    align-items: center;
+}
+
+.icon__tiktok:hover {
+    color: #c91962;
+}
+
+.icon__soundcloud {
+    color: #f61875;
+    display: flex;
+    align-items: center;
+}
+
+.icon__soundcloud:hover {
+    color: #c91962;
+}
+
+.wrapper .bottom-nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 45px;
+    padding: 0 50px;
+}
+.wrapper .bottom-nav ul{
+    width: 100%;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper .bottom-nav ul li {
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin: 5px;
+}
+/* select all commented code below and press ctrl and / . That will make the circle flash. Remember to save after doing this (ctrl+S). */
+/* @keyframes up-right {
+    0% {
+        transform: scale(1);
+        opacity: .25
+    }
+    50% {
+        transform: scale (1, 5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: .25;
+    }
+} */
+.circle {
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    opacity: .75;
+}
+.red {
+    background-color: red;
+    top: 50%;
+    left: 50%;
+    -webkit-animation: up-right 1s infinite;
+    -moz-animation: up-right 1s infinite;
+    -o-animation: up-right 1s infinite;
+    animation: up-right 1s infinite;
+}
+.fa-play {
+    margin: 5px 10px 5px 20px;
+}
+.logo {
+    height: 70px;
+    width: 40px;
+}
+
+.logo:hover {
+    cursor: pointer;
+}
+
+.menu-icon {
+    display: none;
+}
+
+.audio-player-text {
+    color: #ffffff;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0 0 0 10px;
+}
+
+.audio-player-container {
+    display: flex;
+    margin-left: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .centre {
+        display: flex;
+        justify-content: center;
+        width: 33%;
+    }
+    .wrapper .top-nav .right ul {
+        display: none;
+    }
+    .wrapper .top-nav .centre .nav-menu {
+        display: none;
+    }
+    .nav-menu-active {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 1.9rem;
+        background-color: #ffffff;
+        left: 0;
+        opacity: 1;
+        transition: all 0.6 ease;
+        z-index: 1;
+        position: absolute;
+    }
+    .logo {
+        height: 55px;
+        width: 55px;
+        margin: -14px -10px -10px -25px;
+    }
+    .nav-link {
+        text-align: center;
+        padding: 1.5rem;
+        width: 100%;
+        display: table;
+        background: none;
+        font-size: 1.3rem;
+    }
+    .nav-item {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        margin: 10px;
+    }
+    .wrapper .top-nav .right .menu-icon {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-100%, 60%);
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: #00132d;
+    }
+    .menu-icon {
+        margin-top: -10px;
+    }
+    .fa .fa-times {
+        font-size: 2rem;
+    }
+    .hero-container {
+        position: relative;
+    }
+    .cards {
+        position: relative;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .footer-wrapper .right ul {
+        display: none;
+    }
+    .wrapper .bottom-nav ul {
+        margin-left: 20px;
+    }
+    .wrapper .bottom-nav {
+        padding: 0 60px;
+    }
+}
+
+@media screen and (min-width: 375px) {
+    .footer-wrapper .right ul {
+        display: none;
+    }
+    .wrapper .bottom-nav ul {
+        margin-left: 10px;
+    }
+    .wrapper .bottom-nav {
+        padding: 0 100px;
+    }
+}
+
+/* @media screen and (min-width: 425px) {
+    .wrapper .bottom-nav {
+        padding: 0 120px;
+    }
+}
+
+@media screen and (min-width: 425px) {
+    .wrapper .bottom-nav {
+        padding: 0 20px;
+    }
+} */
