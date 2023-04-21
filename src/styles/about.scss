@@ -1,10 +1,17 @@
 .about {
     display: flex;
     flex-direction: column;
+    background: $secondaryTextColor;
 
     &__text-content {
-        color: $secondaryTextColor;
+        color: #fff;
         margin-bottom: 15px;
+    }
+
+    &__title {
+        color: $primaryColor;
+        // text-shadow: 2px 1px #f05b96;
+        font-size: 65px;
     }
 
     &__description {
