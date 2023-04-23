@@ -1,0 +1,94 @@
+.contact {
+    height: 33vh;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    background: $secondaryTextColor;
+    color: $textColor;
+    padding: 40px;
+    align-items: center;
+
+    &__line {
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid $secondaryColor;
+        margin: 1em auto;
+        padding: 0;
+        width: 90vw;
+    }
+
+    &__information {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 90vw;
+    }
+
+    &__details {
+        padding: 20px;
+    }
+}
+
+.text-content {
+    &__title {
+        color: $secondaryColor;
+        padding: 20px;
+        text-transform: uppercase;
+    }
+
+    &__email {
+        text-decoration: underline;
+        padding: 20px;
+
+        &:link {
+            color: $hyperlinkColor;
+        }
+
+        &:visited {
+            color: $hyperlinkColor;
+        }
+
+        &:hover {
+            color: $hyperlinkHover;
+        }
+
+        &:active {
+            color: $hyperlinkColor;
+        }
+    }
+}
+
+.details {
+    &__title {
+        color: $secondaryColor;
+        text-transform: uppercase;
+        padding: 20px;
+    }
+
+    &__signature {
+        color: $secondaryColor;
+        text-align: right;
+        padding: 20px;
+    }
+
+    &__portfolio {
+        text-decoration: underline;
+
+        &:link {
+            color: $hyperlinkColor;
+        }
+
+        &:visited {
+            color: $hyperlinkColor;
+        }
+
+        &:hover {
+            color: $hyperlinkHover;
+        }
+
+        &:active {
+            color: $hyperlinkColor;
+        }
+    }
+}
