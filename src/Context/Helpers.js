@@ -8,17 +8,6 @@ export const getHTMLData = (markdown) => {
     return sanitisedHtmlString;
 }
 
-export const cleanUpAbout = (responseData) => {
-    const { sys, fields } = responseData;
-    const { id } = sys;
-    const aboutPageTitle = fields.title;
-    const aboutPageDescription = getHTMLData(fields.content);
-    const aboutPageImage = fields.image.fields.file.url;
-    let cleanAboutPage = { id, aboutPageTitle, aboutPageDescription, aboutPageImage };
-    
-    return cleanAboutPage;
-};
-
 export const cleanUpCarouselSlides = (responseData) => {
     const cleanSlides = responseData.map((slide) => {
         const { sys, fields } = slide;
@@ -32,4 +21,31 @@ export const cleanUpCarouselSlides = (responseData) => {
     });
     
     return cleanSlides;
+};
+
+export const cleanUpAbout = (responseData) => {
+    const { sys, fields } = responseData;
+    const { id } = sys;
+    const aboutPageTitle = fields.title;
+    const aboutPageDescription = getHTMLData(fields.content);
+    const aboutPageImage = fields.image.fields.file.url;
+    let cleanAboutPage = { id, aboutPageTitle, aboutPageDescription, aboutPageImage };
+    
+    return cleanAboutPage;
+};
+
+export const cleanUpContact = (responseData) => {
+    const { sys, fields } = responseData;
+    const { id } = sys;
+
+    console.log('fields', fields)
+    const contactTitle = fields.title;
+    // const aboutPageDescription = getHTMLData(fields.content);
+    const contactEmail = fields.emailAddress;
+    const contactSignature = fields.signature;
+    const portfolioLink = fields.portfolioLink;
+    const emailTitle = fields.emailTitle;
+    let cleanContactPage = { id, contactTitle, contactEmail, contactSignature, emailTitle, portfolioLink };
+    
+    return cleanContactPage;
 };
