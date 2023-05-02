@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import '../../styles.scss';
 import { Link, animateScroll as scroll } from 'react-scroll';
+import Loader from '../Loader/Loader';
+import { Context } from '../../Context/Context'
 
 const Navbar = () => {
-    const [click, setClick] = useState(false);
+  const [click, setClick] = useState(false);
+
+  const { isNavbarLoading, navbar } = useContext(Context);
+
+  if (isNavbarLoading) {
+      return <Loader />
+  }
+
+  const { icon, homeLink, aboutLink, contactLink } = navbar;
 
     const handleClick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false);
@@ -22,7 +32,7 @@ const Navbar = () => {
         <div className="navbar">
           <div className="navbar__top">
             <div className="navbar__left">
-              <img src="/images/white-transparent-logo.png" alt="Not Bad for a Girl logo" className="logo" onClick={toggleHome} />
+              <img src={icon} alt="Not Bad for a Girl logo" className="logo" onClick={toggleHome} />
             </div>
             <div className="navbar__right">
               <div className="navbar__button--mobile" onClick={handleClick}>
@@ -62,7 +72,7 @@ const Navbar = () => {
                     exact="true"
                     offset={-80}
                     activeClass="active">
-                      Home
+                      {homeLink}
                   </Link>
                 </li>
                 <li className="links__link">
@@ -76,7 +86,7 @@ const Navbar = () => {
                       exact="true"
                       offset={0}
                       activeClass="active">
-                        About
+                        {aboutLink}
                     </Link>
                   </li>
                 <li className="links__link">
@@ -90,7 +100,7 @@ const Navbar = () => {
                       exact="true"
                       offset={0}
                       activeClass="active">
-                        Contact
+                        {contactLink}
                     </Link>
                 </li>
               </ul>

@@ -49,3 +49,15 @@ export const cleanUpContact = (responseData) => {
     
     return cleanContactPage;
 };
+
+export const cleanUpNavbar = (responseData) => {
+    const { sys, fields } = responseData;
+    const { id } = sys;
+    const icon = fields.navbarIcon.fields.file.url;
+    const homeLink = fields.homeLink;
+    const aboutLink = fields.aboutLink;
+    const contactLink = fields.contactLink;
+    let cleanNavbar = { id, icon, homeLink, aboutLink, contactLink };
+    
+    return cleanNavbar;
+};

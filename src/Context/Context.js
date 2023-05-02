@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { client } from './Client';
-import { cleanUpCarouselSlides, cleanUpAbout, cleanUpContact } from './Helpers';
+import { cleanUpCarouselSlides, cleanUpAbout, cleanUpContact, cleanUpNavbar } from './Helpers';
 
 export const Context = React.createContext();
 
@@ -11,6 +11,8 @@ export const Provider = (props) => {
     const [isAboutLoading, setIsAboutLoading] = useState(false);
     const [contact, setContact] = useState({});
     const [isContactLoading, setIsContactLoading] = useState(false);
+    const [navbar, setNavbar] = useState({});
+    const [isNavbarLoading, setIsNavbarLoading] = useState(false);
 
     const saveCarouselData = useCallback((carouselData) => {
         const cleanCarouselData = cleanUpCarouselSlides(carouselData);
@@ -94,7 +96,32 @@ export const Provider = (props) => {
         getContact();
     }, [getContact]);
 
+    const saveNavbarData = useCallback((navbarData) => {
+        const cleanNavbarData = cleanUpNavbar(navbarData);
+        setNavbar(cleanNavbarData);
+    }, []);
 
+    const getNavbar = useCallback(async () => {
+        setIsNavbarLoading(true);
+
+        try {
+            const response = await client.getEntry('1gxLcXmajwyd4djRqFx1OL');
+            console.log('response', response);
+            if (response) {
+                saveNavbarData(response);
+            } else {
+                setNavbar({});
+            }
+            setIsNavbarLoading(false);
+        } catch (error) {
+            console.log(error);
+            setIsNavbarLoading(false);
+        }
+    }, [saveNavbarData]);
+
+    useEffect(() => {
+        getNavbar();
+    }, [getNavbar]);
 
     const contextData = {
         carouselSlides,
@@ -103,6 +130,8 @@ export const Provider = (props) => {
         isAboutLoading,
         contact,
         isContactLoading,
+        navbar,
+        isNavbarLoading,
     }
 
     return (
