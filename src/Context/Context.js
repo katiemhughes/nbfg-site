@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { client } from './Client';
-import { cleanUpCarouselSlides, cleanUpAbout, cleanUpContact, cleanUpNavbar, cleanUpMobileCarouselSlides } from './Helpers';
+import { cleanUpCarouselSlides, cleanUpAbout, cleanUpContact, cleanUpNavbar, cleanUpMobileCarouselSlides, cleanUpUnderConstruction } from './Helpers';
 
 export const Context = React.createContext();
 
@@ -15,6 +15,8 @@ export const Provider = (props) => {
     const [isContactLoading, setIsContactLoading] = useState(false);
     const [navbar, setNavbar] = useState({});
     const [isNavbarLoading, setIsNavbarLoading] = useState(false);
+    const [underConstruction, setUnderConstruction] = useState({});
+    const [isUnderConstructionLoading, setIsUnderConstructionLoading] = useState(false);
 
     const saveCarouselData = useCallback((carouselData) => {
         const cleanCarouselData = cleanUpCarouselSlides(carouselData);
@@ -125,6 +127,33 @@ export const Provider = (props) => {
         getNavbar();
     }, [getNavbar]);
 
+    const saveUnderConstructionData = useCallback((underConstructionData) => {
+        const cleanUnderConstructionData = cleanUpUnderConstruction(underConstructionData);
+        setUnderConstruction(cleanUnderConstructionData);
+    }, []);
+
+    const getUnderConstruction = useCallback(async () => {
+        setIsUnderConstructionLoading(true);
+
+        try {
+            const response = await client.getEntry('4EAhzDVCXu0hdYluOwISZs');
+            console.log('under construction response', response);
+            if (response) {
+                saveUnderConstructionData(response);
+            } else {
+                setUnderConstruction({});
+            }
+            setIsUnderConstructionLoading(false);
+        } catch (error) {
+            console.log(error);
+            setIsUnderConstructionLoading(false);
+        }
+    }, [saveUnderConstructionData]);
+
+    useEffect(() => {
+        getUnderConstruction();
+    }, [getUnderConstruction]);
+
     const saveMobileCarouselData = useCallback((mobileCarouselData) => {
         const cleanMobileCarouselData = cleanUpMobileCarouselSlides(mobileCarouselData);
         setMobileCarouselSlides(cleanMobileCarouselData)
@@ -165,6 +194,8 @@ export const Provider = (props) => {
         isContactLoading,
         navbar,
         isNavbarLoading,
+        underConstruction,
+        isUnderConstructionLoading
     }
 
     return (

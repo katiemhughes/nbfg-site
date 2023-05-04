@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import '../../styles.scss';
 import { Link, animateScroll as scroll } from 'react-scroll';
 import Loader from '../Loader/Loader';
-import { Context } from '../../Context/Context'
+import { Context } from '../../Context/Context';
 
 const Navbar = () => {
   const [click, setClick] = useState(false);
