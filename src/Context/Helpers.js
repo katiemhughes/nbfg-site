@@ -12,6 +12,7 @@ export const cleanUpCarouselSlides = (responseData) => {
     const cleanSlides = responseData.map((slide) => {
         const { sys, fields } = slide;
         const { id } = sys;
+        console.log('fields', fields);
         const slideTitle = fields.title;
         const slideDescription = fields.description;
         const slideBgImage = fields.image.fields.file.url;
