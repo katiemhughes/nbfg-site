@@ -61,3 +61,14 @@ export const cleanUpNavbar = (responseData) => {
     
     return cleanNavbar;
 };
+
+export const cleanUpUnderConstruction = (responseData) => {
+    const { sys, fields } = responseData;
+    const { id } = sys;
+    const underConstructionTitle = fields.title;
+    const underConstructionDescription = getHTMLData(fields.content);
+    const underConstructionImage = fields.image.fields.file.url;
+    let cleanAboutPage = { id, underConstructionTitle, underConstructionDescription, underConstructionImage };
+    
+    return cleanAboutPage;
+};
