@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { client } from './Client';
-import { cleanUpCarouselSlides, cleanUpAbout, cleanUpContact, cleanUpNavbar, cleanUpUnderConstruction } from './Helpers';
+import { cleanUpCarouselSlides, cleanUpAbout, cleanUpContact, cleanUpNavbar, cleanUpMobileCarouselSlides, cleanUpUnderConstruction } from './Helpers';
 
 export const Context = React.createContext();
 
 export const Provider = (props) => {
     const [isCarouselLoading, setIsCarouselLoading] = useState(false);
     const [carouselSlides, setCarouselSlides] = useState([]);
+    const [isMobileCarouselLoading, setIsMobileCarouselLoading] = useState(false);
+    const [mobileCarouselSlides, setMobileCarouselSlides] = useState([]);
     const [about, setAbout] = useState({});
     const [isAboutLoading, setIsAboutLoading] = useState(false);
     const [contact, setContact] = useState({});
@@ -152,10 +154,40 @@ export const Provider = (props) => {
         getUnderConstruction();
     }, [getUnderConstruction]);
 
+    const saveMobileCarouselData = useCallback((mobileCarouselData) => {
+        const cleanMobileCarouselData = cleanUpMobileCarouselSlides(mobileCarouselData);
+        setMobileCarouselSlides(cleanMobileCarouselData)
+    }, []);
+
+    const getMobileCarouselSlides = useCallback(async () => {
+        setIsMobileCarouselLoading(true);
+        try {
+            const response = await client.getEntries({ content_type: 'homepageCarouselMobile' });
+            console.log('response', response);
+            const responseData = response.items;
+            console.log('responseData', responseData);
+            if (responseData) {
+                saveMobileCarouselData(responseData);
+            } else {
+                setMobileCarouselSlides([]);
+            }
+            setIsMobileCarouselLoading(false);
+        } catch (error) {
+            console.log(error);
+            setIsMobileCarouselLoading(false);
+        }
+    }, [saveMobileCarouselData]);
+
+    useEffect(() => {
+        getMobileCarouselSlides();
+    }, [getMobileCarouselSlides]);
+
 
     const contextData = {
         carouselSlides,
+        mobileCarouselSlides,
         isCarouselLoading,
+        isMobileCarouselLoading,
         about,
         isAboutLoading,
         contact,
