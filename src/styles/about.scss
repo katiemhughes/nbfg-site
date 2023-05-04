@@ -5,13 +5,16 @@
 
     &__text-content {
         color: #fff;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
     }
 
     &__title {
         color: $primaryColor;
         // text-shadow: 2px 1px #f05b96;
-        font-size: 65px;
+        // font-size: 65px;
+        font-size: 48px;
+        line-height: 1.2;
+        margin-bottom: 20px;
     }
 
     &__description {

@@ -22,21 +22,32 @@ a:hover {
     &__top {
         width: 100%;
         height: 80px;
-        padding: 40px 60px;
-        margin: 10px;
+        padding: 60px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         z-index: 1;
         /* max-width: 1300px; */
+
+        &--active {
+            background-color: #000000f2;
+            width: 100%;
+            height: 80px;
+            padding: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1;
+        }
     }
 
     &__left {
         display: flex;
         justify-content: center;
         align-items: center;
-        flex: 3;
-        margin-left: 100px;
+        // flex: 3;
+        flex: 1;
+        // margin-left: 100px;
     }
 
     &__bottom {
@@ -86,6 +97,25 @@ a:hover {
     &__logo {
         margin: 0 7px;
         color: $mainColor;
+    }
+}
+
+.logos {
+    &__mobile {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        bottom: 200px;
+    }
+}
+
+.logo {
+    &__mobile {
+        &--active {
+            a {
+                color: $textColor;
+            }
+        }
     }
 }
 
@@ -161,7 +191,7 @@ a:hover {
     cursor: pointer;
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: $desktopBreakpoint) {
     .navbar {
         &__right ul {
             display: none;
@@ -171,24 +201,30 @@ a:hover {
             &__logo {
                 height: 55px;
                 width: 55px;
-                margin: -14px -10px -10px -25px;
+                // margin: -14px -10px -10px -25px;
             }
         }
 
         .links {
-            display: none;
+            opacity: 0;
+            transition: opacity 0.5s;
 
             &--active {
+                opacity: 1;
+                transition: opacity 0.5s;
                 display: flex;
                 flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
                 width: 100%;
-                margin-top: 1.9rem;
-                background-color: #ffffff;
+                height: 100vh;
+                background-color: #000000f2;
                 left: 0;
                 opacity: 1;
                 transition: all 0.6 ease;
-                z-index: 1;
+                // z-index: 1;
                 position: absolute;
+                padding: 40px;
             } 
         }
 
@@ -213,7 +249,7 @@ a:hover {
                 transform: translate(-100%, 60%);
                 font-size: 1.8rem;
                 cursor: pointer;
-                color: #00132d;
+                color: $textColor;
                 margin-top: -10px;
             }
         }
@@ -253,9 +289,9 @@ a:hover {
         &__bottom {
             padding: 0 60px;
 
-            ul {
-                margin-left: 20px;
-            }
+            // ul {
+            //     margin-left: 20px;
+            // }
         }
     }
 }
@@ -268,9 +304,9 @@ a:hover {
         &__bottom {
             padding: 0 100px;
 
-            ul {
-                margin-left: 10px;
-            }
+            // ul {
+            //     margin-left: 10px;
+            // }
         }
     }
 }

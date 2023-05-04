@@ -1,11 +1,12 @@
 .contact {
-    height: 33vh;
+    // height: 33vh;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
     background: $secondaryTextColor;
     color: $textColor;
-    padding: 40px;
+    // padding: 40px;
+    padding: 0px 40px 40px 40px;
     align-items: center;
 
     &__line {
@@ -13,20 +14,21 @@
         height: 1px;
         border: 0;
         border-top: 1px solid $secondaryColor;
-        margin: 1em auto;
+        // margin: 1em auto;
         padding: 0;
         width: 90vw;
     }
 
     &__information {
         display: flex;
-        justify-content: space-around;
-        align-items: center;
-        width: 90vw;
+        flex-direction: column;
+        // justify-content: space-around;
+        // align-items: center;
+        // width: 90vw;
     }
 
     &__details {
-        padding: 20px;
+        // padding: 20px;
     }
 }
 
@@ -68,8 +70,8 @@
 
     &__signature {
         color: $secondaryColor;
-        text-align: right;
-        padding: 20px;
+        // text-align: right;
+        padding: 0px 20px;
     }
 
     &__portfolio {

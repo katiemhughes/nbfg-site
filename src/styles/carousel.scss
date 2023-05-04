@@ -5,7 +5,8 @@
     object-fit: cover;
     object-position: center;
     min-width: 320px;
-    width: calc(100% + 95px);
+    // width: calc(100% + 95px);
+    width: 100vw;
 }
 
 .slide {
