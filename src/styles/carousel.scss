@@ -5,21 +5,22 @@
     object-fit: cover;
     object-position: center;
     min-width: 320px;
-    width: calc(100% + 95px);
+    width: 100vw;
+    background: black;
 }
 
 .slide {
-    min-height: 100vh;
+    height: 100%;
     width: 100%;
-    padding: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     position: relative;
-    filter: grayscale(100%);
     transition: filter 3.5s;
+    background-color: black;
 
     > * {
         opacity: 0;
@@ -27,35 +28,44 @@
         transition: all 0.4s;
     }
 
-    @media (max-width: 768px) and (orientation: landscape) {
-        min-height: 110vh;
-        padding: 70px 20px;
-    }
-
-    @media (max-width: 768px) and (orientation: portrait) {
-        // min-height: 80vh;
-        // padding: 70px 20px;
-    }
-
     &__content {
-        max-width: 900px;
-        text-align: center;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #000000cc;
     
         h2 {
-            font-size: 4.5em;
+            padding: 0px 40px 20px 40px;
+            text-align: center;
+            font-size: 2em;
             line-height: 1.1;
             color: $textColor;
-            margin-bottom: 10px;
             text-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
-    
-            @media (max-width: $breakpoint) {
-                font-size: 2.5em;
+
+            @media screen and (min-width: $smallDesktop) {
+                font-size: 3em;
+            }
+
+            @media screen and (min-width: $monitor) {
+                font-size: 4.2em;
             }
         }
     
         p {
+            padding: 0px 40px 0px 40px;
             font-size: 1em;
+            text-align: center;
             color: $textColor;
+
+            @media screen and (min-width: $smallDesktop) {
+                font-size: 1.1em;
+            }
+
+            @media screen and (min-width: $monitor) {
+                font-size: 1.4em;
+            }
         }
     
         > * {
@@ -71,15 +81,11 @@
     list-style: none;
     padding: 0;
     display: block;
-    width: 100%;
-    min-width: 320px;
-    height: 100%;
+    max-width: 750px;
+    height: auto;
 
     .swiper-wrapper {
         position: relative;
-        min-width: 320px;
-        width: 100%;
-        height: 100%;
         z-index: 1;
         display: flex;
         transition-property: transform;
@@ -89,12 +95,14 @@
 
 .content {
     &__btn {
+        position: absolute;
+        top: auto;
+        bottom: 110px;
         font-size: 1em;
         color: $textColor;
         background-color: $primaryColor;
         display: inline-block;
         padding: 10px 30px;
-        margin-top: 20px;
         text-decoration: none;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -108,15 +116,13 @@
 
 .swiper-slide-active {
     .slide {
-        filter: grayscale(0%);
-
         > * {
             opacity: 1;
             transform: none;
 
             @for $i from 0 to 15 {
                 &:nth-child(#{$i+ 1}) {
-                    transition-delay: $i * 0.1 + 0.3s;
+                    transition-delay: $i * 0.7 + 1.5s;
                 }
             }
         }
@@ -144,7 +150,7 @@
     .swiper-button-prev, .swiper-button-next {
         color: $textColor;
         top: auto;
-        bottom: 20px;
+        bottom: 30px;
         width: 40px;
         height: 40px;
         border-radius: 50px;

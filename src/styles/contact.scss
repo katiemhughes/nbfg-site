@@ -1,11 +1,9 @@
 .contact {
-    height: 33vh;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
     background: $secondaryTextColor;
     color: $textColor;
-    padding: 40px;
     align-items: center;
 
     &__line {
@@ -13,33 +11,57 @@
         height: 1px;
         border: 0;
         border-top: 1px solid $secondaryColor;
-        margin: 1em auto;
         padding: 0;
         width: 90vw;
     }
 
     &__information {
         display: flex;
-        justify-content: space-around;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        width: 90vw;
+        width: 100%;
+        padding: 26px;
     }
 
     &__details {
-        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
     }
 }
 
 .text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     &__title {
         color: $secondaryColor;
-        padding: 20px;
+        font-size: 26px;
         text-transform: uppercase;
+        margin-bottom: 14px;
+        text-align: center;
+    }
+
+    &__container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
+
+.enquiries {
+    &__text {
+        font-size: 14px;
     }
 
     &__email {
         text-decoration: underline;
-        padding: 20px;
+        font-size: 14px;
+        margin-bottom: 20px;
 
         &:link {
             color: $hyperlinkColor;
@@ -63,13 +85,14 @@
     &__title {
         color: $secondaryColor;
         text-transform: uppercase;
-        padding: 20px;
+        font-size: 26px;
     }
 
     &__signature {
         color: $secondaryColor;
-        text-align: right;
-        padding: 20px;
+        font-size: 12px;
+        text-align: center;
+        margin: 20px 0px;
     }
 
     &__portfolio {
@@ -90,5 +113,58 @@
         &:active {
             color: $hyperlinkColor;
         }
+    }
+
+    &__list {
+        font-size: 12px;
+
+        @media (min-width: 1024px) {
+            font-size: 14px;
+        }
+    }
+
+    &__row {
+        display: flex;
+        flex-direction: column;
+
+        @media (min-width: 425px) {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+    }
+}
+
+.list {
+    &__emails {
+        margin-left: 20px;
+    }
+}
+
+.logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+
+    &__logo {
+        margin: 0 7px;
+        color: $textColor;
+
+        &:link {
+            color: $textColor;
+        }
+
+          a:visited {
+            color: $textColor;
+          }
+
+          a:active {
+            color: $textColor;
+          }
+
+          a:hover {
+            color: $mainColor
+          }
     }
 }

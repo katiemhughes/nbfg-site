@@ -17,26 +17,48 @@ a:hover {
     top: 0;
     position: fixed;
     background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5) 70%, rgba(0, 0, 0, 0));
-    padding-bottom: 20px;
 
     &__top {
         width: 100%;
         height: 80px;
-        padding: 40px 60px;
-        margin: 10px;
+        padding: 60px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         z-index: 1;
-        /* max-width: 1300px; */
+
+        &--active {
+            background-color: #000000f2;
+            width: 100%;
+            height: 80px;
+            padding: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1;
+        }
     }
 
     &__left {
         display: flex;
         justify-content: center;
         align-items: center;
-        flex: 3;
-        margin-left: 100px;
+        flex: 1;
+        
+
+        @media (min-width: $smallDesktop) {
+            justify-content: flex-end;
+            flex: 1 28%;
+            margin-right: -28px;
+        }
+    }
+
+    &__right {
+        @media (min-width: $smallDesktop) {
+            display: flex;
+            justify-content: flex-end;
+            flex: 1 28%;
+        }
     }
 
     &__bottom {
@@ -77,15 +99,21 @@ a:hover {
 }
 
 .logos {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-    width: 60px;
+    &__mobile {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        bottom: 200px;
+    }
+}
 
-    &__logo {
-        margin: 0 7px;
-        color: $mainColor;
+.logo {
+    &__mobile {
+        &--active {
+            a {
+                color: $textColor;
+            }
+        }
     }
 }
 
@@ -118,36 +146,36 @@ a:hover {
 
 .logo {
     &__icon {
-        color: $mainColor;
+        color: $textColor;
         display: flex;
         align-items: center;
 
         &:hover {
-            color: $mainColorHover;
+            color: $mainColor;
         }
     }
 
     .fas {
-        color: $mainColor;
+        color: $textColor;
 
         &:hover {
-            color: $mainColorHover;
+            color: $mainColor;
         }
     }
     
     .fab {
-        color: $mainColor;
+        color: $textColor;
 
         &:hover {
-            color: $mainColorHover;
+            color: $mainColor;
         }
     }
     
     .fa-brands {
-        color: $mainColor;
+        color: $textColor;
 
         &:hover {
-            color: $mainColorHover;
+            color: $mainColor;
         }
     }
 }
@@ -161,7 +189,7 @@ a:hover {
     cursor: pointer;
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: $smallDesktop) {
     .navbar {
         &__right ul {
             display: none;
@@ -171,24 +199,26 @@ a:hover {
             &__logo {
                 height: 55px;
                 width: 55px;
-                margin: -14px -10px -10px -25px;
             }
         }
 
         .links {
-            display: none;
+            opacity: 0;
 
             &--active {
+                opacity: 1;
                 display: flex;
                 flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
                 width: 100%;
-                margin-top: 1.9rem;
-                background-color: #ffffff;
+                height: 100vh;
+                background-color: #000000f2;
                 left: 0;
                 opacity: 1;
                 transition: all 0.6 ease;
-                z-index: 1;
                 position: absolute;
+                padding: 40px;
             } 
         }
 
@@ -213,7 +243,7 @@ a:hover {
                 transform: translate(-100%, 60%);
                 font-size: 1.8rem;
                 cursor: pointer;
-                color: #00132d;
+                color: $textColor;
                 margin-top: -10px;
             }
         }
@@ -252,10 +282,6 @@ a:hover {
     .navbar {
         &__bottom {
             padding: 0 60px;
-
-            ul {
-                margin-left: 20px;
-            }
         }
     }
 }
@@ -267,22 +293,6 @@ a:hover {
     .navbar {
         &__bottom {
             padding: 0 100px;
-
-            ul {
-                margin-left: 10px;
-            }
         }
     }
 }
-
-/* @media screen and (min-width: 425px) {
-    .navbar .bottom-nav {
-        padding: 0 120px;
-    }
-}
-
-@media screen and (min-width: 425px) {
-    .navbar .bottom-nav {
-        padding: 0 20px;
-    }
-} */
