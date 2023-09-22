@@ -75,6 +75,7 @@ export const Provider = (props) => {
 
     const saveContactData = useCallback((contactData) => {
         const cleanContactData = cleanUpContact(contactData);
+        console.log('contactData', contactData);
         setContact(cleanContactData);
     }, []);
 

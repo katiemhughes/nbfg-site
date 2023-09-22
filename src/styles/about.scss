@@ -10,15 +10,13 @@
 
     &__title {
         color: $primaryColor;
-        // text-shadow: 2px 1px #f05b96;
-        // font-size: 65px;
-        font-size: 48px;
+        font-size: 3em;
         line-height: 1.2;
         margin-bottom: 20px;
     }
 
     &__description {
-        font-weight: 300;
+        font-size: 1em;
 
         p {
             margin-bottom: 15px;
@@ -26,22 +24,11 @@
     }
 
     &__image-content {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        min-height: 500px;
-
-        @media (max-width: $breakpoint) {
-            margin-top: 25px;
-        }
+        margin-top: 20px;
     }
 
     &__image {
-        position: absolute;
-        top: 0;
-        left: 0;
         width: 100%;
-        height: 100%;
-        object-fit: cover;
+        height: auto;
     }
 }

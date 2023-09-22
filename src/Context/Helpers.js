@@ -43,10 +43,11 @@ export const cleanUpContact = (responseData) => {
     const contactTitle = fields.title;
     // const aboutPageDescription = getHTMLData(fields.content);
     const contactEmail = fields.emailAddress;
+    const financeEmail = fields.financeEmailAddress;
     const contactSignature = fields.signature;
     const portfolioLink = fields.portfolioLink;
     const emailTitle = fields.emailTitle;
-    let cleanContactPage = { id, contactTitle, contactEmail, contactSignature, emailTitle, portfolioLink };
+    let cleanContactPage = { id, contactTitle, contactEmail, financeEmail, contactSignature, emailTitle, portfolioLink };
     
     return cleanContactPage;
 };
