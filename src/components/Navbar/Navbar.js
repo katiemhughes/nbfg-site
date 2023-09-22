@@ -13,7 +13,7 @@ const Navbar = () => {
       return <Loader />
   }
 
-  const { icon, homeLink, aboutLink, contactLink } = navbar;
+  const { icon, homeLink, aboutLink, meetTheGangLink, contactLink } = navbar;
 
     const handleClick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false);
@@ -69,7 +69,38 @@ const Navbar = () => {
                         activeClass="active">
                           {aboutLink}
                       </Link>
-                    </li>
+                  </li>
+                  <li className="links__link">
+                    <Link
+                        className="links__link--config"
+                        id="meetTheGang"
+                        onClick={closeMobileMenu}
+                        smooth={true}
+                        duration={200}
+                        spy={true}
+                        offset={0}
+                        activeClass="active"
+                      >
+                        {meetTheGangLink}
+                      </Link>
+                      <ul className="sublinks">
+                          <li className="sublinks__link">
+                            <Link 
+                            className="sublinks__link--config"
+                            to="moll"
+                            onClick={closeMobileMenu}
+                            smooth={true}
+                            duration={200}
+                            spy={true}
+                            exact="true"
+                            offset={0}
+                            activeClass="active"
+                            >
+                              Moll
+                            </Link>
+                          </li>
+                      </ul>
+                  </li>
                   <li className="links__link">
                     <Link
                         className="links__link--config"

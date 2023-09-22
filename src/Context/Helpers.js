@@ -58,8 +58,9 @@ export const cleanUpNavbar = (responseData) => {
     const icon = fields.navbarIcon.fields.file.url;
     const homeLink = fields.homeLink;
     const aboutLink = fields.aboutLink;
+    const meetTheGangLink = fields.meetTheGangLink;
     const contactLink = fields.contactLink;
-    let cleanNavbar = { id, icon, homeLink, aboutLink, contactLink };
+    let cleanNavbar = { id, icon, homeLink, aboutLink, meetTheGangLink, contactLink };
     
     return cleanNavbar;
 };
