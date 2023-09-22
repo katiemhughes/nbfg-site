@@ -87,15 +87,18 @@ a:hover {
 .logos {
     &__mobile {
         display: flex;
+        justify-content: space-around;
         align-items: center;
         position: absolute;
-        bottom: 200px;
+        bottom: 140px;
     }
 }
 
 .logo {
     &__mobile {
         &--active {
+            margin: 10px;
+
             a {
                 color: $textColor;
             }
@@ -129,7 +132,17 @@ a:hover {
                 }
             }
         }
-    }        
+    }
+    
+    .sublinks {
+        &__link {
+            &--config {
+                &:hover {
+                    color: $primaryColor;
+                }
+            }
+        }
+    }
 }
 
 .logo {
@@ -206,7 +219,6 @@ a:hover {
                 opacity: 1;
                 transition: all 0.6 ease;
                 position: absolute;
-                padding: 40px;
             } 
         }
 
@@ -263,9 +275,17 @@ a:hover {
     }
 }
 
-// .sublinks {
-//     display: none;
-// }
+#gang-sublinks {
+    display: none;
+}
+
+#meet-the-gang:hover ~ #gang-sublinks, #gang-sublinks:hover {
+    display: block;
+    position: absolute;
+    background: $secondaryTextColor;
+    border-radius: 0% 5% 5% 5%;
+    padding: 10px;
+}
 
 @media screen and (max-width: 320px) {
     .footer-wrapper .right ul {

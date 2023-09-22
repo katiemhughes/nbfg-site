@@ -73,7 +73,7 @@ const Navbar = () => {
                   <li className="links__link">
                     <Link
                         className="links__link--config"
-                        id="meetTheGang"
+                        id="meet-the-gang"
                         onClick={closeMobileMenu}
                         smooth={true}
                         duration={200}
@@ -83,7 +83,7 @@ const Navbar = () => {
                       >
                         {meetTheGangLink}
                       </Link>
-                      <ul className="sublinks">
+                      <ul className="sublinks" id="gang-sublinks">
                           <li className="sublinks__link">
                             <Link 
                             className="sublinks__link--config"
@@ -97,6 +97,96 @@ const Navbar = () => {
                             activeClass="active"
                             >
                               Moll
+                            </Link>
+                          </li>
+                          <li className="sublinks__link">
+                            <Link 
+                            className="sublinks__link--config"
+                            to="moll"
+                            onClick={closeMobileMenu}
+                            smooth={true}
+                            duration={200}
+                            spy={true}
+                            exact="true"
+                            offset={0}
+                            activeClass="active"
+                            >
+                              Maracuya
+                            </Link>
+                          </li>
+                          <li className="sublinks__link">
+                            <Link 
+                            className="sublinks__link--config"
+                            to="moll"
+                            onClick={closeMobileMenu}
+                            smooth={true}
+                            duration={200}
+                            spy={true}
+                            exact="true"
+                            offset={0}
+                            activeClass="active"
+                            >
+                              DaiSu
+                            </Link>
+                          </li>
+                          <li className="sublinks__link">
+                            <Link 
+                            className="sublinks__link--config"
+                            to="moll"
+                            onClick={closeMobileMenu}
+                            smooth={true}
+                            duration={200}
+                            spy={true}
+                            exact="true"
+                            offset={0}
+                            activeClass="active"
+                            >
+                              Tht Grl
+                            </Link>
+                          </li>
+                          <li className="sublinks__link">
+                            <Link 
+                            className="sublinks__link--config"
+                            to="moll"
+                            onClick={closeMobileMenu}
+                            smooth={true}
+                            duration={200}
+                            spy={true}
+                            exact="true"
+                            offset={0}
+                            activeClass="active"
+                            >
+                              Egg On Toast
+                            </Link>
+                          </li>
+                          <li className="sublinks__link">
+                            <Link 
+                            className="sublinks__link--config"
+                            to="moll"
+                            onClick={closeMobileMenu}
+                            smooth={true}
+                            duration={200}
+                            spy={true}
+                            exact="true"
+                            offset={0}
+                            activeClass="active"
+                            >
+                              Martha
+                            </Link>
+                          </li>
+                          <li className="sublinks__link">
+                            <Link 
+                            className="sublinks__link--config"
+                            to="moll"
+                            onClick={closeMobileMenu}
+                            smooth={true}
+                            duration={200}
+                            spy={true}
+                            exact="true"
+                            offset={0}
+                            activeClass="active"
+                            >
+                              Sophie
                             </Link>
                           </li>
                       </ul>
