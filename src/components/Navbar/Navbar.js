@@ -3,9 +3,11 @@ import '../../styles.scss';
 import { Link, animateScroll as scroll } from 'react-scroll';
 import Loader from '../Loader/Loader';
 import { Context } from '../../Context/Context';
+import MeetTheGangRouter from '../MeetTheGang/MeetTheGangRouter';
 
 const Navbar = () => {
   const [click, setClick] = useState(false);
+  const [isSubnavOpen, setIsSubnavOpen] = useState(false);
 
   const { isNavbarLoading, navbar } = useContext(Context);
 
@@ -17,6 +19,9 @@ const Navbar = () => {
 
     const handleClick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false);
+    const toggleSubnav = () => setIsSubnavOpen(!isSubnavOpen);
+
+    console.log('toggleSubnav', toggleSubnav);
 
     const toggleHome = () => {
       scroll.scrollToTop();
@@ -70,126 +75,9 @@ const Navbar = () => {
                           {aboutLink}
                       </Link>
                   </li>
-                  <li className="links__link">
-                    <Link
-                        className="links__link--config"
-                        id="meet-the-gang"
-                        onClick={closeMobileMenu}
-                        smooth={true}
-                        duration={200}
-                        spy={true}
-                        offset={0}
-                        activeClass="active"
-                      >
+                  <li className="links__link links__link--config" id="meet-the-gang" onClick={toggleSubnav}>
                         {meetTheGangLink}
-                      </Link>
-                      <ul className="sublinks" id="gang-sublinks">
-                          <li className="sublinks__link">
-                            <Link 
-                            className="sublinks__link--config"
-                            to="moll"
-                            onClick={closeMobileMenu}
-                            smooth={true}
-                            duration={200}
-                            spy={true}
-                            exact="true"
-                            offset={0}
-                            activeClass="active"
-                            >
-                              Moll
-                            </Link>
-                          </li>
-                          <li className="sublinks__link">
-                            <Link 
-                            className="sublinks__link--config"
-                            to="moll"
-                            onClick={closeMobileMenu}
-                            smooth={true}
-                            duration={200}
-                            spy={true}
-                            exact="true"
-                            offset={0}
-                            activeClass="active"
-                            >
-                              Maracuya
-                            </Link>
-                          </li>
-                          <li className="sublinks__link">
-                            <Link 
-                            className="sublinks__link--config"
-                            to="moll"
-                            onClick={closeMobileMenu}
-                            smooth={true}
-                            duration={200}
-                            spy={true}
-                            exact="true"
-                            offset={0}
-                            activeClass="active"
-                            >
-                              DaiSu
-                            </Link>
-                          </li>
-                          <li className="sublinks__link">
-                            <Link 
-                            className="sublinks__link--config"
-                            to="moll"
-                            onClick={closeMobileMenu}
-                            smooth={true}
-                            duration={200}
-                            spy={true}
-                            exact="true"
-                            offset={0}
-                            activeClass="active"
-                            >
-                              Tht Grl
-                            </Link>
-                          </li>
-                          <li className="sublinks__link">
-                            <Link 
-                            className="sublinks__link--config"
-                            to="moll"
-                            onClick={closeMobileMenu}
-                            smooth={true}
-                            duration={200}
-                            spy={true}
-                            exact="true"
-                            offset={0}
-                            activeClass="active"
-                            >
-                              Egg On Toast
-                            </Link>
-                          </li>
-                          <li className="sublinks__link">
-                            <Link 
-                            className="sublinks__link--config"
-                            to="moll"
-                            onClick={closeMobileMenu}
-                            smooth={true}
-                            duration={200}
-                            spy={true}
-                            exact="true"
-                            offset={0}
-                            activeClass="active"
-                            >
-                              Martha
-                            </Link>
-                          </li>
-                          <li className="sublinks__link">
-                            <Link 
-                            className="sublinks__link--config"
-                            to="moll"
-                            onClick={closeMobileMenu}
-                            smooth={true}
-                            duration={200}
-                            spy={true}
-                            exact="true"
-                            offset={0}
-                            activeClass="active"
-                            >
-                              Sophie
-                            </Link>
-                          </li>
-                      </ul>
+                      <MeetTheGangRouter isSubnavOpen={isSubnavOpen} toggleSubnav={toggleSubnav} />
                   </li>
                   <li className="links__link">
                     <Link
