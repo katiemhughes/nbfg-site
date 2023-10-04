@@ -13,7 +13,7 @@ const About = () => {
     const { aboutPageTitle, aboutPageDescription, aboutPageImage } = about;
 
   return (
-    <section className='about' id='about'>
+    <section className='about' id='about' name='about'>
         <div className='about__text-content'>
             <h2 className='about__title'>{aboutPageTitle}</h2>
             <p className='about__description' dangerouslySetInnerHTML={{ __html: aboutPageDescription }} />

@@ -1,11 +1,18 @@
 import React, { useState, useContext } from 'react';
 import '../../styles.scss';
-import { Link, animateScroll as scroll } from 'react-scroll';
+// import { Link, animateScroll as scroll } from 'react-scroll';
+import * as Scroll from 'react-scroll';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import Loader from '../Loader/Loader';
 import { Context } from '../../Context/Context';
 import MeetTheGangRouter from '../MeetTheGang/MeetTheGangRouter';
 
 const Navbar = () => {
+  const path = useLocation().pathname;
+  console.log('path', path);
+  const navigate = useNavigate();
+  const scroller = Scroll.scroller;
+  const scroll = Scroll.animateScroll;
   const [click, setClick] = useState(false);
   const [isSubnavOpen, setIsSubnavOpen] = useState(false);
 
@@ -25,6 +32,51 @@ const Navbar = () => {
 
     const toggleHome = () => {
       scroll.scrollToTop();
+      closeMobileMenu();
+    }
+
+    const scrollToAbout = () => {
+      scroller.scrollTo('about', {
+        duration: 200,
+        delay: 0,
+        smooth: true,
+        offset: 0,
+      });
+
+      closeMobileMenu();
+    }
+
+    const goToHomeAndScrollToAbout = async () => {
+      await closeMobileMenu();
+      await navigate('/');
+      await scroller.scrollTo('about', {
+        duration: 200,
+        delay: 0,
+        smooth: true,
+        offset: 0,
+      })
+    }
+
+    const scrollToContact = () => {
+      scroller.scrollTo('contact', {
+        duration: 200,
+        delay: 0,
+        smooth: true,
+        offset: 0,
+      });
+
+      closeMobileMenu();
+    }
+
+    const goToHomeAndScrollToContact = async () => {
+      await closeMobileMenu();
+      await navigate('/');
+      await scroller.scrollTo('contact', {
+        duration: 200,
+        delay: 0,
+        smooth: true,
+        offset: 0,
+      })
     }
 
     // const play = () => {
@@ -48,50 +100,49 @@ const Navbar = () => {
           <div className="navbar__bottom">
               <ul className={click ? "links--active" : "links"}>
                 <li className="links__link">
-                    <Link
+                    <NavLink
                       className="links__link--config"
-                      to="home"
-                      onClick={closeMobileMenu}
-                      smooth={true}
-                      duration={500}
-                      spy={true}
-                      exact="true"
-                      offset={-80}
-                      activeClass="active">
+                      to="/"
+                      onClick={toggleHome}
+                      activeClassName="active">
                         {homeLink}
-                    </Link>
+                    </NavLink>
                   </li>
                   <li className="links__link">
-                    <Link
-                        className="links__link--config"
-                        to="about"
-                        onClick={closeMobileMenu}
-                        smooth={true}
-                        duration={200}
-                        spy={true}
-                        exact="true"
-                        offset={0}
-                        activeClass="active">
-                          {aboutLink}
-                      </Link>
+                    {path === '/' ? (
+                    <NavLink
+                      className="links__link--config"
+                      onClick={scrollToAbout}
+                      activeClassName="active">
+                        {aboutLink}
+                    </NavLink> ) : (
+                    <NavLink
+                      className="links__link--config"
+                      onClick={goToHomeAndScrollToAbout}
+                      activeClassName="active">
+                        {aboutLink}
+                    </NavLink>
+                    )}
                   </li>
-                  <li className="links__link links__link--config" id="meet-the-gang" onClick={toggleSubnav}>
-                        {meetTheGangLink}
-                      <MeetTheGangRouter isSubnavOpen={isSubnavOpen} toggleSubnav={toggleSubnav} />
+                  <li className="links__link" onClick={toggleSubnav}>
+                    <button id="meet-the-gang" tabIndex="0" className="links__link--config">{meetTheGangLink}</button>
+                    <MeetTheGangRouter handleClick={handleClick} isSubnavOpen={isSubnavOpen} toggleSubnav={toggleSubnav} />
                   </li>
                   <li className="links__link">
-                    <Link
-                        className="links__link--config"
-                        to="contact"
-                        onClick={closeMobileMenu}
-                        smooth={true}
-                        duration={200}
-                        spy={true}
-                        exact="true"
-                        offset={0}
-                        activeClass="active">
-                          {contactLink}
-                      </Link>
+                  {path === '/' ? (
+                    <NavLink
+                      className="links__link--config"
+                      onClick={scrollToContact}
+                      activeClassName="active">
+                        {contactLink}
+                    </NavLink> ) : (
+                    <NavLink
+                      className="links__link--config"
+                      onClick={goToHomeAndScrollToContact}
+                      activeClassName="active">
+                        {contactLink}
+                    </NavLink>
+                    )}
                   </li>
                   <div className="logos__mobile">
                     <li className={click ? "logo__mobile--active" : "logo__mobile"}><a href="https://www.instagram.com/notbadforagirlmcr" target="_blank" rel="noreferrer"><i className="fab fa-instagram"></i></a></li>

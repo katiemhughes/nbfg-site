@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const MeetTheGangRouter = ({ isSubnavOpen, toggleSubnav }) => {
+const MeetTheGangRouter = ({ handleClick, isSubnavOpen, toggleSubnav }) => {
   console.log('isSubnavOpen', isSubnavOpen);
   console.log('toggleSubnav', toggleSubnav);
   return (
     <>
     {isSubnavOpen && <button className="sublinks__cta" onClick={toggleSubnav}>Back</button>}
       <ul className={isSubnavOpen ? "sublinks--active" : "sublinks"} id="gang-sublinks">
-        <li className="sublinks__link">
+        <li className={isSubnavOpen ? "sublinks__link--active" : "sublinks__link"} onClick={handleClick}>
           <Link 
             className="sublinks__link--config"
             to="../moll"
@@ -16,7 +16,7 @@ const MeetTheGangRouter = ({ isSubnavOpen, toggleSubnav }) => {
             Moll
           </Link>
         </li>
-        <li className="sublinks__link">
+        <li className={isSubnavOpen ? "sublinks__link--active" : "sublinks__link"} onClick={handleClick}>
           <Link 
             className="sublinks__link--config"
             to="../maracuya"
@@ -24,7 +24,7 @@ const MeetTheGangRouter = ({ isSubnavOpen, toggleSubnav }) => {
             Maracuya
           </Link>
         </li>
-        <li className="sublinks__link">
+        <li className={isSubnavOpen ? "sublinks__link--active" : "sublinks__link"} onClick={handleClick}>
           <Link 
             className="sublinks__link--config"
             to="../daisu"
@@ -32,7 +32,7 @@ const MeetTheGangRouter = ({ isSubnavOpen, toggleSubnav }) => {
             DaiSu
           </Link>
         </li>
-        <li className="sublinks__link">
+        <li className={isSubnavOpen ? "sublinks__link--active" : "sublinks__link"} onClick={handleClick}>
           <Link 
             className="sublinks__link--config"
             to="../thtgrl"
@@ -40,7 +40,7 @@ const MeetTheGangRouter = ({ isSubnavOpen, toggleSubnav }) => {
             Tht Grl
           </Link>
         </li>
-        <li className="sublinks__link">
+        <li className={isSubnavOpen ? "sublinks__link--active" : "sublinks__link"} onClick={handleClick}>
           <Link 
             className="sublinks__link--config"
             to="../eggontoast"
@@ -48,7 +48,7 @@ const MeetTheGangRouter = ({ isSubnavOpen, toggleSubnav }) => {
             Egg On Toast
           </Link>
         </li>
-        <li className="sublinks__link">
+        <li className={isSubnavOpen ? "sublinks__link--active" : "sublinks__link"} onClick={handleClick}>
           <Link 
             className="sublinks__link--config"
             to="../martha"
@@ -56,7 +56,7 @@ const MeetTheGangRouter = ({ isSubnavOpen, toggleSubnav }) => {
             Martha
           </Link>
         </li>
-        <li className="sublinks__link">
+        <li className={isSubnavOpen ? "sublinks__link--active" : "sublinks__link"} onClick={handleClick}>
           <Link 
           className="sublinks__link--config"
           to="../sophie"

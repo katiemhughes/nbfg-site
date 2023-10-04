@@ -129,10 +129,24 @@ a:hover {
                 background-size: 3px 3px;
                 text-decoration: none;
                 transition: background-size .2s;
+                color: $textColor;
+                border: none;
     
                 &:hover {
                     background-size: 4px 20px;
-                    color: #ffffff;
+                    color: $textColor;
+                }
+
+                &:link {
+                    color: $textColor;
+                }
+        
+                &:visited {
+                    color: $textColor;
+                }
+        
+                &:active {
+                    color: $textColor;
                 }
             }
         }
@@ -141,12 +155,20 @@ a:hover {
     .sublinks {
         font-size: 14px;
         opacity: 0;
+        height: 0;
+        width: 0;
 
         &__cta {
             position: absolute;
             z-index: 999;
-            top: -15%;
-            right: 10%;
+            top: -14%;
+            border: none;
+            background: #ff0571;
+            color: white;
+            border-radius: 4px;
+            padding: 6px;
+            width: 50px;
+            right: 6%;
         }
 
         &--active {
@@ -171,15 +193,36 @@ a:hover {
             opacity: 1;
             display: flex;
             flex-direction: column;
-            justify-content: space-evenly;
+            justify-content: center;
             align-items: center;
             top: -20%;
             height: 100vh;
             width: 100vw;
+            position: absolute;
+            background: $secondaryTextColor;
         }
 
         &__link {
+            margin: 0;
+
+            &--active {
+                margin: 10px;
+                font-size: 1.3rem;
+            }
+
             &--config {
+                &:link {
+                    color: $primaryColor;
+                }
+        
+                &:visited {
+                    color: $textColor;
+                }
+        
+                &:active {
+                    color: $primaryColor;
+                }
+
                 &:hover {
                     color: $primaryColor;
                 }
@@ -200,7 +243,7 @@ a:hover {
     }
 
     .fas {
-        color: $textColor;
+        color: $mainColor;
 
         &:hover {
             color: $mainColor;
@@ -326,20 +369,25 @@ a:hover {
 }
 
 #gang-sublinks {
-    visibility: hidden;
-    height: 0;
-    width: 0;
+    // visibility: hidden;
+    // height: 0;
+    // width: 0;
 }
+
+//, 
 
 #meet-the-gang:hover ~ #gang-sublinks, #gang-sublinks:hover {
     // display: block;
-    visibility: visible;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    background: $secondaryTextColor;
-    border-radius: 0% 5% 5% 5%;
-    padding: 10px;
+    @media screen and (min-width: 1025px) {
+        opacity: 1;
+        visibility: visible;
+        height: 100%;
+        width: 116px;
+        position: absolute;
+        background: $secondaryTextColor;
+        border-radius: 0% 5% 5% 5%;
+        padding: 10px;
+    }
 }
 
 @media screen and (max-width: 320px) {

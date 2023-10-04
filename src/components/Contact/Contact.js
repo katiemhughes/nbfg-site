@@ -12,7 +12,7 @@ const Contact = () => {
     const { contactTitle, contactEmail, contactSignature, financeEmail, portfolioLink } = contact;
 
   return (
-    <footer className='contact' id='about'>
+    <footer className='contact' id='about' name='contact'>
         <hr className='contact__line' />
         <div className='contact__information'>
             <div className='text-content'>
