@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
 import '../../styles.scss';
-// import { Link, animateScroll as scroll } from 'react-scroll';
 import * as Scroll from 'react-scroll';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import Loader from '../Loader/Loader';
@@ -8,6 +7,7 @@ import { Context } from '../../Context/Context';
 import MeetTheGangRouter from '../MeetTheGang/MeetTheGangRouter';
 
 const Navbar = () => {
+  const isDesktop = window.matchMedia('(min-width: 1025px)').matches;
   const path = useLocation().pathname;
   console.log('path', path);
   const navigate = useNavigate();
@@ -26,9 +26,11 @@ const Navbar = () => {
 
     const handleClick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false);
-    const toggleSubnav = () => setIsSubnavOpen(!isSubnavOpen);
-
-    console.log('toggleSubnav', toggleSubnav);
+    const toggleSubnav = () => {
+      if (!isDesktop) {
+        setIsSubnavOpen(!isSubnavOpen);
+      } 
+    }
 
     const toggleHome = () => {
       scroll.scrollToTop();
