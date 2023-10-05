@@ -11,8 +11,8 @@ const Navbar = () => {
   const path = useLocation().pathname;
   console.log('path', path);
   const navigate = useNavigate();
-  const scroller = Scroll.scroller;
   const scroll = Scroll.animateScroll;
+  const scroller = Scroll.scroller;
   const [click, setClick] = useState(false);
   const [isSubnavOpen, setIsSubnavOpen] = useState(false);
 
@@ -32,8 +32,18 @@ const Navbar = () => {
       } 
     }
 
-    const toggleHome = () => {
-      scroll.scrollToTop();
+    const scrollToHome = () => {
+      scroll.scrollToTop({
+        duration: 200,
+        delay: 0,
+        smooth: true,
+        offset: 0,
+      });
+      closeMobileMenu();
+    }
+
+    const goToHome = () => {
+      navigate('/');
       closeMobileMenu();
     }
 
@@ -91,7 +101,7 @@ const Navbar = () => {
         <div className="navbar">
           <div className={click ? "navbar__top--active" : "navbar__top"}>
             <div className="navbar__left">
-              <img src={icon} alt="Not Bad for a Girl logo" className="logo" onClick={toggleHome} />
+              <img src={icon} alt="Not Bad for a Girl logo" className="logo" onClick={goToHome} />
             </div>
             <div className="navbar__right">
               <div className="navbar__button--mobile" onClick={handleClick}>
@@ -105,7 +115,7 @@ const Navbar = () => {
                     <NavLink
                       className="links__link--config"
                       to="/"
-                      onClick={toggleHome}
+                      onClick={scrollToHome}
                       activeClassName="active">
                         {homeLink}
                     </NavLink>

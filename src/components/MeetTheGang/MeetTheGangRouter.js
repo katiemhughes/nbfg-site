@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const MeetTheGangRouter = ({ handleClick, isSubnavOpen, toggleSubnav }) => {
   console.log('isSubnavOpen', isSubnavOpen);
@@ -9,60 +9,60 @@ const MeetTheGangRouter = ({ handleClick, isSubnavOpen, toggleSubnav }) => {
     {isSubnavOpen && <button className="sublinks__cta" onClick={toggleSubnav}>Back</button>}
       <ul className={isSubnavOpen ? "sublinks--active" : "sublinks"} id="gang-sublinks">
         <li className={isSubnavOpen ? "sublinks__link--active" : "sublinks__link"} onClick={handleClick}>
-          <Link 
+          <NavLink 
             className="sublinks__link--config"
             to="../moll"
           >
             Moll
-          </Link>
+          </NavLink>
         </li>
         <li className={isSubnavOpen ? "sublinks__link--active" : "sublinks__link"} onClick={handleClick}>
-          <Link 
+          <NavLink 
             className="sublinks__link--config"
             to="../maracuya"
           >
             Maracuya
-          </Link>
+          </NavLink>
         </li>
         <li className={isSubnavOpen ? "sublinks__link--active" : "sublinks__link"} onClick={handleClick}>
-          <Link 
+          <NavLink 
             className="sublinks__link--config"
             to="../daisu"
           >
             DaiSu
-          </Link>
+          </NavLink>
         </li>
         <li className={isSubnavOpen ? "sublinks__link--active" : "sublinks__link"} onClick={handleClick}>
-          <Link 
+          <NavLink 
             className="sublinks__link--config"
             to="../thtgrl"
           >
             Tht Grl
-          </Link>
+          </NavLink>
         </li>
         <li className={isSubnavOpen ? "sublinks__link--active" : "sublinks__link"} onClick={handleClick}>
-          <Link 
+          <NavLink 
             className="sublinks__link--config"
             to="../eggontoast"
           >
             Egg On Toast
-          </Link>
+          </NavLink>
         </li>
         <li className={isSubnavOpen ? "sublinks__link--active" : "sublinks__link"} onClick={handleClick}>
-          <Link 
+          <NavLink 
             className="sublinks__link--config"
             to="../martha"
           >
             Martha
-          </Link>
+          </NavLink>
         </li>
         <li className={isSubnavOpen ? "sublinks__link--active" : "sublinks__link"} onClick={handleClick}>
-          <Link 
+          <NavLink 
           className="sublinks__link--config"
           to="../sophie"
           >
             Sophie
-          </Link>
+          </NavLink>
         </li>
     </ul>
     </>

@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { client } from './Client';
-import { cleanUpCarouselSlides, cleanUpAbout, cleanUpContact, cleanUpNavbar, cleanUpUnderConstruction } from './Helpers';
+import { cleanUpCarouselSlides, cleanUpAbout, cleanUpContact, cleanUpNavbar, cleanUpUnderConstruction, cleanUpMaracuya } from './Helpers';
 
 export const Context = React.createContext();
 
 export const Provider = (props) => {
     const [isCarouselLoading, setIsCarouselLoading] = useState(false);
     const [carouselSlides, setCarouselSlides] = useState([]);
-    // const [isMobileCarouselLoading, setIsMobileCarouselLoading] = useState(false);
-    // const [mobileCarouselSlides, setMobileCarouselSlides] = useState([]);
     const [about, setAbout] = useState({});
     const [isAboutLoading, setIsAboutLoading] = useState(false);
     const [contact, setContact] = useState({});
@@ -17,6 +15,8 @@ export const Provider = (props) => {
     const [isNavbarLoading, setIsNavbarLoading] = useState(false);
     const [underConstruction, setUnderConstruction] = useState({});
     const [isUnderConstructionLoading, setIsUnderConstructionLoading] = useState(false);
+    const [maracuya, setMaracuya] = useState({});
+    const [isMaracuyaLoading, setIsMaracuyaLoading] = useState(false);
 
     const saveCarouselData = useCallback((carouselData) => {
         const cleanCarouselData = cleanUpCarouselSlides(carouselData);
@@ -155,40 +155,36 @@ export const Provider = (props) => {
         getUnderConstruction();
     }, [getUnderConstruction]);
 
-    // const saveMobileCarouselData = useCallback((mobileCarouselData) => {
-    //     const cleanMobileCarouselData = cleanUpMobileCarouselSlides(mobileCarouselData);
-    //     setMobileCarouselSlides(cleanMobileCarouselData)
-    // }, []);
+    const saveMaracuyaData = useCallback((maracuyaData) => {
+        const cleanMaracuyaData = cleanUpMaracuya(maracuyaData);
+        setMaracuya(cleanMaracuyaData);
+    }, []);
 
-    // const getMobileCarouselSlides = useCallback(async () => {
-    //     setIsMobileCarouselLoading(true);
-    //     try {
-    //         const response = await client.getEntries({ content_type: 'homepageCarouselMobile' });
-    //         console.log('response', response);
-    //         const responseData = response.items;
-    //         console.log('responseData', responseData);
-    //         if (responseData) {
-    //             saveMobileCarouselData(responseData);
-    //         } else {
-    //             setMobileCarouselSlides([]);
-    //         }
-    //         setIsMobileCarouselLoading(false);
-    //     } catch (error) {
-    //         console.log(error);
-    //         setIsMobileCarouselLoading(false);
-    //     }
-    // }, [saveMobileCarouselData]);
+    const getMaracuya = useCallback(async () => {
+        setIsMaracuyaLoading(true);
 
-    // useEffect(() => {
-    //     getMobileCarouselSlides();
-    // }, [getMobileCarouselSlides]);
+        try {
+            const response = await client.getEntry('6VrALD4PckvnA2vOMfB59');
+            console.log('response', response);
+            if (response) {
+                saveMaracuyaData(response);
+            } else {
+                setMaracuya({});
+            }
+            setIsMaracuyaLoading(false);
+        } catch (error) {
+            console.log(error);
+            setIsMaracuyaLoading(false);
+        }
+    }, [saveMaracuyaData]);
 
+    useEffect(() => {
+        getMaracuya();
+    }, [getMaracuya]);
 
     const contextData = {
         carouselSlides,
-        // mobileCarouselSlides,
         isCarouselLoading,
-        // isMobileCarouselLoading,
         about,
         isAboutLoading,
         contact,
@@ -196,7 +192,9 @@ export const Provider = (props) => {
         navbar,
         isNavbarLoading,
         underConstruction,
-        isUnderConstructionLoading
+        isUnderConstructionLoading,
+        maracuya,
+        isMaracuyaLoading,
     }
 
     return (

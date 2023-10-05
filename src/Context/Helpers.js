@@ -75,3 +75,14 @@ export const cleanUpUnderConstruction = (responseData) => {
     
     return cleanAboutPage;
 };
+
+export const cleanUpMaracuya = (responseData) => {
+    const { sys, fields } = responseData;
+    const { id } = sys;
+    const maracuyaTitle = fields.title;
+    const maracuyaDescription = getHTMLData(fields.content);
+    const maracuyaImage = fields.image.fields.file.url;
+    let cleanMaracuya = { id, maracuyaTitle, maracuyaDescription, maracuyaImage };
+    
+    return cleanMaracuya;
+};
