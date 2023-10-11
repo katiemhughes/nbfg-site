@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { client } from './Client';
-import { cleanUpCarouselSlides, cleanUpAbout, cleanUpContact, cleanUpNavbar, cleanUpUnderConstruction, cleanUpMaracuya } from './Helpers';
+import { cleanUpCarouselSlides, cleanUpAbout, cleanUpContact, cleanUpNavbar, cleanUpUnderConstruction, extractTheGangData } from './Helpers';
 
 export const Context = React.createContext();
 
@@ -15,8 +15,8 @@ export const Provider = (props) => {
     const [isNavbarLoading, setIsNavbarLoading] = useState(false);
     const [underConstruction, setUnderConstruction] = useState({});
     const [isUnderConstructionLoading, setIsUnderConstructionLoading] = useState(false);
-    const [maracuya, setMaracuya] = useState({});
-    const [isMaracuyaLoading, setIsMaracuyaLoading] = useState(false);
+    const [theGang, setTheGang] = useState([]);
+    const [isTheGangLoading, setIsTheGangLoading] = useState(false);
 
     const saveCarouselData = useCallback((carouselData) => {
         const cleanCarouselData = cleanUpCarouselSlides(carouselData);
@@ -27,9 +27,9 @@ export const Provider = (props) => {
         setIsCarouselLoading(true);
         try {
             const response = await client.getEntries({ content_type: 'homepageCarousel' });
-            console.log('response', response);
+            // console.log('response', response);
             const responseData = response.items;
-            console.log('responseData', responseData);
+            // console.log('responseData', responseData);
             if (responseData) {
                 saveCarouselData(responseData);
             } else {
@@ -56,7 +56,7 @@ export const Provider = (props) => {
 
         try {
             const response = await client.getEntry('602KUf13tbtYPvq8dwkcOo');
-            console.log('response', response);
+            // console.log('response', response);
             if (response) {
                 saveAboutData(response);
             } else {
@@ -75,7 +75,7 @@ export const Provider = (props) => {
 
     const saveContactData = useCallback((contactData) => {
         const cleanContactData = cleanUpContact(contactData);
-        console.log('contactData', contactData);
+        // console.log('contactData', contactData);
         setContact(cleanContactData);
     }, []);
 
@@ -84,7 +84,7 @@ export const Provider = (props) => {
 
         try {
             const response = await client.getEntry('1Sf2q4ypdfNYF3fqAPcf4y');
-            console.log('response', response);
+            // console.log('response', response);
             if (response) {
                 saveContactData(response);
             } else {
@@ -111,7 +111,7 @@ export const Provider = (props) => {
 
         try {
             const response = await client.getEntry('1gxLcXmajwyd4djRqFx1OL');
-            console.log('response', response);
+            // console.log('response', response);
             if (response) {
                 saveNavbarData(response);
             } else {
@@ -138,7 +138,7 @@ export const Provider = (props) => {
 
         try {
             const response = await client.getEntry('4EAhzDVCXu0hdYluOwISZs');
-            console.log('under construction response', response);
+            // console.log('under construction response', response);
             if (response) {
                 saveUnderConstructionData(response);
             } else {
@@ -155,32 +155,31 @@ export const Provider = (props) => {
         getUnderConstruction();
     }, [getUnderConstruction]);
 
-    const saveMaracuyaData = useCallback((maracuyaData) => {
-        const cleanMaracuyaData = cleanUpMaracuya(maracuyaData);
-        setMaracuya(cleanMaracuyaData);
-    }, []);
-
-    const getMaracuya = useCallback(async () => {
-        setIsMaracuyaLoading(true);
+    const getTheGang = useCallback(async () => {
+        setIsTheGangLoading(true);
 
         try {
-            const response = await client.getEntry('6VrALD4PckvnA2vOMfB59');
+            const response = await client.getEntries({
+              content_type: 'collectiveMemberPage',
+            })
             console.log('response', response);
             if (response) {
-                saveMaracuyaData(response);
+                const extractedGangData = extractTheGangData(response);
+                console.log('extractedGangData', extractedGangData);
+                setTheGang(extractedGangData);
             } else {
-                setMaracuya({});
+                setTheGang([]);
             }
-            setIsMaracuyaLoading(false);
+            setIsTheGangLoading(false);
         } catch (error) {
             console.log(error);
-            setIsMaracuyaLoading(false);
+            setIsTheGangLoading(false);
         }
-    }, [saveMaracuyaData]);
+    }, []);
 
     useEffect(() => {
-        getMaracuya();
-    }, [getMaracuya]);
+        getTheGang();
+    }, [getTheGang]);
 
     const contextData = {
         carouselSlides,
@@ -193,8 +192,8 @@ export const Provider = (props) => {
         isNavbarLoading,
         underConstruction,
         isUnderConstructionLoading,
-        maracuya,
-        isMaracuyaLoading,
+        theGang,
+        isTheGangLoading,
     }
 
     return (

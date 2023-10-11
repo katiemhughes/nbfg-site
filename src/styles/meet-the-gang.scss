@@ -3,11 +3,6 @@
     flex-direction: column;
     justify-content: center;
 
-    &__text-content {
-        color: #fff;
-        margin-bottom: 20px;
-    }
-
     &__title {
         color: $primaryColor;
         font-size: 3em;
@@ -16,52 +11,34 @@
         text-align: center;
     }
 
-    &__description {
-        font-size: 1em;
-
-        p {
-            margin-bottom: 15px;
-        }
-    }
-
-    &__image-content {
-        margin-top: 20px;
-    }
-
     &__image {
         width: 100%;
         height: auto;
         border-radius: 10px;
     }
 
-    &__contact-content {
+    &__description {
+        font-size: 1em;
+        margin: 40px 0px 60px 0px;
+
+        p {
+            margin-bottom: 20px;
+        }
+    }
+
+    &__info {
+        text-align: center;
+        font-size: 0.9em;
+    }
+
+    &__contact {
         display: flex;
+        justify-content: center;
         align-items: center;
-    }
+        margin-top: 4px;
 
-    &__contact-type {
-        margin-left: 8px;
-    }
-
-    &__contact-link {
-        margin-left: 8px;
-    }
-}
-
-// .fa-regular {
-//     color: white;
-//     height: 100px;
-//     width: 100px;
-// }
-
-.logo {
-    &__icon {
-        color: $textColor;
-        display: flex;
-        align-items: center;
-
-        &:hover {
-            color: $mainColor;
+        &--link {
+            margin-right: 4px;
         }
     }
 }

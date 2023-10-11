@@ -9,7 +9,7 @@ import MeetTheGangRouter from '../MeetTheGang/MeetTheGangRouter';
 const Navbar = () => {
   const isDesktop = window.matchMedia('(min-width: 1025px)').matches;
   const path = useLocation().pathname;
-  console.log('path', path);
+  // console.log('path', path);
   const navigate = useNavigate();
   const scroll = Scroll.animateScroll;
   const scroller = Scroll.scroller;
@@ -115,8 +115,7 @@ const Navbar = () => {
                     <NavLink
                       className="links__link--config"
                       to="/"
-                      onClick={scrollToHome}
-                      activeClassName="active">
+                      onClick={scrollToHome}>
                         {homeLink}
                     </NavLink>
                   </li>
@@ -124,14 +123,12 @@ const Navbar = () => {
                     {path === '/' ? (
                     <NavLink
                       className="links__link--config"
-                      onClick={scrollToAbout}
-                      activeClassName="active">
+                      onClick={scrollToAbout}>
                         {aboutLink}
                     </NavLink> ) : (
                     <NavLink
                       className="links__link--config"
-                      onClick={goToHomeAndScrollToAbout}
-                      activeClassName="active">
+                      onClick={goToHomeAndScrollToAbout}>
                         {aboutLink}
                     </NavLink>
                     )}
@@ -144,14 +141,12 @@ const Navbar = () => {
                   {path === '/' ? (
                     <NavLink
                       className="links__link--config"
-                      onClick={scrollToContact}
-                      activeClassName="active">
+                      onClick={scrollToContact}>
                         {contactLink}
                     </NavLink> ) : (
                     <NavLink
                       className="links__link--config"
-                      onClick={goToHomeAndScrollToContact}
-                      activeClassName="active">
+                      onClick={goToHomeAndScrollToContact}>
                         {contactLink}
                     </NavLink>
                     )}

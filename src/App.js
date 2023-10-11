@@ -4,14 +4,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import { BrowserRouter } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
-import Moll from './components/MeetTheGang/Moll/Moll';
-import Maracuya from './components/MeetTheGang/Maracuya/Maracuya';
-import DaiSu from './components/MeetTheGang/DaiSu/DaiSu';
-import ThtGrl from './components/MeetTheGang/ThtGrl/ThtGrl';
-import EggOnToast from './components/MeetTheGang/EggOnToast/EggOnToast';
-import Martha from './components/MeetTheGang/Martha/Martha';
-import Sophie from './components/MeetTheGang/Sophie/Sophie';
+import GangMember from './components/MeetTheGang/GangMember';
 // import UnderConstruction from './components/UnderConstruction/UnderConstruction';
+import { client } from './Context/Client';
 
 const App = () => {
   return (
@@ -22,13 +17,7 @@ const App = () => {
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/moll" element={<Moll />} />
-          <Route path="/maracuya" element={<Maracuya />} />
-          <Route path="/daisu" element={<DaiSu />} />
-          <Route path="/thtgrl" element={<ThtGrl />} />
-          <Route path="/eggontoast" element={<EggOnToast />} />
-          <Route path="/martha" element={<Martha />} />
-          <Route path="/sophie" element={<Sophie />} />
+          <Route path="/:gangMember" element={<GangMember />} />
         </Routes>
       </BrowserRouter>
     </Provider>

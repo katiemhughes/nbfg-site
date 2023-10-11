@@ -2,8 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const MeetTheGangRouter = ({ handleClick, isSubnavOpen, toggleSubnav }) => {
-  console.log('isSubnavOpen', isSubnavOpen);
-  console.log('toggleSubnav', toggleSubnav);
+  // console.log('isSubnavOpen', isSubnavOpen);
+  // console.log('toggleSubnav', toggleSubnav);
   return (
     <>
     {isSubnavOpen && <button className="sublinks__cta" onClick={toggleSubnav}>Back</button>}

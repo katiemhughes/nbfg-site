@@ -12,7 +12,7 @@ export const cleanUpCarouselSlides = (responseData) => {
     const cleanSlides = responseData.map((slide) => {
         const { sys, fields } = slide;
         const { id } = sys;
-        console.log('fields', fields);
+        // console.log('fields', fields);
         const slideTitle = fields.title;
         const slideDescription = fields.description;
         const slideBgImage = fields.image.fields.file.url;
@@ -39,7 +39,7 @@ export const cleanUpContact = (responseData) => {
     const { sys, fields } = responseData;
     const { id } = sys;
 
-    console.log('fields', fields)
+    // console.log('fields', fields)
     const contactTitle = fields.title;
     // const aboutPageDescription = getHTMLData(fields.content);
     const contactEmail = fields.emailAddress;
@@ -76,13 +76,18 @@ export const cleanUpUnderConstruction = (responseData) => {
     return cleanAboutPage;
 };
 
-export const cleanUpMaracuya = (responseData) => {
-    const { sys, fields } = responseData;
-    const { id } = sys;
-    const maracuyaTitle = fields.title;
-    const maracuyaDescription = getHTMLData(fields.content);
-    const maracuyaImage = fields.image.fields.file.url;
-    let cleanMaracuya = { id, maracuyaTitle, maracuyaDescription, maracuyaImage };
+export const extractTheGangData = (responseData) => {
+    const { items } = responseData;
+    const extractedGang = items.map((item) => {
+        const { fields } = item;
+        const title = fields.title;
+        const description = getHTMLData(fields.content);
+        const image = fields.image.fields.file.url;
+        const slug = fields.slug;
+        const updatedGang = { title, description, image, slug };
+        
+        return updatedGang;
+    });
     
-    return cleanMaracuya;
+    return extractedGang;
 };
