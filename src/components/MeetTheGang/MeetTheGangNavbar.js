@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const MeetTheGangRouter = ({ handleClick, isSubnavOpen, toggleSubnav }) => {
+const MeetTheGangNavbar = ({ handleClick, isSubnavOpen, toggleSubnav }) => {
   // console.log('isSubnavOpen', isSubnavOpen);
   // console.log('toggleSubnav', toggleSubnav);
   return (
@@ -69,4 +69,4 @@ const MeetTheGangRouter = ({ handleClick, isSubnavOpen, toggleSubnav }) => {
   )
 }
 
-export default MeetTheGangRouter;
+export default MeetTheGangNavbar;

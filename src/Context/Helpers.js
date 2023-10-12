@@ -8,8 +8,8 @@ export const getHTMLData = (markdown) => {
     return sanitisedHtmlString;
 }
 
-export const cleanUpCarouselSlides = (responseData) => {
-    const cleanSlides = responseData.map((slide) => {
+export const extractCarouselData = (responseData) => {
+    const updatedCarouselSlides = responseData.map((slide) => {
         const { sys, fields } = slide;
         const { id } = sys;
         // console.log('fields', fields);
@@ -21,59 +21,75 @@ export const cleanUpCarouselSlides = (responseData) => {
         return updatedSlide;
     });
     
-    return cleanSlides;
+    return updatedCarouselSlides;
 };
 
-export const cleanUpAbout = (responseData) => {
+export const extractAboutData = (responseData) => {
     const { sys, fields } = responseData;
     const { id } = sys;
     const aboutPageTitle = fields.title;
     const aboutPageDescription = getHTMLData(fields.content);
     const aboutPageImage = fields.image.fields.file.url;
-    let cleanAboutPage = { id, aboutPageTitle, aboutPageDescription, aboutPageImage };
+    let updatedAbout = { id, aboutPageTitle, aboutPageDescription, aboutPageImage };
     
-    return cleanAboutPage;
+    return updatedAbout;
 };
 
-export const cleanUpContact = (responseData) => {
+export const extractContactData = (responseData) => {
     const { sys, fields } = responseData;
     const { id } = sys;
-
-    // console.log('fields', fields)
     const contactTitle = fields.title;
-    // const aboutPageDescription = getHTMLData(fields.content);
     const contactEmail = fields.emailAddress;
     const financeEmail = fields.financeEmailAddress;
     const contactSignature = fields.signature;
+    const instagramLink = fields.instagramLink;
+    const facebookLink = fields.facebookLink;
+    const twitterLink = fields.twitterLink;
+    const twitterAlt = fields.twitterAlt;
+    const tiktokLink = fields.tiktokLink;
+    const tiktokAlt = fields.tiktokAlt;
+    const soundcloudLink = fields.soundcloudLink;
+    const soundcloudAlt = fields.soundcloudAlt;
+    const portfolioLinkText = fields.portfolioLinkText;
     const portfolioLink = fields.portfolioLink;
+    const portfolioLinkName = fields.portfolioLinkName;
     const emailTitle = fields.emailTitle;
-    let cleanContactPage = { id, contactTitle, contactEmail, financeEmail, contactSignature, emailTitle, portfolioLink };
+    let updatedContact = { id, contactTitle, contactEmail, financeEmail, instagramLink, facebookLink, twitterLink, twitterAlt, tiktokLink, tiktokAlt, soundcloudLink, soundcloudAlt, contactSignature, emailTitle, portfolioLinkText, portfolioLink, portfolioLinkName };
     
-    return cleanContactPage;
+    return updatedContact;
 };
 
-export const cleanUpNavbar = (responseData) => {
+export const extractNavbarData = (responseData) => {
     const { sys, fields } = responseData;
     const { id } = sys;
     const icon = fields.navbarIcon.fields.file.url;
+    const iconAlt = fields.navbarAlt;
     const homeLink = fields.homeLink;
     const aboutLink = fields.aboutLink;
     const meetTheGangLink = fields.meetTheGangLink;
     const contactLink = fields.contactLink;
-    let cleanNavbar = { id, icon, homeLink, aboutLink, meetTheGangLink, contactLink };
+    const instagramLink = fields.instagramLink;
+    const facebookLink = fields.facebookLink;
+    const twitterLink = fields.twitterLink;
+    const twitterAlt = fields.twitterAlt;
+    const tiktokLink = fields.tiktokLink;
+    const tiktokAlt = fields.tiktokAlt;
+    const soundcloudLink = fields.soundcloudLink;
+    const soundcloudAlt = fields.soundcloudAlt;
+    let updatedNavbar = { id, icon, iconAlt, homeLink, aboutLink, meetTheGangLink, contactLink, instagramLink, facebookLink, twitterLink, twitterAlt, tiktokLink, tiktokAlt, soundcloudLink, soundcloudAlt };
     
-    return cleanNavbar;
+    return updatedNavbar;
 };
 
-export const cleanUpUnderConstruction = (responseData) => {
+export const extractUnderConstructionData = (responseData) => {
     const { sys, fields } = responseData;
     const { id } = sys;
     const underConstructionTitle = fields.title;
     const underConstructionDescription = getHTMLData(fields.content);
     const underConstructionImage = fields.image.fields.file.url;
-    let cleanAboutPage = { id, underConstructionTitle, underConstructionDescription, underConstructionImage };
+    let updatedUnderConstruction = { id, underConstructionTitle, underConstructionDescription, underConstructionImage };
     
-    return cleanAboutPage;
+    return updatedUnderConstruction;
 };
 
 export const extractTheGangData = (responseData) => {
@@ -84,7 +100,15 @@ export const extractTheGangData = (responseData) => {
         const description = getHTMLData(fields.content);
         const image = fields.image.fields.file.url;
         const slug = fields.slug;
-        const updatedGang = { title, description, image, slug };
+        const email = fields.email;
+        const instagram = fields.instagram;
+        const facebook = fields.facebook;
+        const soundcloud = fields.soundcloud;
+        const mixcloud = fields.mixcloud;
+        const primaryPronoun = fields.primaryPronoun;
+        const secondaryPronoun = fields.secondaryPronoun;
+        const tertiaryPronoun = fields.tertiaryPronoun;
+        const updatedGang = { title, description, image, slug, email, instagram, facebook, soundcloud, mixcloud, primaryPronoun, secondaryPronoun, tertiaryPronoun };
         
         return updatedGang;
     });

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { client } from './Client';
-import { cleanUpCarouselSlides, cleanUpAbout, cleanUpContact, cleanUpNavbar, cleanUpUnderConstruction, extractTheGangData } from './Helpers';
+import { extractCarouselData, extractAboutData, extractContactData, extractNavbarData, extractUnderConstructionData, extractTheGangData } from './Helpers';
 
 export const Context = React.createContext();
 
@@ -19,14 +19,16 @@ export const Provider = (props) => {
     const [isTheGangLoading, setIsTheGangLoading] = useState(false);
 
     const saveCarouselData = useCallback((carouselData) => {
-        const cleanCarouselData = cleanUpCarouselSlides(carouselData);
-        setCarouselSlides(cleanCarouselData)
+        const extractedCarouselData = extractCarouselData(carouselData);
+        setCarouselSlides(extractedCarouselData)
     }, []);
 
     const getCarouselSlides = useCallback(async () => {
         setIsCarouselLoading(true);
         try {
-            const response = await client.getEntries({ content_type: 'homepageCarousel' });
+            const response = await client.getEntries({
+                content_type: 'homepageCarousel',
+            });
             // console.log('response', response);
             const responseData = response.items;
             // console.log('responseData', responseData);
@@ -47,8 +49,8 @@ export const Provider = (props) => {
     }, [getCarouselSlides]);
 
     const saveAboutData = useCallback((aboutData) => {
-        const cleanAboutData = cleanUpAbout(aboutData);
-        setAbout(cleanAboutData);
+        const extractedAboutData = extractAboutData(aboutData);
+        setAbout(extractedAboutData);
     }, []);
 
     const getAbout = useCallback(async () => {
@@ -74,9 +76,9 @@ export const Provider = (props) => {
     }, [getAbout]);
 
     const saveContactData = useCallback((contactData) => {
-        const cleanContactData = cleanUpContact(contactData);
+        const extractedContactData = extractContactData(contactData);
         // console.log('contactData', contactData);
-        setContact(cleanContactData);
+        setContact(extractedContactData);
     }, []);
 
     const getContact = useCallback(async () => {
@@ -102,8 +104,8 @@ export const Provider = (props) => {
     }, [getContact]);
 
     const saveNavbarData = useCallback((navbarData) => {
-        const cleanNavbarData = cleanUpNavbar(navbarData);
-        setNavbar(cleanNavbarData);
+        const extractedNavbarData = extractNavbarData(navbarData);
+        setNavbar(extractedNavbarData);
     }, []);
 
     const getNavbar = useCallback(async () => {
@@ -129,8 +131,8 @@ export const Provider = (props) => {
     }, [getNavbar]);
 
     const saveUnderConstructionData = useCallback((underConstructionData) => {
-        const cleanUnderConstructionData = cleanUpUnderConstruction(underConstructionData);
-        setUnderConstruction(cleanUnderConstructionData);
+        const extractedConstructionData = extractUnderConstructionData(underConstructionData);
+        setUnderConstruction(extractedConstructionData);
     }, []);
 
     const getUnderConstruction = useCallback(async () => {
