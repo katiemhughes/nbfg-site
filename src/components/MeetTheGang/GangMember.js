@@ -33,28 +33,32 @@ const GangMember = () => {
 
   const { title, description, image, slug, email, instagram, facebook, soundcloud, mixcloud, secondaryPronoun } = gangMember;
 
+  console.log('image', image);
+
   return (
     <section className='meet' id={slug}>
         <h2 className='meet__title'>{title}</h2>
-        <img className='meet__image' src={image} alt={title} />
+        <div className='meet__image-container'>
+          <img className='meet__image' src={image} alt={title} />
+        </div>
         <p className='meet__description' dangerouslySetInnerHTML={{ __html: description }} />
         <p className='meet__info'>Hit up {title} via email or follow {secondaryPronoun} on socials below...</p>
         <div className='meet__contact'>
-          <a href={`mailto:${email}`} className='meet__contact--link'>
+          {email ? <a href={`mailto:${email}`} className='meet__contact--link'>
             <img src={EmailIcon} alt='Email Icon' className='contact__svg' />
-          </a>
-          <a href={instagram} className='meet__contact--link'>
+          </a> : null}
+          {instagram ? <a href={instagram} className='meet__contact--link'>
             <img src={InstagramIcon} alt='Instagram Icon' className='contact__svg' />
-          </a>
-          <a href={facebook} className='meet__contact--link'>
+          </a> : null}
+          {facebook? <a href={facebook} className='meet__contact--link'>
             <img src={FacebookIcon} alt='Facebook Icon' className='contact__svg' />
-          </a>
-          <a href={soundcloud} className='meet__contact--link'>
+          </a> : null}
+          {soundcloud ? <a href={soundcloud} className='meet__contact--link'>
             <img src={SoundcloudIcon} alt='Soundcloud Icon' className='contact__svg' />
-          </a>
-          <a href={mixcloud} className='meet__contact--link'>
+          </a> : null}
+          {mixcloud ? <a href={mixcloud} className='meet__contact--link'>
             <img src={MixcloudIcon} alt='Mixcloud Icon' className='contact__svg' />
-          </a>
+          </a> : null}
         </div>
     </section>
   );

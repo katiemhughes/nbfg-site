@@ -96,6 +96,7 @@ export const extractTheGangData = (responseData) => {
     const { items } = responseData;
     const extractedGang = items.map((item) => {
         const { fields } = item;
+        console.log('fields', fields);
         const title = fields.title;
         const description = getHTMLData(fields.content);
         const image = fields.image.fields.file.url;
