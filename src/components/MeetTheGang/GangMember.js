@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
 import Loader from '../Loader/Loader';
-// import GangMemberNotFound from './GangMemberNotFound';
 import { Context } from '../../Context/Context';
 import { useParams } from 'react-router-dom';
 import EmailIcon from '../../svgs/EmailIcon.svg';
@@ -8,6 +7,7 @@ import InstagramIcon from '../../svgs/InstagramIcon.svg';
 import FacebookIcon from '../../svgs/FacebookIcon.svg';
 import SoundcloudIcon from '../../svgs/SoundcloudIcon.svg';
 import MixcloudIcon from '../../svgs/MixcloudIcon.svg';
+import NotFound from '../NotFound/NotFound';
 
 const GangMember = () => {
   const { gangMember: gangMemberUrlParam } = useParams();
@@ -29,8 +29,7 @@ const GangMember = () => {
   }
 
   if (!gangMember) {
-    // return <GangMemberNotFound />
-    return <h1>Not found</h1>
+    return <NotFound />
   }
 
   const { title, description, image, slug, email, instagram, facebook, soundcloud, mixcloud, secondaryPronoun } = gangMember;
