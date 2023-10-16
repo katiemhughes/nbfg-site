@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from './Context/Context';
-import About from './components/About/About';
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import GangMember from './components/MeetTheGang/GangMember';
@@ -18,7 +17,6 @@ function App() {
         </nav>
         <Routes>
           <Route path="/" exact element={<Home />} />
-          <Route path="/about" element={<About />} />
           <Route path="/:gangMember" element={<GangMember />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
