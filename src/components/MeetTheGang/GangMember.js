@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import Loader from '../Loader/Loader';
+// import GangMemberNotFound from './GangMemberNotFound';
 import { Context } from '../../Context/Context';
 import { useParams } from 'react-router-dom';
 import EmailIcon from '../../svgs/EmailIcon.svg';
@@ -28,6 +29,7 @@ const GangMember = () => {
   }
 
   if (!gangMember) {
+    // return <GangMemberNotFound />
     return <h1>Not found</h1>
   }
 
