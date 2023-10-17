@@ -169,3 +169,30 @@ export const extractTheGangData = (responseData) => {
 
   return extractedGang;
 };
+
+export const extractAllNewsPostsData = (responseData) => {
+  const { items } = responseData;
+  console.log('news items', items);
+  const extractedNewsPosts = items.map((item) => {
+    const { fields } = item;
+    const image = fields.image.fields.file.url;
+    const { title } = fields;
+    const { slug } = fields;
+    const { author } = fields;
+    const { createdDate } = fields;
+    const { summary } = fields;
+
+    const updatedNewsPost = {
+      image,
+      title,
+      slug,
+      author,
+      createdDate,
+      summary,
+    };
+
+    return updatedNewsPost;
+  });
+
+  return extractedNewsPosts;
+};

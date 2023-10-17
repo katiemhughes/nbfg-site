@@ -117,11 +117,11 @@ function Navbar() {
   return (
     <div className="navbar">
       <div className={click ? 'navbar__top--active' : 'navbar__top'}>
-        <div className="navbar__left">
-          <img src={icon} alt={iconAlt} className="logo" onClick={goToHome} />
+        <div className="navbar__left" onClick={goToHome} onKeyDown={goToHome} tabIndex="0" role="button">
+          <img src={icon} alt={iconAlt} className="logo" />
         </div>
         <div className="navbar__right">
-          <div className="navbar__button--mobile" onClick={handleClick}>
+          <div className="navbar__button--mobile" onClick={handleClick} onKeyDown={goToHome} tabIndex="0" role="button">
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
           </div>
         </div>
@@ -154,8 +154,8 @@ function Navbar() {
               </NavLink>
             )}
           </li>
-          <li className="links__link" onClick={toggleSubnav}>
-            <button type="button" id="meet-the-gang" tabIndex="0" className="links__link--config">{meetTheGangLink}</button>
+          <li className="links__link">
+            <button onClick={toggleSubnav} type="button" id="meet-the-gang" tabIndex="0" className="links__link--config">{meetTheGangLink}</button>
             <MeetTheGangNavbar
               handleClick={handleClick}
               isSubnavOpen={isSubnavOpen}

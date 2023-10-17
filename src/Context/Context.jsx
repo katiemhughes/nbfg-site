@@ -7,6 +7,7 @@ import {
   extractNavbarData,
   extractUnderConstructionData,
   extractTheGangData,
+  extractAllNewsPostsData,
 } from './Helpers';
 
 export const Context = React.createContext();
@@ -24,6 +25,8 @@ export function Provider(props) {
   const [isUnderConstructionLoading, setIsUnderConstructionLoading] = useState(false);
   const [theGang, setTheGang] = useState([]);
   const [isTheGangLoading, setIsTheGangLoading] = useState(false);
+  const [newsPosts, setNewsPosts] = useState([]);
+  const [isNewsPostsLoading, setIsNewsPostsLoading] = useState(false);
 
   const saveCarouselData = useCallback((carouselData) => {
     const extractedCarouselData = extractCarouselData(carouselData);
@@ -190,6 +193,32 @@ export function Provider(props) {
     getTheGang();
   }, [getTheGang]);
 
+  const getAllNewsPosts = useCallback(async () => {
+    setIsNewsPostsLoading(true);
+
+    try {
+      const response = await client.getEntries({
+        content_type: 'blogPage',
+      });
+      console.log('news posts response', response);
+      if (response) {
+        const extractedNewsPostsData = extractAllNewsPostsData(response);
+        console.log('extractedNewsPostsData', extractedNewsPostsData);
+        setNewsPosts(extractedNewsPostsData);
+      } else {
+        setNewsPosts([]);
+      }
+      setIsNewsPostsLoading(false);
+    } catch (error) {
+      console.log(error);
+      setIsNewsPostsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    getAllNewsPosts();
+  }, [getAllNewsPosts]);
+
   const contextData = {
     carouselSlides,
     isCarouselLoading,
@@ -203,6 +232,8 @@ export function Provider(props) {
     isUnderConstructionLoading,
     theGang,
     isTheGangLoading,
+    newsPosts,
+    isNewsPostsLoading,
   };
 
   const { children } = props;
