@@ -11,7 +11,7 @@ describe('NotFound component', () => {
         <NotFound />
       </BrowserRouter>,
     );
-    const notFoundElement = screen.getByText(/couldn't find/i);
+    const notFoundElement = screen.getByTestId('description');
     expect(notFoundElement).toBeInTheDocument();
   });
 
