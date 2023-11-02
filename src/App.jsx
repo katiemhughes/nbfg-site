@@ -21,7 +21,7 @@ function App() {
           <Route path="/" exact element={<Home />} />
           <Route path="/news" element={<NewsList />} />
           <Route path="/:gangMember" element={<GangMember />} />
-          <Route path="/news/:article" element={<Newspage />} />
+          <Route path="/news/articles/:newsArticle" element={<Newspage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -18,30 +18,34 @@ function NewsList() {
 
   return (
     <div className="news-list" id="id">
-      <h1>What&apos;s the latest from Not Bad for a Girl?</h1>
+      <h1 className="news-list__heading">What&apos;s the latest from Not Bad for a Girl?</h1>
       {newsPosts.map((post) => (
-        <section className="news-list__article" key={post.slug}>
-          <header>
-            <img className="news-list__image" src={post.image} alt={post.title} />
-            <h2>{post.title}</h2>
-            <p>
-              By
-              {' '}
-              {post.author}
-            </p>
-            <p>{post.createdDate}</p>
-          </header>
-          <div>
-            <p>{post.summary}</p>
+        <>
+          <hr className="news-list__divider" />
+          <section className="news-list__article" key={post.slug}>
             <Link
               type="button"
               className="news-list__button"
-              to={`/${post.slug}`}
+              to={`/news/articles/${post.slug}`}
             >
-              Read more
+              <p className="news-list__date">{post.createdDate.split('-').reverse().join('/')}</p>
+              <div className="news-list__content">
+                <div className="news-list__header">
+                  <h2 className="news-list__title">{post.title}</h2>
+                  <p className="news-list__author">
+                    By
+                    {' '}
+                    {post.author}
+                  </p>
+                </div>
+                <p className="news-list__summary">{post.summary}</p>
+              </div>
+              <div className="news-list__image-container">
+                <img className="news-list__image" src={post.image} alt={post.title} />
+              </div>
             </Link>
-          </div>
-        </section>
+          </section>
+        </>
       ))}
     </div>
   );

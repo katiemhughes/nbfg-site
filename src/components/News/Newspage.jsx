@@ -1,29 +1,29 @@
-import React from 'react';
-import { Link, useParams } from 'react-router-dom';
-// import { Context } from '../../Context/Context';
-// import Loader from '../Loader/Loader';
-// import NotFound from '../NotFound/NotFound';
+import React, { useContext, useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { Context } from '../../Context/Context';
+import Loader from '../Loader/Loader';
+import NotFound from '../NotFound/NotFound';
 
 function Newspage() {
-  const { newsArticle } = useParams();
-  console.log('newsArticleUrlParam', newsArticle);
-  // const { newsPosts, isNewsPostsLoading } = useContext(Context);
-  // console.log('newsPosts', newsPosts);
-  // const [newsArticle, setNewsArticle] = useState();
+  const { newsArticle: newsArticleUrlParam } = useParams();
+  console.log('newsArticleUrlParam', newsArticleUrlParam);
+  const { newsPosts, isNewsPostsLoading } = useContext(Context);
+  console.log('newsPosts', newsPosts);
+  const [newsArticle, setNewsArticle] = useState();
 
-  // useEffect(() => {
-  //   const matchedArticle = newsPosts.find((post) => post.slug === newsArticleUrlParam);
-  //   console.log('matchedArticle', matchedArticle);
-  //   setNewsArticle(matchedArticle);
-  // }, [newsPosts, newsArticleUrlParam]);
+  useEffect(() => {
+    const matchedArticle = newsPosts.find((post) => post.slug === newsArticleUrlParam);
+    console.log('matchedArticle', matchedArticle);
+    setNewsArticle(matchedArticle);
+  }, [newsPosts, newsArticleUrlParam]);
 
-  // if (isNewsPostsLoading) {
-  //   return <Loader />;
-  // }
+  if (isNewsPostsLoading) {
+    return <Loader />;
+  }
 
-  // if (!newsPosts) {
-  //   return <NotFound />;
-  // }
+  if (!newsPosts || !newsArticle) {
+    return <NotFound />;
+  }
 
   const {
     image,
@@ -31,25 +31,33 @@ function Newspage() {
     slug,
     author,
     createdDate,
-    summary,
+    postContent,
   } = newsArticle;
 
+  console.log('image', image);
+  console.log('title', title);
+  console.log('slug', slug);
+  console.log('author', author);
+  console.log('createdDate', createdDate);
+
   return (
-    <div className="newspage" id="id">
-      <Link to="/news">Back to latest news</Link>
+    <div className="newspage" id={slug}>
       <section className="newspage__article" key={slug}>
         <header>
-          <img className="newspage__image" src={image} alt={title} />
-          <h2>{title}</h2>
-          <p>
+          <h2 className="newspage__heading">{title}</h2>
+          <p className="newspage__author">
             By
             {' '}
             {author}
           </p>
-          <p>{createdDate}</p>
+          <p className="newspage__date">{createdDate.split('-').reverse().join('/')}</p>
+          <div className="newspage__image-container">
+            <img className="newspage__image" src={image} alt={title} />
+          </div>
         </header>
         <div>
-          <p>{summary}</p>
+          <p className="newspage__content">{postContent}</p>
+          <Link className="newspage__cta" to="/news">Back to latest news</Link>
         </div>
       </section>
     </div>
