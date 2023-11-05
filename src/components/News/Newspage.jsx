@@ -55,8 +55,8 @@ function Newspage() {
             <img className="newspage__image" src={image} alt={title} />
           </div>
         </header>
-        <div>
-          <p className="newspage__content">{postContent}</p>
+        <div className="newspage__content">
+          <p className="newspage__copy">{postContent}</p>
           <Link className="newspage__cta" to="/news">Back to latest news</Link>
         </div>
       </section>

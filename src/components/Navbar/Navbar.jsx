@@ -31,6 +31,7 @@ function Navbar() {
     homeLink,
     aboutLink,
     meetTheGangLink,
+    newsLink,
     contactLink,
     instagramLink,
     facebookLink,
@@ -114,6 +115,21 @@ function Navbar() {
   //   audio.play();
   // }
 
+  const changeNavBackgroundColor = () => {
+    const nav = document.querySelector('.navbar');
+    console.log('nav', nav);
+    const scrollPosition = window.scrollY;
+    console.log('scrollPosition', scrollPosition);
+
+    if (nav && scrollPosition < 40) {
+      nav.classList.remove('nav-color');
+    } else {
+      nav.classList.add('nav-color');
+    }
+  };
+
+  window.addEventListener('scroll', changeNavBackgroundColor);
+
   return (
     <div className="navbar">
       <div className={click ? 'navbar__top--active' : 'navbar__top'}>
@@ -161,6 +177,16 @@ function Navbar() {
               isSubnavOpen={isSubnavOpen}
               toggleSubnav={toggleSubnav}
             />
+          </li>
+          <li className="links__link">
+            <NavLink
+              className="links__link--config"
+              to="/news"
+              onClick={handleClick}
+              onKeyDown={handleClick}
+            >
+              {newsLink}
+            </NavLink>
           </li>
           <li className="links__link">
             {path === '/' ? (

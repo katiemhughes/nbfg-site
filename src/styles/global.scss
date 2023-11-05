@@ -8,7 +8,9 @@
     box-sizing: border-box;
 }
 
-* { scroll-behavior: smooth; }
+* { 
+    scroll-behavior: smooth; 
+}
 
 body {
     margin: 0;
@@ -18,12 +20,4 @@ body {
     font-family: 'Poppins', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-
-section {
-    padding: 160px 100px 40px 100px;
-
-    @media (max-width: $smallDesktop) {
-        padding: 160px 20px 40px 20px;
-    }
 }

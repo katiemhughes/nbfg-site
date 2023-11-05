@@ -12,12 +12,13 @@ export const extractCarouselData = (responseData) => {
   const updatedCarouselSlides = responseData.map((slide) => {
     const { sys, fields } = slide;
     const { id } = sys;
-    // console.log('fields', fields);
+    console.log('fields', fields);
     const slideTitle = fields.title;
+    const slideSlug = fields.slug;
     const slideDescription = fields.description;
     const slideBgImage = fields.image.fields.file.url;
     const updatedSlide = {
-      id, slideTitle, slideDescription, slideBgImage,
+      id, slideTitle, slideSlug, slideDescription, slideBgImage,
     };
 
     return updatedSlide;
@@ -89,6 +90,7 @@ export const extractNavbarData = (responseData) => {
   const { homeLink } = fields;
   const { aboutLink } = fields;
   const { meetTheGangLink } = fields;
+  const { newsLink } = fields;
   const { contactLink } = fields;
   const { instagramLink } = fields;
   const { facebookLink } = fields;
@@ -105,6 +107,7 @@ export const extractNavbarData = (responseData) => {
     homeLink,
     aboutLink,
     meetTheGangLink,
+    newsLink,
     contactLink,
     instagramLink,
     facebookLink,

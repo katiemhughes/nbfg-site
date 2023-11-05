@@ -10,7 +10,13 @@ import Loader from '../Loader/Loader';
 import { Context } from '../../Context/Context';
 
 function Carousel() {
-  const { isCarouselLoading, carouselSlides } = useContext(Context);
+  const {
+    isCarouselLoading, carouselSlides, newsPosts, isNewsPostsLoading,
+  } = useContext(Context);
+  console.log('newsPosts', newsPosts);
+  console.log('isNewsPostsLoading', isNewsPostsLoading);
+  console.log('carouselSlides', carouselSlides);
+
   // console.log('carousel slides', carouselSlides);
   if (isCarouselLoading) {
     return <Loader />;
@@ -26,7 +32,7 @@ function Carousel() {
       <Swiper modules={[Navigation]} navigation>
         {carouselSlides.map((item) => {
           const {
-            id, slideBgImage, slideTitle, slideDescription,
+            id, slideBgImage, slideTitle, slideSlug, slideDescription,
           } = item;
           return (
             <SwiperSlide key={id}>
@@ -34,6 +40,7 @@ function Carousel() {
                 slideTitle={slideTitle}
                 slideDescription={slideDescription}
                 slideBgImage={slideBgImage}
+                slideSlug={slideSlug}
               />
             </SwiperSlide>
           );

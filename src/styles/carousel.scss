@@ -37,34 +37,30 @@
         background: #000000cc;
     
         h2 {
-            padding: 0px 40px 20px 40px;
+            padding: 0px 36px 24px 36px;
             text-align: center;
-            font-size: 2em;
+            @include size(36);
             line-height: 1.1;
             color: $textColor;
             text-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
 
             @media screen and (min-width: $smallDesktop) {
-                font-size: 3em;
+                @include size(48);
             }
 
             @media screen and (min-width: $monitor) {
-                font-size: 4.2em;
+                @include size(64);
             }
         }
     
         p {
-            padding: 0px 40px 0px 40px;
-            font-size: 1em;
+            padding: 0px 48px;
+            @include size(16);
             text-align: center;
             color: $textColor;
 
-            @media screen and (min-width: $smallDesktop) {
-                font-size: 1.1em;
-            }
-
             @media screen and (min-width: $monitor) {
-                font-size: 1.4em;
+                @include size(24);
             }
         }
     
@@ -95,21 +91,24 @@
 
 .content {
     &__btn {
+        border: none;
         position: absolute;
         top: auto;
         bottom: 110px;
-        font-size: 1em;
+        @include size(18);
         color: $textColor;
         background-color: $primaryColor;
-        display: inline-block;
-        padding: 10px 30px;
+        display: block;
+        padding: 12px 24px;
         text-decoration: none;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        transition: 0.5s;
+        border-radius: 8px;
 
-        &:hover {
-            letter-spacing: 4px;
+        &:link {
+            background: $mainColorHover;
+        }
+
+        &:active {
+            background: $mainColorHover;
         }
     }
 }
@@ -128,9 +127,9 @@
         }
 
         &__content {
-            &__btn { 
-                transition-delay: initial!important; 
-            }
+            // &__btn { 
+            //     transition-delay: initial!important; 
+            // }
 
             > * {
                 opacity: 1;
@@ -159,6 +158,12 @@
         &:after {
             font-size: 22px;
             font-weight: bold;
+        }
+
+        &:hover {
+            background-size: 4px 20px;
+            background: $mainColorHover;
+            color: $textColor;
         }
     }
 

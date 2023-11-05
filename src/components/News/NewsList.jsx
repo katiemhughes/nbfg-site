@@ -21,7 +21,7 @@ function NewsList() {
       <h1 className="news-list__heading">What&apos;s the latest from Not Bad for a Girl?</h1>
       {newsPosts.map((post) => (
         <>
-          <hr className="news-list__divider" />
+          <hr className="news-list__divider" key={post.slug} />
           <section className="news-list__article" key={post.slug}>
             <Link
               type="button"

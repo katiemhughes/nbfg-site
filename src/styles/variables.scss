@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 $tablet: 425px;
 $smallDesktop: 768px;
 $largeDesktop: 991px;
@@ -10,3 +12,8 @@ $mainColor: #f61875;
 $mainColorHover: #c91962;
 $hyperlinkColor: #E41E97;
 $hyperlinkHover: #fd89d9;
+
+@mixin size($sizeRequested) {
+    letter-spacing: 0;
+    font-size: math.div($sizeRequested, 16) + rem;
+}

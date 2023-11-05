@@ -55,9 +55,11 @@ function GangMember() {
       <p className="meet__description" dangerouslySetInnerHTML={{ __html: description }} />
       <p className="meet__info">
         Hit up
+        {' '}
         {title}
         {' '}
         via email or follow
+        {' '}
         {secondaryPronoun}
         {' '}
         on socials below...

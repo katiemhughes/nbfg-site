@@ -3,17 +3,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 120px 20px 40px 20px;
+    padding: 120px 24px 48px 24px;
     
     @media screen and (min-width: $smallDesktop) {
-        padding: 160px 80px 40px 80px;
+        padding: 168px 84px 48px 84px;
     }
 
     &__title {
         color: $primaryColor;
-        font-size: 3em;
+        @include size(48);
         line-height: 1.2;
-        margin: 40px;
+        margin: 48px;
         text-align: center;
     }
 
@@ -25,35 +25,34 @@
         width: 100%;
         height: auto;
         max-height: 440px;
-        border-radius: 10px;
+        border-radius: 8px;
     }
 
     &__description {
-        font-size: 1em;
-        margin: 20px 12px;
-
-        @media screen and (min-width: $smallDesktop) {
-            margin: 40px 0px;
-        }
+        @include size(16);
+        margin: 48px 0px;
 
         p {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
     }
 
     &__info {
         text-align: center;
-        font-size: 0.9em;
+        @include size(12);
     }
 
     &__contact {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 4px;
 
         &--link {
             margin-right: 4px;
+
+            &:hover {
+                background: none;
+            }
         }
     }
 }
