@@ -21,8 +21,11 @@ a:hover {
     z-index: 9999;
     top: 0;
     position: fixed;
-    // background: #111111b0;
-    // background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5) 70%, rgba(0, 0, 0, 0));
+    height: 96px;
+
+    @media screen and (min-width: $smallDesktop) {
+        height: 136px;
+    }
 
     &__top {
         width: 100%;
@@ -34,8 +37,8 @@ a:hover {
 
         &--active {
             width: 100%;
-            height: 80px;
-            padding: 60px;
+            background: $secondaryTextColor;
+            padding: 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -167,7 +170,7 @@ a:hover {
         &__cta {
             position: absolute;
             z-index: 999;
-            top: -14%;
+            top: -10%;
             border: none;
             background: #ff0571;
             color: white;

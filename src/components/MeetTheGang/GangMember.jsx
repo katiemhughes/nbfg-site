@@ -42,9 +42,12 @@ function GangMember() {
     soundcloud,
     mixcloud,
     secondaryPronoun,
+    soundcloudEmbed,
   } = gangMember;
 
   console.log('image', image);
+
+  const soundcloudEmbedString = soundcloudEmbed ? soundcloudEmbed.content[0]?.content[0]?.value : '';
 
   return (
     <section className="meet" id={slug}>
@@ -53,6 +56,9 @@ function GangMember() {
         <img className="meet__image" src={image} alt={title} />
       </div>
       <p className="meet__description" dangerouslySetInnerHTML={{ __html: description }} />
+      {soundcloudEmbed ? (
+        <div className="meet__embed" dangerouslySetInnerHTML={{ __html: soundcloudEmbedString }} />
+      ) : null}
       <p className="meet__info">
         Hit up
         {' '}

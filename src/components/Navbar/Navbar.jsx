@@ -43,7 +43,10 @@ function Navbar() {
     // soundcloudAlt,
   } = navbar;
 
-  const handleClick = () => setClick(!click);
+  const handleClick = () => {
+    setClick(!click);
+  };
+
   const closeMobileMenu = () => setClick(false);
   const toggleSubnav = () => {
     if (!isDesktop) {
@@ -115,24 +118,26 @@ function Navbar() {
   //   audio.play();
   // }
 
-  const changeNavBackgroundColor = () => {
+  const changeNavBackgroundColorOnScroll = () => {
     const nav = document.querySelector('.navbar');
     console.log('nav', nav);
     const scrollPosition = window.scrollY;
     console.log('scrollPosition', scrollPosition);
 
-    if (nav && scrollPosition < 40) {
+    if (!nav) return;
+
+    if (scrollPosition < 40) {
       nav.classList.remove('nav-color');
     } else {
       nav.classList.add('nav-color');
     }
   };
 
-  window.addEventListener('scroll', changeNavBackgroundColor);
+  window.addEventListener('scroll', changeNavBackgroundColorOnScroll);
 
   return (
     <div className="navbar">
-      <div className={click ? 'navbar__top--active' : 'navbar__top'}>
+      <div className={click && !isDesktop ? 'navbar__top--active' : 'navbar__top'}>
         <div className="navbar__left" onClick={goToHome} onKeyDown={goToHome} tabIndex="0" role="button">
           <img src={icon} alt={iconAlt} className="logo" />
         </div>

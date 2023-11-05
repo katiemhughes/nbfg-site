@@ -152,6 +152,7 @@ export const extractTheGangData = (responseData) => {
     const { primaryPronoun } = fields;
     const { secondaryPronoun } = fields;
     const { tertiaryPronoun } = fields;
+    const { soundcloudEmbed } = fields;
     const updatedGang = {
       title,
       description,
@@ -165,6 +166,7 @@ export const extractTheGangData = (responseData) => {
       primaryPronoun,
       secondaryPronoun,
       tertiaryPronoun,
+      soundcloudEmbed,
     };
 
     return updatedGang;
