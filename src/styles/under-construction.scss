@@ -11,7 +11,8 @@
 
     &__title {
         color: $primaryColor;
-        font-size: 40px;
+        @include size(48);
+        line-height: 1.2;
         text-align: center;
     }
 

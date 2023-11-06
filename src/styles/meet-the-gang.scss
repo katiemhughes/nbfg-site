@@ -1,0 +1,62 @@
+.meet {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 120px 24px 48px 24px;
+    
+    @media screen and (min-width: $smallDesktop) {
+        padding: 168px 84px 48px 84px;
+    }
+
+    &__title {
+        color: $primaryColor;
+        @include size(48);
+        line-height: 1.2;
+        margin: 48px;
+        text-align: center;
+    }
+
+    &__image-container {
+        max-width: 490px;
+    }
+
+    &__image {
+        width: 100%;
+        height: auto;
+        max-height: 440px;
+        border-radius: 8px;
+    }
+
+    &__description {
+        @include size(16);
+        margin: 48px 0px;
+
+        p {
+            margin-bottom: 24px;
+        }
+    }
+
+    &__embed {
+        margin: 24px 0px 48px 0px;
+    }
+
+    &__info {
+        text-align: center;
+        @include size(12);
+    }
+
+    &__contact {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &--link {
+            margin-right: 4px;
+
+            &:hover {
+                background: none;
+            }
+        }
+    }
+}

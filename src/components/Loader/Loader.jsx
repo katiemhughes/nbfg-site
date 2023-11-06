@@ -1,12 +1,12 @@
 import React from 'react';
 import '../../styles.scss';
 
-const Loader = () => {
+function Loader() {
   return (
-    <div className='loader'>
-        <div className='loader__spinner'></div>
+    <div className="loader">
+      <div className="loader__spinner" />
     </div>
-  )
+  );
 }
 
 export default Loader;

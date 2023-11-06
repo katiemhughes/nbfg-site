@@ -8,7 +8,12 @@
 }
 
 a:hover {
-    color: $mainColorHover;
+    background: $mainColorHover;
+}
+
+.nav-color {
+    background: #111111b0;
+    transition: all 1s ease;
 }
 
 .navbar {
@@ -16,22 +21,24 @@ a:hover {
     z-index: 9999;
     top: 0;
     position: fixed;
-    background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5) 70%, rgba(0, 0, 0, 0));
+    height: 96px;
+
+    @media screen and (min-width: $smallDesktop) {
+        height: 136px;
+    }
 
     &__top {
         width: 100%;
-        height: 80px;
-        padding: 60px;
+        padding: 12px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         z-index: 1;
 
         &--active {
-            background-color: #000000f2;
             width: 100%;
-            height: 80px;
-            padding: 60px;
+            background: $secondaryTextColor;
+            padding: 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -65,32 +72,20 @@ a:hover {
         width: 100%;
         display: flex;
         justify-content: center;
-        height: 45px;
-        padding: 0 50px;
-
-        ul {
-            width: 100%;
-            height: 45px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        ul li {
-            margin: 10px;
-
-            &:hover {
-                color: #ffffff;
-            }
-        }
     }
 
     .links {
         display: flex;
         justify-content: center;
+        align-items: center;
         width: 100%;
+        height: 45px;
         z-index: 9999;
         cursor: pointer;
+
+        &--active {
+            display: flex;
+        }
     }
 
     &__button--mobile {
@@ -101,15 +96,22 @@ a:hover {
 .logos {
     &__mobile {
         display: flex;
+        justify-content: space-around;
         align-items: center;
         position: absolute;
-        bottom: 200px;
+        bottom: 140px;
+
+        @media screen and (min-width: $smallDesktop) {
+            display: none;
+        }
     }
 }
 
 .logo {
     &__mobile {
         &--active {
+            margin: 10px;
+
             a {
                 color: $textColor;
             }
@@ -120,6 +122,8 @@ a:hover {
 .navbar {
     .links {
         &__link {
+            margin: 10px;
+
             &--config {
                 display: flex;
                 align-items: center;
@@ -134,14 +138,108 @@ a:hover {
                 background-size: 3px 3px;
                 text-decoration: none;
                 transition: background-size .2s;
+                color: $textColor;
+                border: none;
     
                 &:hover {
                     background-size: 4px 20px;
-                    color: #ffffff;
+                    color: $textColor;
+                }
+
+                &:link {
+                    color: $textColor;
+                }
+        
+                &:visited {
+                    color: $textColor;
+                }
+        
+                &:active {
+                    color: $textColor;
                 }
             }
         }
-    }        
+    }
+    
+    .sublinks {
+        font-size: 14px;
+        opacity: 0;
+        height: 0;
+        width: 0;
+
+        &__cta {
+            position: absolute;
+            z-index: 999;
+            top: -10%;
+            border: none;
+            background: #ff0571;
+            color: white;
+            border-radius: 8px;
+            padding: 6px;
+            width: 50px;
+            right: 6%;
+        }
+
+        &--active {
+            @keyframes slide-out {
+                0% {
+                  transform: translateX(100%);
+                }
+                100% {
+                    transform: translateX(0%);
+                }
+            }
+            @-webkit-keyframes slide-out {
+                0% {
+                    -webkit-transform: translateX(100%);
+                }
+                100% {
+                  -webkit-transform: translateX(0%);
+                }
+            }
+            animation: slide-out 0.5s forwards;
+            -webkit-animation: slide-out 0.5s forwards;
+            opacity: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            top: -20%;
+            height: 100vh;
+            width: 100vw;
+            position: absolute;
+            background: $secondaryTextColor;
+        }
+
+        &__link {
+            margin: 0;
+            padding: 4px;
+
+            &--active {
+                margin: 10px;
+                font-size: 1.3rem;
+            }
+
+            &--config {
+                &:link {
+                    color: $primaryColor;
+                }
+        
+                &:visited {
+                    color: $textColor;
+                }
+        
+                &:active {
+                    color: $primaryColor;
+                }
+
+                &:hover {
+                    color: $primaryColor;
+                    background: $secondaryTextColor;
+                }
+            }
+        }
+    }
 }
 
 .logo {
@@ -156,7 +254,7 @@ a:hover {
     }
 
     .fas {
-        color: $textColor;
+        color: $mainColor;
 
         &:hover {
             color: $mainColor;
@@ -213,13 +311,19 @@ a:hover {
                 align-items: center;
                 width: 100%;
                 height: 100vh;
-                background-color: #000000f2;
+                background-color: $secondaryTextColor;
                 left: 0;
-                opacity: 1;
                 transition: all 0.6 ease;
                 position: absolute;
-                padding: 40px;
             } 
+        }
+
+        .meet-gang {
+            opacity: 0;
+
+            &--active {
+                opacity: 1;
+            }
         }
 
         .fa {
@@ -275,24 +379,35 @@ a:hover {
     }
 }
 
+#gang-sublinks {
+    // visibility: hidden;
+    // height: 0;
+    // width: 0;
+}
+
+//, 
+
+#meet-the-gang:hover ~ #gang-sublinks, #gang-sublinks:hover {
+    // display: block;
+    @media screen and (min-width: 1025px) {
+        opacity: 1;
+        visibility: visible;
+        height: 220px;
+        width: 122px;
+        position: absolute;
+        background: $secondaryTextColor;
+        padding: 10px;
+    }
+}
+
 @media screen and (max-width: 320px) {
     .footer-wrapper .right ul {
         display: none;
-    }
-    .navbar {
-        &__bottom {
-            padding: 0 60px;
-        }
     }
 }
 
 @media screen and (min-width: 375px) {
     .footer-wrapper .right ul {
         display: none;
-    }
-    .navbar {
-        &__bottom {
-            padding: 0 100px;
-        }
     }
 }

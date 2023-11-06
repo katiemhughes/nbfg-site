@@ -3,14 +3,14 @@ import Carousel from '../Carousel/Carousel';
 import About from '../About/About';
 import Contact from '../Contact/Contact';
 
-const Home = () => {
-    return (
-        <div id="home">
-            <Carousel />
-            <About />
-            <Contact />
-        </div>
-    )
+function Home() {
+  return (
+    <div id="home">
+      <Carousel />
+      <About />
+      <Contact />
+    </div>
+  );
 }
 
 export default Home;
