@@ -9,7 +9,7 @@ function Newspage() {
   console.log('newsArticleUrlParam', newsArticleUrlParam);
   const { newsPosts, isNewsPostsLoading } = useContext(Context);
   console.log('newsPosts', newsPosts);
-  const [newsArticle, setNewsArticle] = useState();
+  const [newsArticle, setNewsArticle] = useState({});
 
   useEffect(() => {
     const matchedArticle = newsPosts.find((post) => post.slug === newsArticleUrlParam);
@@ -50,7 +50,7 @@ function Newspage() {
             {' '}
             {author}
           </p>
-          <p className="newspage__date">{createdDate.split('-').reverse().join('/')}</p>
+          <p className="newspage__date">{createdDate ? createdDate.split('-').reverse().join('/') : ''}</p>
           <div className="newspage__image-container">
             <img className="newspage__image" src={image} alt={title} />
           </div>

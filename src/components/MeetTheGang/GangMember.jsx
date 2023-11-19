@@ -14,7 +14,7 @@ function GangMember() {
   console.log('gangMemberUrlParam', gangMemberUrlParam);
   const { theGang, isTheGangLoading } = useContext(Context);
   console.log('theGang', theGang);
-  const [gangMember, setGangMember] = useState();
+  const [gangMember, setGangMember] = useState({});
 
   console.log('gangMember', gangMember);
 
