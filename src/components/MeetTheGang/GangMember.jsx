@@ -11,12 +11,12 @@ import NotFound from '../NotFound/NotFound';
 
 function GangMember() {
   const { gangMember: gangMemberUrlParam } = useParams();
-  console.log('gangMemberUrlParam', gangMemberUrlParam);
+  // console.log('gangMemberUrlParam', gangMemberUrlParam);
   const { theGang, isTheGangLoading } = useContext(Context);
-  console.log('theGang', theGang);
-  const [gangMember, setGangMember] = useState();
+  // console.log('theGang', theGang);
+  const [gangMember, setGangMember] = useState({});
 
-  console.log('gangMember', gangMember);
+  // console.log('gangMember', gangMember);
 
   useEffect(() => {
     const matchedGangMember = theGang.find((item) => item.slug === gangMemberUrlParam);
@@ -45,7 +45,7 @@ function GangMember() {
     soundcloudEmbed,
   } = gangMember;
 
-  console.log('image', image);
+  // console.log('image', image);
 
   const soundcloudEmbedString = soundcloudEmbed ? soundcloudEmbed.content[0]?.content[0]?.value : '';
 

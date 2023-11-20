@@ -12,7 +12,7 @@ export const extractCarouselData = (responseData) => {
   const updatedCarouselSlides = responseData.map((slide) => {
     const { sys, fields } = slide;
     const { id } = sys;
-    console.log('fields', fields);
+    // console.log('fields', fields);
     const slideTitle = fields.title;
     const slideSlug = fields.slug;
     const slideDescription = fields.description;
@@ -139,7 +139,7 @@ export const extractTheGangData = (responseData) => {
   const { items } = responseData;
   const extractedGang = items.map((item) => {
     const { fields } = item;
-    console.log('fields', fields);
+    // console.log('fields', fields);
     const { title } = fields;
     const description = getHTMLData(fields.content);
     const image = fields.image.fields.file.url;
@@ -177,7 +177,7 @@ export const extractTheGangData = (responseData) => {
 
 export const extractAllNewsPostsData = (responseData) => {
   const { items } = responseData;
-  console.log('news items', items);
+  // console.log('news items', items);
   const extractedNewsPosts = items.map((item) => {
     const { fields } = item;
     const image = fields.image.fields.file.url;

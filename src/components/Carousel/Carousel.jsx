@@ -11,11 +11,11 @@ import { Context } from '../../Context/Context';
 
 function Carousel() {
   const {
-    isCarouselLoading, carouselSlides, newsPosts, isNewsPostsLoading,
+    isCarouselLoading, carouselSlides,
   } = useContext(Context);
-  console.log('newsPosts', newsPosts);
-  console.log('isNewsPostsLoading', isNewsPostsLoading);
-  console.log('carouselSlides', carouselSlides);
+  // console.log('newsPosts', newsPosts);
+  // console.log('isNewsPostsLoading', isNewsPostsLoading);
+  // console.log('carouselSlides', carouselSlides);
 
   // console.log('carousel slides', carouselSlides);
   if (isCarouselLoading) {
