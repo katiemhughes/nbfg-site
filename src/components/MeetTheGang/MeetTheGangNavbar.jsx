@@ -10,7 +10,7 @@ function MeetTheGangNavbar({ handleClick, isSubnavOpen, toggleSubnav }) {
       <ul className={isSubnavOpen ? 'sublinks--active' : 'sublinks'} id="gang-sublinks">
         <li className={isSubnavOpen ? 'sublinks__link--active' : 'sublinks__link'}>
           <NavLink
-            className="sublinks__link--config"
+            className="sublinks__link"
             to="../moll"
             onClick={handleClick}
             onKeyDown={handleClick}
@@ -20,7 +20,7 @@ function MeetTheGangNavbar({ handleClick, isSubnavOpen, toggleSubnav }) {
         </li>
         <li className={isSubnavOpen ? 'sublinks__link--active' : 'sublinks__link'}>
           <NavLink
-            className="sublinks__link--config"
+            className="sublinks__link"
             to="../maracuya"
             onClick={handleClick}
             onKeyDown={handleClick}
@@ -30,7 +30,7 @@ function MeetTheGangNavbar({ handleClick, isSubnavOpen, toggleSubnav }) {
         </li>
         <li className={isSubnavOpen ? 'sublinks__link--active' : 'sublinks__link'}>
           <NavLink
-            className="sublinks__link--config"
+            className="sublinks__link"
             to="../daisu"
             onClick={handleClick}
             onKeyDown={handleClick}
@@ -40,7 +40,7 @@ function MeetTheGangNavbar({ handleClick, isSubnavOpen, toggleSubnav }) {
         </li>
         <li className={isSubnavOpen ? 'sublinks__link--active' : 'sublinks__link'}>
           <NavLink
-            className="sublinks__link--config"
+            className="sublinks__link"
             to="../thtgrl"
             onClick={handleClick}
             onKeyDown={handleClick}
@@ -50,7 +50,7 @@ function MeetTheGangNavbar({ handleClick, isSubnavOpen, toggleSubnav }) {
         </li>
         <li className={isSubnavOpen ? 'sublinks__link--active' : 'sublinks__link'}>
           <NavLink
-            className="sublinks__link--config"
+            className="sublinks__link"
             to="../eggontoast"
             onClick={handleClick}
             onKeyDown={handleClick}
@@ -60,7 +60,7 @@ function MeetTheGangNavbar({ handleClick, isSubnavOpen, toggleSubnav }) {
         </li>
         <li className={isSubnavOpen ? 'sublinks__link--active' : 'sublinks__link'}>
           <NavLink
-            className="sublinks__link--config"
+            className="sublinks__link"
             to="../martha"
             onClick={handleClick}
             onKeyDown={handleClick}
@@ -70,7 +70,7 @@ function MeetTheGangNavbar({ handleClick, isSubnavOpen, toggleSubnav }) {
         </li>
         <li className={isSubnavOpen ? 'sublinks__link--active' : 'sublinks__link'}>
           <NavLink
-            className="sublinks__link--config"
+            className="sublinks__link"
             to="../sophie"
             onClick={handleClick}
             onKeyDown={handleClick}

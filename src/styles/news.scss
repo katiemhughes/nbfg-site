@@ -131,6 +131,10 @@
                 margin-top: 0px;
                 padding: 48px 0px 72px 0px;
             }
+
+            &:last-of-type {
+                border-bottom: none;
+            }
         }
     }
 
@@ -240,5 +244,6 @@
         display: block;
         width: 224px;
         @include size(18);
+        transition-duration: 0.7s;
     }
 }

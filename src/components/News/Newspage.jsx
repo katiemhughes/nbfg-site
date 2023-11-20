@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import * as Scroll from 'react-scroll';
 import { Context } from '../../Context/Context';
 import Loader from '../Loader/Loader';
 import NotFound from '../NotFound/NotFound';
@@ -10,6 +11,7 @@ function Newspage() {
   const { newsPosts, isNewsPostsLoading } = useContext(Context);
   // console.log('newsPosts', newsPosts);
   const [newsArticle, setNewsArticle] = useState({});
+  const scroll = Scroll.animateScroll;
 
   useEffect(() => {
     const matchedArticle = newsPosts.find((post) => post.slug === newsArticleUrlParam);
@@ -34,6 +36,15 @@ function Newspage() {
     postContent,
   } = newsArticle;
 
+  const handleClick = () => {
+    scroll.scrollToTop({
+      duration: 200,
+      delay: 0,
+      smooth: true,
+      offset: 0,
+    });
+  };
+
   // console.log('image', image);
   // console.log('title', title);
   // console.log('slug', slug);
@@ -57,7 +68,14 @@ function Newspage() {
         </header>
         <div className="newspage__content">
           <p className="newspage__copy">{postContent}</p>
-          <Link className="newspage__cta" to="/news">Back to latest news</Link>
+          <Link
+            className="newspage__cta"
+            to="/news"
+            onClick={handleClick}
+            onKeyDown={handleClick}
+          >
+            Back to latest news
+          </Link>
         </div>
       </section>
     </div>
