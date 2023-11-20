@@ -6,14 +6,14 @@ import NotFound from '../NotFound/NotFound';
 
 function Newspage() {
   const { newsArticle: newsArticleUrlParam } = useParams();
-  console.log('newsArticleUrlParam', newsArticleUrlParam);
+  // console.log('newsArticleUrlParam', newsArticleUrlParam);
   const { newsPosts, isNewsPostsLoading } = useContext(Context);
-  console.log('newsPosts', newsPosts);
+  // console.log('newsPosts', newsPosts);
   const [newsArticle, setNewsArticle] = useState({});
 
   useEffect(() => {
     const matchedArticle = newsPosts.find((post) => post.slug === newsArticleUrlParam);
-    console.log('matchedArticle', matchedArticle);
+    // console.log('matchedArticle', matchedArticle);
     setNewsArticle(matchedArticle);
   }, [newsPosts, newsArticleUrlParam]);
 
@@ -34,11 +34,11 @@ function Newspage() {
     postContent,
   } = newsArticle;
 
-  console.log('image', image);
-  console.log('title', title);
-  console.log('slug', slug);
-  console.log('author', author);
-  console.log('createdDate', createdDate);
+  // console.log('image', image);
+  // console.log('title', title);
+  // console.log('slug', slug);
+  // console.log('author', author);
+  // console.log('createdDate', createdDate);
 
   return (
     <div className="newspage" id={slug}>

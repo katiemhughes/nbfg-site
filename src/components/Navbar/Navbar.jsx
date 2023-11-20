@@ -120,9 +120,9 @@ function Navbar() {
 
   const changeNavBackgroundColorOnScroll = () => {
     const nav = document.querySelector('.navbar');
-    console.log('nav', nav);
+    // console.log('nav', nav);
     const scrollPosition = window.scrollY;
-    console.log('scrollPosition', scrollPosition);
+    // console.log('scrollPosition', scrollPosition);
 
     if (!nav) return;
 

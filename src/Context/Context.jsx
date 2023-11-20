@@ -174,10 +174,10 @@ export function Provider(props) {
       const response = await client.getEntries({
         content_type: 'collectiveMemberPage',
       });
-      console.log('response', response);
+      // console.log('response', response);
       if (response) {
         const extractedGangData = extractTheGangData(response);
-        console.log('extractedGangData', extractedGangData);
+        // console.log('extractedGangData', extractedGangData);
         setTheGang(extractedGangData);
       } else {
         setTheGang([]);
@@ -200,10 +200,10 @@ export function Provider(props) {
       const response = await client.getEntries({
         content_type: 'blogPage',
       });
-      console.log('news posts response', response);
+      // console.log('news posts response', response);
       if (response) {
         const extractedNewsPostsData = extractAllNewsPostsData(response);
-        console.log('extractedNewsPostsData', extractedNewsPostsData);
+        // console.log('extractedNewsPostsData', extractedNewsPostsData);
         setNewsPosts(extractedNewsPostsData);
       } else {
         setNewsPosts([]);
