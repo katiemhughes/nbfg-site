@@ -45,6 +45,12 @@ function Navbar() {
 
   const handleClick = () => {
     setClick(!click);
+    scroll.scrollToTop({
+      duration: 200,
+      delay: 0,
+      smooth: true,
+      offset: 0,
+    });
   };
 
   const closeMobileMenu = () => setClick(false);

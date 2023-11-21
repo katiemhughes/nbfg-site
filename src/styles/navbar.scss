@@ -220,23 +220,21 @@ a:hover {
                 font-size: 1.3rem;
             }
 
-            &--config {
-                &:link {
-                    color: $primaryColor;
-                }
-        
-                &:visited {
-                    color: $textColor;
-                }
-        
-                &:active {
-                    color: $primaryColor;
-                }
+            &:link {
+                color: $primaryColor;
+            }
+    
+            &:visited {
+                color: $textColor;
+            }
+    
+            &:active {
+                color: $primaryColor;
+            }
 
-                &:hover {
-                    color: $primaryColor;
-                    background: $secondaryTextColor;
-                }
+            &:hover {
+                color: $primaryColor;
+                background: $secondaryTextColor;
             }
         }
     }
@@ -392,8 +390,8 @@ a:hover {
     @media screen and (min-width: 1025px) {
         opacity: 1;
         visibility: visible;
-        height: 220px;
-        width: 122px;
+        height: 225px;
+        width: 129px;
         position: absolute;
         background: $secondaryTextColor;
         padding: 10px;

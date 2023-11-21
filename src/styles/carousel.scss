@@ -103,13 +103,13 @@
         text-decoration: none;
         border-radius: 8px;
 
-        &:link {
-            background: $mainColorHover;
-        }
+        // &:link {
+        //     background: $mainColorHover;
+        // }
 
-        &:active {
-            background: $mainColorHover;
-        }
+        // &:active {
+        //     background: $mainColorHover;
+        // }
     }
 }
 
@@ -127,9 +127,9 @@
         }
 
         &__content {
-            // &__btn { 
-            //     transition-delay: initial!important; 
-            // }
+            &__btn { 
+                transition-delay: initial!important; 
+            }
 
             > * {
                 opacity: 1;
@@ -137,7 +137,11 @@
     
                 @for $i from 0 to 15 {
                     &:nth-child(#{$i + 1}) {
-                        transition-delay: $i * 0.3 + 1s;
+                        transition-delay: $i * 0.3 + 0.2s;
+                    }
+
+                    &:last-child {
+                        transition-delay: 0.1s;
                     }
                 }
             }
@@ -146,6 +150,8 @@
 }
 
 .swiper {
+    // &__btn { 
+
     .swiper-button-prev, .swiper-button-next {
         color: $textColor;
         top: auto;
@@ -154,6 +160,7 @@
         height: 40px;
         border-radius: 50px;
         background: $primaryColor;
+        transition-duration: 0.7s;
 
         &:after {
             font-size: 22px;
