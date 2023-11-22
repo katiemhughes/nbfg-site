@@ -33,7 +33,7 @@ function Newspage() {
     slug,
     author,
     createdDate,
-    postContent,
+    content,
   } = newsArticle;
 
   const handleClick = () => {
@@ -67,7 +67,7 @@ function Newspage() {
           </div>
         </header>
         <div className="newspage__content">
-          <p className="newspage__copy">{postContent}</p>
+          <div className="newspage__copy" dangerouslySetInnerHTML={{ __html: content }} />
           <Link
             className="newspage__cta"
             to="/news"

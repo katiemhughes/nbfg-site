@@ -232,6 +232,18 @@
     &__copy {
         max-width: 1130px;
         margin-bottom: 48px;
+
+        p {
+            margin-bottom: 16px;
+        }
+
+        a {
+            color: $secondaryColor;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
 
     &__cta {
