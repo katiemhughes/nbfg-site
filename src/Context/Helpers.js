@@ -186,7 +186,8 @@ export const extractAllNewsPostsData = (responseData) => {
     const { author } = fields;
     const { createdDate } = fields;
     const { summary } = fields;
-    const { postContent } = fields;
+    const content = getHTMLData(fields.postContent);
+    console.log('content', content);
 
     const updatedNewsPost = {
       image,
@@ -195,7 +196,7 @@ export const extractAllNewsPostsData = (responseData) => {
       author,
       createdDate,
       summary,
-      postContent,
+      content,
     };
 
     return updatedNewsPost;
