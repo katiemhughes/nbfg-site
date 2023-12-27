@@ -22,4 +22,20 @@ body {
     -moz-osx-font-smoothing: grayscale;
     overflow: scroll;
     overflow-y: scroll;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    display: none;
+}
+
+::-webkit-scrollbar-track-piece {
+    background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #f61875;
+    border-radius: 5px;
 }

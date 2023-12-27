@@ -1,29 +1,42 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from './Context/Context';
-import Navbar from './components/Navbar/Navbar';
-import Home from './components/Home/Home';
-import GangMember from './components/MeetTheGang/GangMember';
-// import UnderConstruction from './components/UnderConstruction/UnderConstruction';
-import NotFound from './components/NotFound/NotFound';
-import Newspage from './components/News/Newspage';
-import NewsList from './components/News/NewsList';
+import Enter from './components/Enter/Enter';
+import MainRoutes from './Routes/MainRoutes';
+import './styles/enter.scss';
 
 function App() {
+  const storedHiddenValue = JSON.parse(window.localStorage.getItem('ENTER_PAGE_HIDDEN'));
+  const storedStyleValue = JSON.parse(window.localStorage.getItem('CUSTOM_NAV_STYLE'));
+  const [showEnterScreen, setShowEnterScreen] = useState(
+    storedHiddenValue !== null ? storedHiddenValue : true,
+  );
+
+  useEffect(() => {
+    if (storedStyleValue !== null && storedStyleValue === 'block') {
+      document.styleSheets[2].cssRules[3].style.display = 'block';
+    }
+  }, []);
+
+  const hideEnterVideo = () => {
+    setShowEnterScreen(false);
+    try {
+      document.styleSheets[2].cssRules[3].style.display = 'block';
+    } catch (error) {
+      console.log(error);
+    }
+    window.localStorage.setItem('ENTER_PAGE_HIDDEN', JSON.stringify(false));
+    window.localStorage.setItem('CUSTOM_NAV_STYLE', JSON.stringify('block'));
+  };
+
+  useEffect(() => {
+    window.localStorage.setItem('ENTER_PAGE_HIDDEN', JSON.stringify(showEnterScreen));
+  }, [showEnterScreen]);
+
   return (
     <Provider>
       <BrowserRouter>
-        {/* <UnderConstruction /> */}
-        <nav>
-          <Navbar />
-        </nav>
-        <Routes>
-          <Route path="/" exact element={<Home />} />
-          <Route path="/news" element={<NewsList />} />
-          <Route path="/:gangMember" element={<GangMember />} />
-          <Route path="/news/articles/:newsArticle" element={<Newspage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        {showEnterScreen ? <Enter hideVideo={hideEnterVideo} /> : <MainRoutes />}
       </BrowserRouter>
     </Provider>
   );

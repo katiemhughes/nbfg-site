@@ -1,0 +1,48 @@
+.enter {
+    &__elements {
+        // If you want 'NBFG' at the top center - just the 4 below...
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        // If you want 'NBFG' in center center above button - add these on...
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        z-index: 1;
+    }
+
+    &__button {
+        // position: absolute;
+        width: 200px;
+        // top: 50%;
+        // left: 0;
+        // right: 0;
+        // margin-left: auto;
+        // margin-right: auto;
+        padding: 16px;
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        background: #f61875;
+        color: inherit;
+        border: none;
+        cursor: pointer;
+        outline: inherit;
+        // z-index: 1;
+    }
+
+    &__video {
+        max-width: 1440px;
+    }
+
+    &__video-element {
+        width: 100%;
+    }
+}
