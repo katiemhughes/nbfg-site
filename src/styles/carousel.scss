@@ -1,12 +1,13 @@
 .carousel {
     position: relative;
     z-index: 0;
-    height: 100vh;
+    height: 88vh;
     object-fit: cover;
     object-position: center;
     min-width: 320px;
     width: 100vw;
     background: black;
+    padding-bottom: 24px;
 }
 
 .slide {
@@ -78,7 +79,7 @@
     padding: 0;
     display: block;
     max-width: 750px;
-    height: auto;
+    height: 100%;
 
     .swiper-wrapper {
         position: relative;
@@ -94,7 +95,7 @@
         border: none;
         position: absolute;
         top: auto;
-        bottom: 110px;
+        bottom: 64px;
         @include size(18);
         color: $textColor;
         background-color: $primaryColor;
@@ -155,7 +156,7 @@
     .swiper-button-prev, .swiper-button-next {
         color: $textColor;
         top: auto;
-        bottom: 30px;
+        bottom: 0;
         width: 40px;
         height: 40px;
         border-radius: 50px;
