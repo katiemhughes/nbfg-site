@@ -4,7 +4,7 @@
     background: $secondaryTextColor;
     padding: 48px;
 
-    @media screen and (min-width: $smallDesktop) {
+    @media screen and (min-width: $largeDesktop) {
         padding: 144px 96px 48px 96px;
     }
 

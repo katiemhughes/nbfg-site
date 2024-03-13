@@ -8,6 +8,10 @@
     width: 100vw;
     background: black;
     padding-bottom: 24px;
+
+    @media screen and (min-width: $largeDesktop) {
+        height: 100vh;
+    }
 }
 
 .slide {
