@@ -1,13 +1,12 @@
 .carousel {
     position: relative;
     z-index: 0;
-    height: 88vh;
+    height: calc(100vh - 136px);
     object-fit: cover;
     object-position: center;
     min-width: 320px;
     width: 100vw;
     background: black;
-    padding-bottom: 24px;
 }
 
 .slide {
@@ -18,7 +17,7 @@
     // justify-content: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: top center;
     position: relative;
     transition: filter 3.5s;
     background-color: black;
@@ -35,7 +34,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background: #000000cc;
+        // background: #000000cc;
     
         h2 {
             padding: 24px 36px 0px 36px;
@@ -45,7 +44,7 @@
             color: $textColor;
             text-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
             width: 100%;
-            background: #00000054;
+            // background: #00000054;
             z-index: 1;
 
             @media screen and (min-width: $smallDesktop) {
@@ -64,7 +63,7 @@
             text-align: center;
             color: $textColor;
             width: 100%;
-            background: #00000054;
+            // background: #00000054;
 
             @media screen and (min-width: $monitor) {
                 @include size(24);
@@ -109,6 +108,7 @@
         padding: 12px 24px;
         text-decoration: none;
         border-radius: 8px;
+        margin-bottom: 24px;
 
         // &:link {
         //     background: $mainColorHover;
@@ -188,6 +188,7 @@
     .swiper-button-prev {
         left: 50%;
         margin-left: -44px;
+        margin-bottom: 24px;
         right: auto;
     }
 
@@ -195,5 +196,6 @@
         right: auto;
         left: 50%;
         margin-left: 4px;
+        margin-bottom: 24px;
     }
 }

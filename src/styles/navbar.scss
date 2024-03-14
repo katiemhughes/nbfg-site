@@ -21,7 +21,6 @@ a:hover {
     width: 100%;
     z-index: 9999;
     top: 0;
-    position: fixed;
     height: 96px;
 
     @media screen and (min-width: $smallDesktop) {
@@ -348,7 +347,6 @@ a:hover {
                 font-size: 1.8rem;
                 cursor: pointer;
                 color: $textColor;
-                margin-top: -10px;
             }
         }
 
