@@ -10,7 +10,7 @@ import GangMember from '../components/MeetTheGang/GangMember';
 function MainRoutes() {
   return (
     <>
-      <nav>
+      <nav className="navbar">
         <Navbar />
       </nav>
       <Routes>

@@ -2,15 +2,13 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 function MeetTheGangNavbar({ handleClick, isSubnavOpen, toggleSubnav }) {
-  // console.log('isSubnavOpen', isSubnavOpen);
-  // console.log('toggleSubnav', toggleSubnav);
   return (
     <>
       {isSubnavOpen && <button type="button" className="sublinks__cta" onClick={toggleSubnav}>Back</button>}
-      <ul className={isSubnavOpen ? 'sublinks--active' : 'sublinks'} id="gang-sublinks">
-        <li className={isSubnavOpen ? 'sublinks__link--active' : 'sublinks__link'}>
+      <ul className={`sublinks ${isSubnavOpen ? 'open' : 'closed'}`} id="gang-sublinks">
+        <li className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'}`}>
           <NavLink
-            className="sublinks__link"
+            className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'}`}
             to="../moll"
             onClick={handleClick}
             onKeyDown={handleClick}
@@ -18,9 +16,9 @@ function MeetTheGangNavbar({ handleClick, isSubnavOpen, toggleSubnav }) {
             Moll
           </NavLink>
         </li>
-        <li className={isSubnavOpen ? 'sublinks__link--active' : 'sublinks__link'}>
+        <li className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'}`}>
           <NavLink
-            className="sublinks__link"
+            className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'}`}
             to="../maracuya"
             onClick={handleClick}
             onKeyDown={handleClick}
@@ -28,9 +26,9 @@ function MeetTheGangNavbar({ handleClick, isSubnavOpen, toggleSubnav }) {
             Maracuya
           </NavLink>
         </li>
-        <li className={isSubnavOpen ? 'sublinks__link--active' : 'sublinks__link'}>
+        <li className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'}`}>
           <NavLink
-            className="sublinks__link"
+            className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'}`}
             to="../daisu"
             onClick={handleClick}
             onKeyDown={handleClick}
@@ -38,9 +36,9 @@ function MeetTheGangNavbar({ handleClick, isSubnavOpen, toggleSubnav }) {
             DaiSu
           </NavLink>
         </li>
-        <li className={isSubnavOpen ? 'sublinks__link--active' : 'sublinks__link'}>
+        <li className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'}`}>
           <NavLink
-            className="sublinks__link"
+            className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'}`}
             to="../thtgrl"
             onClick={handleClick}
             onKeyDown={handleClick}
@@ -48,9 +46,9 @@ function MeetTheGangNavbar({ handleClick, isSubnavOpen, toggleSubnav }) {
             Tht Grl
           </NavLink>
         </li>
-        <li className={isSubnavOpen ? 'sublinks__link--active' : 'sublinks__link'}>
+        <li className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'}`}>
           <NavLink
-            className="sublinks__link"
+            className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'}`}
             to="../eggontoast"
             onClick={handleClick}
             onKeyDown={handleClick}
@@ -58,9 +56,9 @@ function MeetTheGangNavbar({ handleClick, isSubnavOpen, toggleSubnav }) {
             Egg On Toast
           </NavLink>
         </li>
-        <li className={isSubnavOpen ? 'sublinks__link--active' : 'sublinks__link'}>
+        <li className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'}`}>
           <NavLink
-            className="sublinks__link"
+            className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'}`}
             to="../martha"
             onClick={handleClick}
             onKeyDown={handleClick}
@@ -68,9 +66,9 @@ function MeetTheGangNavbar({ handleClick, isSubnavOpen, toggleSubnav }) {
             Martha
           </NavLink>
         </li>
-        <li className={isSubnavOpen ? 'sublinks__link--active' : 'sublinks__link'}>
+        <li className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'}`}>
           <NavLink
-            className="sublinks__link"
+            className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'}`}
             to="../sophie"
             onClick={handleClick}
             onKeyDown={handleClick}
