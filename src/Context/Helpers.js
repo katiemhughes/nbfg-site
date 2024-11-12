@@ -16,9 +16,12 @@ export const extractCarouselData = (responseData) => {
     const slideTitle = fields.title;
     const slideSlug = fields.slug;
     const slideDescription = fields.description;
-    const slideBgImage = fields.image.fields.file.url;
+    const slideBgImageTest = fields?.imageTest?.filter(
+      (item) => item?.fields?.file?.url,
+    )
+      .map((image) => image.fields);
     const updatedSlide = {
-      id, slideTitle, slideSlug, slideDescription, slideBgImage,
+      id, slideTitle, slideSlug, slideDescription, slideBgImageTest,
     };
 
     return updatedSlide;
@@ -187,7 +190,6 @@ export const extractAllNewsPostsData = (responseData) => {
     const { createdDate } = fields;
     const { summary } = fields;
     const content = getHTMLData(fields.postContent);
-    console.log('content', content);
 
     const updatedNewsPost = {
       image,

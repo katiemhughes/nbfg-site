@@ -39,9 +39,8 @@ export function Provider(props) {
       const response = await client.getEntries({
         content_type: 'homepageCarousel',
       });
-      // console.log('response', response);
       const responseData = response.items;
-      // console.log('responseData', responseData);
+
       if (responseData) {
         saveCarouselData(responseData);
       } else {
@@ -68,7 +67,7 @@ export function Provider(props) {
 
     try {
       const response = await client.getEntry('602KUf13tbtYPvq8dwkcOo');
-      // console.log('response', response);
+
       if (response) {
         saveAboutData(response);
       } else {
@@ -87,7 +86,6 @@ export function Provider(props) {
 
   const saveContactData = useCallback((contactData) => {
     const extractedContactData = extractContactData(contactData);
-    // console.log('contactData', contactData);
     setContact(extractedContactData);
   }, []);
 
@@ -96,7 +94,7 @@ export function Provider(props) {
 
     try {
       const response = await client.getEntry('1Sf2q4ypdfNYF3fqAPcf4y');
-      // console.log('response', response);
+
       if (response) {
         saveContactData(response);
       } else {
@@ -123,7 +121,7 @@ export function Provider(props) {
 
     try {
       const response = await client.getEntry('1gxLcXmajwyd4djRqFx1OL');
-      // console.log('response', response);
+
       if (response) {
         saveNavbarData(response);
       } else {
@@ -150,7 +148,7 @@ export function Provider(props) {
 
     try {
       const response = await client.getEntry('4EAhzDVCXu0hdYluOwISZs');
-      // console.log('under construction response', response);
+
       if (response) {
         saveUnderConstructionData(response);
       } else {
@@ -174,10 +172,9 @@ export function Provider(props) {
       const response = await client.getEntries({
         content_type: 'collectiveMemberPage',
       });
-      // console.log('response', response);
+
       if (response) {
         const extractedGangData = extractTheGangData(response);
-        // console.log('extractedGangData', extractedGangData);
         setTheGang(extractedGangData);
       } else {
         setTheGang([]);
@@ -200,10 +197,10 @@ export function Provider(props) {
       const response = await client.getEntries({
         content_type: 'blogPage',
       });
-      // console.log('news posts response', response);
+
       if (response) {
         const extractedNewsPostsData = extractAllNewsPostsData(response);
-        // console.log('extractedNewsPostsData', extractedNewsPostsData);
+
         setNewsPosts(extractedNewsPostsData);
       } else {
         setNewsPosts([]);

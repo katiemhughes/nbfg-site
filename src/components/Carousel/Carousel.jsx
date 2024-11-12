@@ -32,14 +32,15 @@ function Carousel() {
       <Swiper modules={[Navigation]} navigation>
         {carouselSlides.map((item) => {
           const {
-            id, slideBgImage, slideTitle, slideSlug, slideDescription,
+            id, slideBgImageTest, slideTitle, slideSlug, slideDescription,
           } = item;
+
           return (
             <SwiperSlide key={id}>
               <CarouselSlide
                 slideTitle={slideTitle}
                 slideDescription={slideDescription}
-                slideBgImage={slideBgImage}
+                slideBgImageTest={slideBgImageTest}
                 slideSlug={slideSlug}
               />
             </SwiperSlide>
