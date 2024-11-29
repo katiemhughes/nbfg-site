@@ -12,12 +12,12 @@ import MeetTheGangNavbar from '../MeetTheGang/MeetTheGangNavbar';
 function Navbar() {
   const isDesktop = window.matchMedia('(min-width: 1025px)').matches;
   const path = useLocation().pathname;
-  // console.log('path', path);
   const navigate = useNavigate();
   const scroll = Scroll.animateScroll;
   const { scroller } = Scroll;
   const [click, setClick] = useState(false);
   const [isSubnavOpen, setIsSubnavOpen] = useState(false);
+  const [isLinksHidden, setIsLinksHidden] = useState(false);
 
   const { isNavbarLoading, navbar } = useContext(Context);
 
@@ -43,6 +43,15 @@ function Navbar() {
     // soundcloudAlt,
   } = navbar;
 
+  const closeMobileMenu = () => setClick(false);
+
+  const toggleSubnav = () => {
+    if (!isDesktop) {
+      setIsSubnavOpen(!isSubnavOpen);
+      setIsLinksHidden(!isLinksHidden);
+    }
+  };
+
   const handleClick = () => {
     setClick(!click);
     scroll.scrollToTop({
@@ -51,13 +60,6 @@ function Navbar() {
       smooth: true,
       offset: 0,
     });
-  };
-
-  const closeMobileMenu = () => setClick(false);
-  const toggleSubnav = () => {
-    if (!isDesktop) {
-      setIsSubnavOpen(!isSubnavOpen);
-    }
   };
 
   const scrollToHome = () => {
@@ -118,7 +120,6 @@ function Navbar() {
       offset: 0,
     });
   };
-
   // const play = () => {
   //   let audio = document.getElementById("audio");
   //   audio.play();
@@ -126,9 +127,11 @@ function Navbar() {
 
   return (
     <>
-      <div className={click && !isDesktop ? 'navbar__top--active' : 'navbar__top'}>
-        <div className="navbar__left" onClick={goToHome} onKeyDown={goToHome} tabIndex="0" role="button">
-          <img src={icon} alt={iconAlt} className="logo" />
+      <div className={`navbar__top ${(click && !isDesktop) ? 'open' : 'closed'}`}>
+        <div className="navbar__left">
+          <div className="logo__container" onClick={goToHome} onKeyDown={goToHome} tabIndex="0" role="button">
+            <img src={icon} alt={iconAlt} className="logo" />
+          </div>
         </div>
         <div className="navbar__right">
           <div className="navbar__button--mobile" onClick={handleClick} onKeyDown={goToHome} tabIndex="0" role="button">
@@ -137,44 +140,67 @@ function Navbar() {
         </div>
       </div>
       <div className={`navbar__bottom ${click ? 'open' : 'closed'}`}>
-        <ul className={`links ${click ? 'open' : 'closed'}`}>
-          <li className={`links__link ${click ? 'open' : 'closed'}`}>
+        <ul className={`links ${click ? 'open' : 'closed'} ${isLinksHidden ? 'links-hidden' : ''}`}>
+          <li
+            className={`links__link ${
+              click && !isLinksHidden ? 'open' : 'closed'
+            } ${isLinksHidden ? 'links-hidden' : ''}`}
+          >
             <NavLink
-              className={`links__link--config ${click ? 'open' : 'closed'}`}
+              className={`links__link--config ${click && !isLinksHidden ? 'open' : 'closed'}`}
               to="/"
               onClick={scrollToHome}
             >
               {homeLink}
             </NavLink>
           </li>
-          <li className={`links__link ${click ? 'open' : 'closed'}`}>
+          <li
+            className={`links__link ${
+              click && !isLinksHidden ? 'open' : 'closed'
+            } ${isLinksHidden ? 'links-hidden' : ''}`}
+          >
             {path === '/' ? (
               <NavLink
-                className={`links__link--config ${click ? 'open' : 'closed'}`}
+                className={`links__link--config ${click && !isLinksHidden ? 'open' : 'closed'}`}
                 onClick={scrollToAbout}
               >
                 {aboutLink}
               </NavLink>
             ) : (
               <NavLink
-                className={`links__link--config ${click ? 'open' : 'closed'}`}
+                className={`links__link--config ${click && !isLinksHidden ? 'open' : 'closed'}`}
                 onClick={goToHomeAndScrollToAbout}
               >
                 {aboutLink}
               </NavLink>
             )}
           </li>
-          <li className={`links__link ${click ? 'open' : 'closed'}`}>
-            <button onClick={toggleSubnav} type="button" id="meet-the-gang" tabIndex="0" className={`links__link--config ${click ? 'open' : 'closed'}`}>{meetTheGangLink}</button>
+          <li
+            className="links__link--gang"
+          >
             <MeetTheGangNavbar
               handleClick={handleClick}
               isSubnavOpen={isSubnavOpen}
-              toggleSubnav={toggleSubnav}
+              isLinksHidden={isLinksHidden}
+              click={click}
             />
+            <button
+              onClick={toggleSubnav}
+              type="button"
+              id="meet-the-gang"
+              tabIndex="0"
+              className={`links__link--config--gang ${isSubnavOpen ? 'open' : 'closed'}`}
+            >
+              {!isLinksHidden ? meetTheGangLink : <i className="fas fa-arrow-left" />}
+            </button>
           </li>
-          <li className={`links__link ${click ? 'open' : 'closed'}`}>
+          <li
+            className={`links__link ${
+              click && !isLinksHidden ? 'open' : 'closed'
+            } ${isLinksHidden ? 'links-hidden' : ''}`}
+          >
             <NavLink
-              className={`links__link--config ${click ? 'open' : 'closed'}`}
+              className={`links__link--config ${click && !isLinksHidden ? 'open' : 'closed'}`}
               to="/news"
               onClick={handleClick}
               onKeyDown={handleClick}
@@ -182,24 +208,28 @@ function Navbar() {
               {newsLink}
             </NavLink>
           </li>
-          <li className={`links__link ${click ? 'open' : 'closed'}`}>
+          <li
+            className={`links__link ${
+              click && !isLinksHidden ? 'open' : 'closed'
+            } ${isLinksHidden ? 'links-hidden' : ''}`}
+          >
             {path === '/' ? (
               <NavLink
-                className={`links__link--config ${click ? 'open' : 'closed'}`}
+                className={`links__link--config ${click && !isLinksHidden ? 'open' : 'closed'}`}
                 onClick={scrollToContact}
               >
                 {contactLink}
               </NavLink>
             ) : (
               <NavLink
-                className={`links__link--config ${click ? 'open' : 'closed'}`}
+                className={`links__link--config ${click && !isLinksHidden ? 'open' : 'closed'}`}
                 onClick={goToHomeAndScrollToContact}
               >
                 {contactLink}
               </NavLink>
             )}
           </li>
-          <div className="logos__mobile">
+          <div className={`logos__mobile ${click && !isLinksHidden ? 'show' : 'hide'}`}>
             <li className="logo__mobile">
               <a href={instagramLink} target="_blank" rel="noreferrer">
                 <i className="fab fa-instagram" />
