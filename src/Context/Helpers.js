@@ -12,7 +12,7 @@ export const extractCarouselData = (responseData) => {
   const updatedCarouselSlides = responseData.map((slide) => {
     const { sys, fields } = slide;
     const { id } = sys;
-    // console.log('fields', fields);
+    const createdDateAndTime = sys.createdAt;
     const slideTitle = fields.title;
     const slideSlug = fields.slug;
     const slideDescription = fields.description;
@@ -21,7 +21,7 @@ export const extractCarouselData = (responseData) => {
     )
       .map((image) => image.fields);
     const updatedSlide = {
-      id, slideTitle, slideSlug, slideDescription, slideBgImageTest,
+      id, createdDateAndTime, slideTitle, slideSlug, slideDescription, slideBgImageTest,
     };
 
     return updatedSlide;
