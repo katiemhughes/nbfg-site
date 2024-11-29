@@ -64,7 +64,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  background-color: black;
+  background-color: $secondaryTextColor;
 
   > * {
     opacity: 1;
@@ -243,7 +243,7 @@
     }
 
     &:after {
-      font-size: 22px;
+      @include size(22);
       font-weight: bold;
     }
 

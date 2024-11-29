@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import React, { useContext, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Loader from '../Loader/Loader';
@@ -11,12 +12,8 @@ import NotFound from '../NotFound/NotFound';
 
 function GangMember() {
   const { gangMember: gangMemberUrlParam } = useParams();
-  // console.log('gangMemberUrlParam', gangMemberUrlParam);
   const { theGang, isTheGangLoading } = useContext(Context);
-  // console.log('theGang', theGang);
   const [gangMember, setGangMember] = useState({});
-
-  // console.log('gangMember', gangMember);
 
   useEffect(() => {
     const matchedGangMember = theGang.find((item) => item.slug === gangMemberUrlParam);
@@ -44,8 +41,6 @@ function GangMember() {
     secondaryPronoun,
     soundcloudEmbed,
   } = gangMember;
-
-  // console.log('image', image);
 
   const soundcloudEmbedString = soundcloudEmbed ? soundcloudEmbed.content[0]?.content[0]?.value : '';
 

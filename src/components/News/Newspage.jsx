@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import * as Scroll from 'react-scroll';
@@ -7,15 +8,12 @@ import NotFound from '../NotFound/NotFound';
 
 function Newspage() {
   const { newsArticle: newsArticleUrlParam } = useParams();
-  // console.log('newsArticleUrlParam', newsArticleUrlParam);
   const { newsPosts, isNewsPostsLoading } = useContext(Context);
-  // console.log('newsPosts', newsPosts);
   const [newsArticle, setNewsArticle] = useState({});
   const scroll = Scroll.animateScroll;
 
   useEffect(() => {
     const matchedArticle = newsPosts.find((post) => post.slug === newsArticleUrlParam);
-    // console.log('matchedArticle', matchedArticle);
     setNewsArticle(matchedArticle);
   }, [newsPosts, newsArticleUrlParam]);
 
@@ -44,12 +42,6 @@ function Newspage() {
       offset: 0,
     });
   };
-
-  // console.log('image', image);
-  // console.log('title', title);
-  // console.log('slug', slug);
-  // console.log('author', author);
-  // console.log('createdDate', createdDate);
 
   return (
     <div className="newspage" id={slug}>

@@ -6,7 +6,6 @@ import NotFound from '../NotFound/NotFound';
 
 function NewsList() {
   const { newsPosts, isNewsPostsLoading } = useContext(Context);
-  // console.log('newsPosts', newsPosts);
 
   if (isNewsPostsLoading) {
     return <Loader />;

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import React, { useContext } from 'react';
 import Loader from '../Loader/Loader';
 import { Context } from '../../Context/Context';
@@ -8,7 +9,6 @@ function About() {
   if (isAboutLoading) {
     return <Loader />;
   }
-  // console.log('about state', about);
 
   const { aboutPageTitle, aboutPageDescription, aboutPageImage } = about;
 

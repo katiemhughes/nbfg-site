@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import React, { useContext } from 'react';
 import '../../styles.scss';
 import Loader from '../Loader/Loader';

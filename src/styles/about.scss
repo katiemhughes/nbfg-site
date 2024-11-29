@@ -9,13 +9,13 @@
   }
 
   &__text-content {
-    color: #fff;
+    color: $textColor;
     margin-bottom: 24px;
   }
 
   &__title {
     color: $primaryColor;
-    font-size: 3em;
+    @include size(48);
     line-height: 1.2;
     margin-bottom: 48px;
   }

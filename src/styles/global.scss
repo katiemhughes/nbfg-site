@@ -16,7 +16,7 @@ body {
   margin: 0;
   padding: 0;
   color: $textColor;
-  background: #111;
+  background: $secondaryTextColor;
   font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -49,21 +49,20 @@ body {
 }
 
 ::-webkit-scrollbar {
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: $largeDesktop) {
     width: 8px;
-    display: none;
   }
 }
 
 ::-webkit-scrollbar-track-piece {
-  @media screen and (min-width: 1024px) {
-    background: #111;
+  @media screen and (min-width: $largeDesktop) {
+    background: $secondaryTextColor;
   }
 }
 
 ::-webkit-scrollbar-thumb {
-  @media screen and (min-width: 1024px) {
-    background: #f61875;
+  @media screen and (min-width: $largeDesktop) {
+    background: $mainColor;
     border-radius: 5px;
   }
 }

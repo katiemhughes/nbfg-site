@@ -142,7 +142,6 @@ export const extractTheGangData = (responseData) => {
   const { items } = responseData;
   const extractedGang = items.map((item) => {
     const { fields } = item;
-    // console.log('fields', fields);
     const { title } = fields;
     const description = getHTMLData(fields.content);
     const image = fields.image.fields.file.url;
@@ -180,7 +179,6 @@ export const extractTheGangData = (responseData) => {
 
 export const extractAllNewsPostsData = (responseData) => {
   const { items } = responseData;
-  // console.log('news items', items);
   const extractedNewsPosts = items.map((item) => {
     const { fields } = item;
     const image = fields.image.fields.file.url;

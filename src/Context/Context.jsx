@@ -48,7 +48,7 @@ export function Provider(props) {
       }
       setIsCarouselLoading(false);
     } catch (error) {
-      console.log(error);
+      console.error(error);
       setIsCarouselLoading(false);
     }
   }, [saveCarouselData]);
@@ -75,7 +75,7 @@ export function Provider(props) {
       }
       setIsAboutLoading(false);
     } catch (error) {
-      console.log(error);
+      console.error(error);
       setIsAboutLoading(false);
     }
   }, [saveAboutData]);
@@ -102,7 +102,7 @@ export function Provider(props) {
       }
       setIsContactLoading(false);
     } catch (error) {
-      console.log(error);
+      console.error(error);
       setIsContactLoading(false);
     }
   }, [saveContactData]);
@@ -129,7 +129,7 @@ export function Provider(props) {
       }
       setIsNavbarLoading(false);
     } catch (error) {
-      console.log(error);
+      console.error(error);
       setIsNavbarLoading(false);
     }
   }, [saveNavbarData]);
@@ -156,7 +156,7 @@ export function Provider(props) {
       }
       setIsUnderConstructionLoading(false);
     } catch (error) {
-      console.log(error);
+      console.error(error);
       setIsUnderConstructionLoading(false);
     }
   }, [saveUnderConstructionData]);
@@ -181,7 +181,7 @@ export function Provider(props) {
       }
       setIsTheGangLoading(false);
     } catch (error) {
-      console.log(error);
+      console.error(error);
       setIsTheGangLoading(false);
     }
   }, []);
@@ -207,7 +207,7 @@ export function Provider(props) {
       }
       setIsNewsPostsLoading(false);
     } catch (error) {
-      console.log(error);
+      console.error(error);
       setIsNewsPostsLoading(false);
     }
   }, []);
