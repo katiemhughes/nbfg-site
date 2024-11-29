@@ -13,11 +13,7 @@ function Carousel() {
   const {
     isCarouselLoading, carouselSlides,
   } = useContext(Context);
-  // console.log('newsPosts', newsPosts);
-  // console.log('isNewsPostsLoading', isNewsPostsLoading);
-  // console.log('carouselSlides', carouselSlides);
 
-  // console.log('carousel slides', carouselSlides);
   if (isCarouselLoading) {
     return <Loader />;
   }
@@ -27,25 +23,36 @@ function Carousel() {
     return null;
   }
 
+  const sortedSlides = carouselSlides.sort((a, b) => {
+    const dateA = new Date(a.createdDateAndTime);
+    const dateB = new Date(b.createdDateAndTime);
+    return dateB - dateA;
+  });
+
   return (
     <div className="carousel">
       <Swiper modules={[Navigation]} navigation>
-        {carouselSlides.map((item) => {
-          const {
-            id, slideBgImageTest, slideTitle, slideSlug, slideDescription,
-          } = item;
+        {sortedSlides
+          .map((item) => {
+            const {
+              id,
+              slideBgImageTest,
+              slideTitle,
+              slideSlug,
+              slideDescription,
+            } = item;
 
-          return (
-            <SwiperSlide key={id}>
-              <CarouselSlide
-                slideTitle={slideTitle}
-                slideDescription={slideDescription}
-                slideBgImageTest={slideBgImageTest}
-                slideSlug={slideSlug}
-              />
-            </SwiperSlide>
-          );
-        })}
+            return (
+              <SwiperSlide key={id}>
+                <CarouselSlide
+                  slideTitle={slideTitle}
+                  slideDescription={slideDescription}
+                  slideBgImageTest={slideBgImageTest}
+                  slideSlug={slideSlug}
+                />
+              </SwiperSlide>
+            );
+          })}
       </Swiper>
     </div>
   );
