@@ -1,36 +1,36 @@
 .about {
-    display: flex;
-    flex-direction: column;
-    background: $secondaryTextColor;
-    padding: 48px;
+  display: flex;
+  flex-direction: column;
+  background: $secondaryTextColor;
+  padding: 48px;
 
-    @media screen and (min-width: $smallDesktop) {
-        padding: 144px 96px 48px 96px;
+  @media screen and (min-width: $smallDesktop) {
+    padding: 96px 96px 48px 96px;
+  }
+
+  &__text-content {
+    color: #fff;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    color: $primaryColor;
+    font-size: 3em;
+    line-height: 1.2;
+    margin-bottom: 48px;
+  }
+
+  &__description {
+    @include size(16);
+
+    p {
+      margin-bottom: 24px;
     }
+  }
 
-    &__text-content {
-        color: #fff;
-        margin-bottom: 24px;
-    }
-
-    &__title {
-        color: $primaryColor;
-        font-size: 3em;
-        line-height: 1.2;
-        margin-bottom: 48px;
-    }
-
-    &__description {
-        @include size(16);
-
-        p {
-            margin-bottom: 24px;
-        }
-    }
-
-    &__image {
-        width: 100%;
-        height: auto;
-        border-radius: 8px;
-    }
+  &__image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
 }
