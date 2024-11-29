@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from './Context/Context';
+// eslint-disable-next-line no-unused-vars
 import Enter from './components/Enter/Enter';
 import MainRoutes from './Routes/MainRoutes';
 import './styles/enter.scss';
@@ -18,6 +19,7 @@ function App() {
     }
   }, []);
 
+  // eslint-disable-next-line no-unused-vars
   const hideEnterVideo = () => {
     setShowEnterScreen(false);
     try {
@@ -36,7 +38,8 @@ function App() {
   return (
     <Provider>
       <BrowserRouter>
-        {showEnterScreen ? <Enter hideVideo={hideEnterVideo} /> : <MainRoutes />}
+        {/* {showEnterScreen ? <Enter hideVideo={hideEnterVideo} /> : <MainRoutes />} */}
+        <MainRoutes />
       </BrowserRouter>
     </Provider>
   );
