@@ -21,7 +21,7 @@ function Enter({ hideVideo }) {
   return (
     <section className="enter" id="enter">
       <div className="enter__elements">
-        <h1 className="enter__title">Not Bad for a Girl</h1>
+        <h1 className="enter__title">NOT BAD FOR A GIRL</h1>
         <button className="enter__button" type="button" onClick={hideVideo}>Enter</button>
       </div>
       <div className="enter__video">

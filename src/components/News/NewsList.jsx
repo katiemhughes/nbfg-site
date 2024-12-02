@@ -17,7 +17,7 @@ function NewsList() {
 
   return (
     <div className="news-list" id="id">
-      <h1 className="news-list__heading">What&apos;s the latest from Not Bad for a Girl?</h1>
+      <h1 className="news-list__heading">What&apos;s the latest from NOT BAD FOR A GIRL?</h1>
       {newsPosts.map((post) => (
         <>
           <hr className="news-list__divider" key={post.slug} />
