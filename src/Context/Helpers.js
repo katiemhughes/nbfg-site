@@ -2,6 +2,8 @@ import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 
 export const getHTMLData = (markdown) => {
+  if (!markdown) return '';
+
   const htmlString = marked(markdown);
   const sanitisedHtmlString = DOMPurify.sanitize(htmlString);
 
@@ -179,17 +181,20 @@ export const extractTheGangData = (responseData) => {
 
 export const extractAllNewsPostsData = (responseData) => {
   const { items } = responseData;
+  console.log('responseData', responseData);
   const extractedNewsPosts = items.map((item) => {
     const { fields } = item;
-    const image = fields.image.fields.file.url;
+    const { id } = item.sys;
+    const image = fields?.image?.fields?.file?.url;
     const { title } = fields;
     const { slug } = fields;
     const { author } = fields;
     const { createdDate } = fields;
     const { summary } = fields;
-    const content = getHTMLData(fields.postContent);
+    const content = getHTMLData(fields?.postContent);
 
     const updatedNewsPost = {
+      id,
       image,
       title,
       slug,

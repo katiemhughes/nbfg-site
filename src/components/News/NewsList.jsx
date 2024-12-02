@@ -19,9 +19,9 @@ function NewsList() {
     <div className="news-list" id="id">
       <h1 className="news-list__heading">What&apos;s the latest from NOT BAD FOR A GIRL?</h1>
       {newsPosts.map((post) => (
-        <>
-          <hr className="news-list__divider" key={post.slug} />
-          <section className="news-list__article" key={post.slug}>
+        <div key={post.id}>
+          <hr className="news-list__divider" />
+          <section className="news-list__article">
             <Link
               type="button"
               className="news-list__button"
@@ -44,7 +44,7 @@ function NewsList() {
               </div>
             </Link>
           </section>
-        </>
+        </div>
       ))}
     </div>
   );
