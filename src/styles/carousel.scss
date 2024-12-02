@@ -51,10 +51,10 @@
   position: relative;
   z-index: 0;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
   min-width: 320px;
   width: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .slide {
@@ -71,11 +71,13 @@
   }
 
   &__content {
-    height: 100%;
+    height: calc(100vh - var(--navbar-height));
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
+    text-align: center;
+    box-sizing: border-box;
 
     h2 {
       padding: 24px 36px 0px 36px;
@@ -86,11 +88,10 @@
       text-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
       width: 100%;
       z-index: 1;
+      position: relative;
 
       @media screen and (min-width: $smallDesktop) {
         @include size(48);
-        position: absolute;
-        bottom: 494px;
       }
 
       @media screen and (min-width: $monitor) {
@@ -105,11 +106,7 @@
       color: $textColor;
       width: 100%;
       z-index: 1;
-
-      @media screen and (min-width: $smallDesktop) {
-        position: absolute;
-        bottom: 420px;
-      }
+      position: relative;
 
       @media screen and (min-width: $monitor) {
         @include size(24);
@@ -158,16 +155,18 @@
     object-position: center;
     opacity: 50%;
     height: 100%;
-
-    @media screen and (min-width: $smallDesktop) {
-      height: 90%;
-      object-position: bottom;
-    }
   }
 
   &__btn {
+    width: fit-content;
     border: none;
     position: absolute;
+    margin-bottom: 24px;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 64px;
+    left: 0;
+    right: 0;
     top: auto;
     @include size(18);
     color: $textColor;
@@ -176,20 +175,6 @@
     padding: 12px 24px;
     text-decoration: none;
     border-radius: 8px;
-    margin-bottom: 24px;
-    bottom: 64px;
-
-    @media screen and (min-width: $tablet) {
-      bottom: 118px;
-    }
-
-    @media screen and (min-width: $smallDesktop) {
-      bottom: 166px;
-    }
-
-    @media screen and (min-width: $largeDesktop) {
-      bottom: 206px;
-    }
 
     &:active {
       background: $mainColorHover;
@@ -229,18 +214,6 @@
     bottom: 48px;
     margin-bottom: 24px;
     bottom: 0;
-
-    @media screen and (min-width: $tablet) {
-      bottom: 52px;
-    }
-
-    @media screen and (min-width: $smallDesktop) {
-      bottom: 100px;
-    }
-
-    @media screen and (min-width: $largeDesktop) {
-      bottom: 140px;
-    }
 
     &:after {
       @include size(22);

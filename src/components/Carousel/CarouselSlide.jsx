@@ -7,8 +7,10 @@ function CarouselSlide({
   return (
     <div className="slide">
       <div className="slide__content">
-        <h2>{slideTitle}</h2>
-        <p>{slideDescription}</p>
+        <div className="slide__text">
+          <h2>{slideTitle}</h2>
+          <p>{slideDescription}</p>
+        </div>
         <picture>
           {slideBgImageTest && slideBgImageTest.filter((image) => !/mobile/i.test(image?.title)).map((image, index) => {
             const url = image?.file?.url;

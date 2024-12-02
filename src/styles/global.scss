@@ -26,26 +26,8 @@ body {
   overflow-x: hidden;
 }
 
-#root {
-  height: 100vh;
-}
-
-#home {
-  height: 100%;
-}
-
 .navbar + #home {
-  @media screen and (min-width: $tablet) {
-    margin-top: 52px;
-  }
-
-  @media screen and (min-width: $smallDesktop) {
-    margin-top: 98px;
-  }
-
-  @media screen and (min-width: $largeDesktop) {
-    margin-top: 140px;
-  }
+  margin-top: var(--navbar-height);
 }
 
 ::-webkit-scrollbar {
