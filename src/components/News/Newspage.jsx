@@ -1,22 +1,23 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import * as Scroll from 'react-scroll';
+/* eslint-disable react/no-danger */
+import React, {
+  useContext, useEffect, useState,
+} from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Context } from '../../Context/Context';
 import Loader from '../Loader/Loader';
 import NotFound from '../NotFound/NotFound';
 
 function Newspage() {
   const { newsArticle: newsArticleUrlParam } = useParams();
-  // console.log('newsArticleUrlParam', newsArticleUrlParam);
   const { newsPosts, isNewsPostsLoading } = useContext(Context);
-  // console.log('newsPosts', newsPosts);
   const [newsArticle, setNewsArticle] = useState({});
-  const scroll = Scroll.animateScroll;
+  const navigate = useNavigate();
 
   useEffect(() => {
     const matchedArticle = newsPosts.find((post) => post.slug === newsArticleUrlParam);
-    // console.log('matchedArticle', matchedArticle);
     setNewsArticle(matchedArticle);
+
+    window.scrollTo(0, 0);
   }, [newsPosts, newsArticleUrlParam]);
 
   if (isNewsPostsLoading) {
@@ -34,22 +35,15 @@ function Newspage() {
     author,
     createdDate,
     content,
+    soundcloudEmbed,
   } = newsArticle;
 
-  const handleClick = () => {
-    scroll.scrollToTop({
-      duration: 200,
-      delay: 0,
-      smooth: true,
-      offset: 0,
-    });
-  };
+  const soundcloudEmbedString = soundcloudEmbed ? soundcloudEmbed.content[0]?.content[0]?.value : '';
 
-  // console.log('image', image);
-  // console.log('title', title);
-  // console.log('slug', slug);
-  // console.log('author', author);
-  // console.log('createdDate', createdDate);
+  const handleClick = (e) => {
+    e.preventDefault();
+    navigate('/news', { replace: true });
+  };
 
   return (
     <div className="newspage" id={slug}>
@@ -63,11 +57,14 @@ function Newspage() {
           </p>
           <p className="newspage__date">{createdDate ? createdDate.split('-').reverse().join('/') : ''}</p>
           <div className="newspage__image-container">
-            <img className="newspage__image" src={image} alt={title} />
+            <img className="newspage__image" src={image} alt={title} loading="lazy" />
           </div>
         </header>
         <div className="newspage__content">
           <div className="newspage__copy" dangerouslySetInnerHTML={{ __html: content }} />
+          {soundcloudEmbed ? (
+            <div className="meet__embed" dangerouslySetInnerHTML={{ __html: soundcloudEmbedString }} />
+          ) : null}
           <Link
             className="newspage__cta"
             to="/news"

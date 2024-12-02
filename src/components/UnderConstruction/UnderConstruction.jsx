@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import React, { useContext } from 'react';
 import '../../styles.scss';
 import Loader from '../Loader/Loader';
@@ -23,7 +24,7 @@ function UnderConstruction() {
         <p className="under-construction__description" dangerouslySetInnerHTML={{ __html: underConstructionDescription }} />
       </div>
       <div className="under-construction__image-content">
-        <img className="under-construction__image" src={underConstructionImage} alt={underConstructionTitle} />
+        <img className="under-construction__image" src={underConstructionImage} alt={underConstructionTitle} loading="lazy" />
       </div>
     </section>
   );

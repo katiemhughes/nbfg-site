@@ -2,6 +2,8 @@ import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 
 export const getHTMLData = (markdown) => {
+  if (!markdown) return '';
+
   const htmlString = marked(markdown);
   const sanitisedHtmlString = DOMPurify.sanitize(htmlString);
 
@@ -12,13 +14,16 @@ export const extractCarouselData = (responseData) => {
   const updatedCarouselSlides = responseData.map((slide) => {
     const { sys, fields } = slide;
     const { id } = sys;
-    // console.log('fields', fields);
+    const createdDateAndTime = sys.createdAt;
     const slideTitle = fields.title;
     const slideSlug = fields.slug;
     const slideDescription = fields.description;
-    const slideBgImage = fields.image.fields.file.url;
+    const slideBgImageTest = fields?.imageTest?.filter(
+      (item) => item?.fields?.file?.url,
+    )
+      .map((image) => image.fields);
     const updatedSlide = {
-      id, slideTitle, slideSlug, slideDescription, slideBgImage,
+      id, createdDateAndTime, slideTitle, slideSlug, slideDescription, slideBgImageTest,
     };
 
     return updatedSlide;
@@ -139,7 +144,6 @@ export const extractTheGangData = (responseData) => {
   const { items } = responseData;
   const extractedGang = items.map((item) => {
     const { fields } = item;
-    // console.log('fields', fields);
     const { title } = fields;
     const description = getHTMLData(fields.content);
     const image = fields.image.fields.file.url;
@@ -177,19 +181,20 @@ export const extractTheGangData = (responseData) => {
 
 export const extractAllNewsPostsData = (responseData) => {
   const { items } = responseData;
-  // console.log('news items', items);
   const extractedNewsPosts = items.map((item) => {
     const { fields } = item;
-    const image = fields.image.fields.file.url;
+    const { id } = item.sys;
+    const image = fields?.image?.fields?.file?.url;
     const { title } = fields;
     const { slug } = fields;
     const { author } = fields;
     const { createdDate } = fields;
     const { summary } = fields;
-    const content = getHTMLData(fields.postContent);
-    console.log('content', content);
+    const content = getHTMLData(fields?.postContent);
+    const { soundcloudEmbed } = fields;
 
     const updatedNewsPost = {
+      id,
       image,
       title,
       slug,
@@ -197,6 +202,7 @@ export const extractAllNewsPostsData = (responseData) => {
       createdDate,
       summary,
       content,
+      soundcloudEmbed,
     };
 
     return updatedNewsPost;

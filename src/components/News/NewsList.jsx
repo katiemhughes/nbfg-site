@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from '../../Context/Context';
 import Loader from '../Loader/Loader';
@@ -6,7 +6,6 @@ import NotFound from '../NotFound/NotFound';
 
 function NewsList() {
   const { newsPosts, isNewsPostsLoading } = useContext(Context);
-  // console.log('newsPosts', newsPosts);
 
   if (isNewsPostsLoading) {
     return <Loader />;
@@ -16,13 +15,23 @@ function NewsList() {
     return <NotFound />;
   }
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const sortedNewsPosts = newsPosts.sort((a, b) => {
+    const dateA = new Date(a.createdDate);
+    const dateB = new Date(b.createdDate);
+    return dateB - dateA;
+  });
+
   return (
     <div className="news-list" id="id">
-      <h1 className="news-list__heading">What&apos;s the latest from Not Bad for a Girl?</h1>
-      {newsPosts.map((post) => (
-        <>
-          <hr className="news-list__divider" key={post.slug} />
-          <section className="news-list__article" key={post.slug}>
+      <h1 className="news-list__heading">What&apos;s the latest from NOT BAD FOR A GIRL?</h1>
+      {sortedNewsPosts.map((post) => (
+        <div key={post.id}>
+          <hr className="news-list__divider" />
+          <section className="news-list__article">
             <Link
               type="button"
               className="news-list__button"
@@ -41,11 +50,11 @@ function NewsList() {
                 <p className="news-list__summary">{post.summary}</p>
               </div>
               <div className="news-list__image-container">
-                <img className="news-list__image" src={post.image} alt={post.title} />
+                <img className="news-list__image" src={post.image} alt={post.title} loading="lazy" />
               </div>
             </Link>
           </section>
-        </>
+        </div>
       ))}
     </div>
   );

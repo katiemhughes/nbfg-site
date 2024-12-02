@@ -1,411 +1,629 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    list-style: none;
-    text-decoration: none;
-    font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
 }
 
 a:hover {
-    background: $mainColorHover;
-}
-
-.nav-color {
-    background: #111111b0;
-    transition: all 1s ease;
+  background: $mainColorHover;
 }
 
 .navbar {
+  background-color: $secondaryTextColor;
+  width: 100%;
+  z-index: 2;
+  top: 0;
+  height: var(--navbar-height);
+  padding-bottom: 12px;
+  position: fixed;
+
+  @media screen and (min-width: $largeDesktop) {
+    height: 140px;
+  }
+
+  &__top {
     width: 100%;
-    z-index: 9999;
-    top: 0;
-    position: fixed;
-    height: 96px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
 
-    @media screen and (min-width: $smallDesktop) {
-        height: 136px;
+    &.open {
+      padding-top: 12px;
+      width: 100%;
+      background: $secondaryTextColor;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1;
     }
+  }
 
-    &__top {
-        width: 100%;
-        padding: 12px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        z-index: 1;
+  &__left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
 
-        &--active {
-            width: 100%;
-            background: $secondaryTextColor;
-            padding: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1;
-        }
+    @media screen and (min-width: $largeDesktop) {
+      justify-content: flex-end;
+      flex: 1 28%;
+      margin-right: -28px;
     }
+  }
 
-    &__left {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex: 1;
-        
-
-        @media (min-width: $smallDesktop) {
-            justify-content: flex-end;
-            flex: 1 28%;
-            margin-right: -28px;
-        }
+  &__right {
+    @media screen and (min-width: $largeDesktop) {
+      display: flex;
+      justify-content: flex-end;
+      flex: 1 28%;
     }
+  }
 
-    &__right {
-        @media (min-width: $smallDesktop) {
-            display: flex;
-            justify-content: flex-end;
-            flex: 1 28%;
-        }
-    }
+  &__bottom {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: $secondaryTextColor;
+  }
 
-    &__bottom {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
-
-    .links {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 45px;
-        z-index: 9999;
-        cursor: pointer;
-
-        &--active {
-            display: flex;
-        }
-    }
-
-    &__button--mobile {
-        display: none;
-    }
+  &__button--mobile {
+    display: none;
+  }
 }
 
 .logos {
-    &__mobile {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        position: absolute;
-        bottom: 140px;
+  &__mobile {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+    position: absolute;
+    bottom: 32px;
+    left: 0;
+    right: 0;
+    transform: none;
 
-        @media screen and (min-width: $smallDesktop) {
-            display: none;
-        }
+    @media screen and (min-width: $smallDesktop) {
+      display: none;
     }
+
+    &.show {
+      display: flex;
+    }
+
+    &.hide {
+      display: none;
+    }
+  }
 }
 
 .logo {
-    &__mobile {
-        &--active {
-            margin: 10px;
+  &__mobile {
+    height: 100%;
 
-            a {
-                color: $textColor;
-            }
-        }
+    @media screen and (min-width: $smallDesktop) {
+      display: none;
     }
+
+    &.show {
+      display: flex;
+    }
+
+    &.hide {
+      display: none;
+    }
+
+    a {
+      color: $textColor;
+    }
+
+    .fab {
+      display: inline-block;
+      @include size(16);
+    }
+  }
 }
 
 .navbar {
-    .links {
-        &__link {
-            margin: 10px;
+  .links {
+    @media screen and (min-width: $largeDesktop) {
+      display: flex;
+      align-items: center;
+    }
 
-            &--config {
-                display: flex;
-                align-items: center;
-                height: 100%;
-                font-size: 14px;
+    &__link {
+      padding: 10px;
+      position: relative;
+
+      @media screen and (min-width: $largeDesktop) {
+        &.links-hidden {
+          display: flex;
+        }
+
+        &--gang {
+          position: relative;
+          padding: 10px;
+
+          &:hover {
+            .sublinks {
+              @media screen and (min-width: $largeDesktop) {
+                top: 40px;
+                right: 0;
+                left: 0;
+                opacity: 1;
+                height: 278px;
+                width: 129px;
+                position: absolute;
+                background: $secondaryTextColor;
+                color: $primaryColor;
+                padding: 10px 10px 0px 10px;
+                border-bottom: 3px solid $primaryColor;
+                pointer-events: all;
+              }
+            }
+          }
+
+          .links__link--config {
+            &--gang {
+              @media screen and (min-width: $largeDesktop) {
+                background: none;
+                color: inherit;
+                border: none;
+                padding: 0;
                 cursor: pointer;
+                @include size(14);
                 background: linear-gradient(
-                                to bottom, $mainColor 0%, $mainColor 100%
-                            );
+                  to bottom,
+                  $mainColor 0%,
+                  $mainColor 100%
+                );
                 background-position: 0 100%;
                 background-repeat: repeat-x;
                 background-size: 3px 3px;
                 text-decoration: none;
-                transition: background-size .2s;
-                color: $textColor;
-                border: none;
-    
+
                 &:hover {
-                    background-size: 4px 20px;
-                    color: $textColor;
+                  background-size: 4px 20px;
+                  cursor: pointer;
                 }
-
-                &:link {
-                    color: $textColor;
-                }
-        
-                &:visited {
-                    color: $textColor;
-                }
-        
-                &:active {
-                    color: $textColor;
-                }
+              }
             }
+          }
         }
-    }
-    
-    .sublinks {
-        font-size: 14px;
+      }
+
+      &.links-hidden {
+        pointer-events: none;
+        visibility: hidden;
         opacity: 0;
+      }
+
+      &--config {
+        @media screen and (min-width: $largeDesktop) {
+          display: flex;
+          align-items: center;
+          height: 100%;
+          @include size(14);
+          cursor: pointer;
+          background: linear-gradient(
+            to bottom,
+            $mainColor 0%,
+            $mainColor 100%
+          );
+          background-position: 0 100%;
+          background-repeat: repeat-x;
+          background-size: 3px 3px;
+          text-decoration: none;
+          transition: background-size 0.2s;
+          color: $textColor;
+          border: none;
+
+          &:hover {
+            background-size: 4px 20px;
+            color: $textColor;
+          }
+
+          &:link {
+            color: $textColor;
+          }
+
+          &:visited {
+            color: $textColor;
+          }
+
+          &:active {
+            color: $textColor;
+          }
+        }
+      }
+    }
+  }
+
+  .sublinks {
+    opacity: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    top: 20px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: $secondaryTextColor;
+    @include size(14);
+
+    @media screen and (min-width: $smallDesktop) {
+      top: 0;
+    }
+
+    &.open {
+      opacity: 1;
+      transition: opacity 0.7s ease;
+
+      .sublinks__link {
+        opacity: 1;
+      }
+    }
+
+    &.closed {
+      opacity: 0;
+
+      @media screen and (min-width: $largeDesktop) {
+        right: 0;
+        left: -138px;
+        top: 18px;
+        z-index: 999;
         height: 0;
-        width: 0;
+        pointer-events: none;
 
-        &__cta {
-            position: absolute;
-            z-index: 999;
-            top: -10%;
-            border: none;
-            background: #ff0571;
-            color: white;
-            border-radius: 8px;
-            padding: 6px;
-            width: 50px;
-            right: 6%;
+        &:hover {
+          pointer-events: all;
         }
-
-        &--active {
-            @keyframes slide-out {
-                0% {
-                  transform: translateX(100%);
-                }
-                100% {
-                    transform: translateX(0%);
-                }
-            }
-            @-webkit-keyframes slide-out {
-                0% {
-                    -webkit-transform: translateX(100%);
-                }
-                100% {
-                  -webkit-transform: translateX(0%);
-                }
-            }
-            animation: slide-out 0.5s forwards;
-            -webkit-animation: slide-out 0.5s forwards;
-            opacity: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            top: -20%;
-            height: 100vh;
-            width: 100vw;
-            position: absolute;
-            background: $secondaryTextColor;
-        }
-
-        &__link {
-            margin: 0;
-            padding: 4px;
-
-            &--active {
-                margin: 10px;
-                font-size: 1.3rem;
-            }
-
-            &:link {
-                color: $primaryColor;
-            }
-    
-            &:visited {
-                color: $textColor;
-            }
-    
-            &:active {
-                color: $primaryColor;
-            }
-
-            &:hover {
-                color: $primaryColor;
-                background: $secondaryTextColor;
-            }
-        }
+      }
     }
-}
 
-.logo {
-    &__icon {
-        color: $textColor;
+    &__cta {
+      position: absolute;
+      z-index: 999;
+      top: 0;
+      border: none;
+      background: $primaryColor;
+      color: $textColor;
+      border-radius: 8px;
+      padding: 6px;
+      width: 50px;
+    }
+
+    &__link {
+      @include size(20);
+      height: 10%;
+      padding: 0;
+      margin: 0;
+      color: $textColor;
+      width: 100%;
+
+      @media screen and (min-width: $largeDesktop) {
         display: flex;
+        @include size(14);
+        height: 100%;
+        opacity: 1;
+      }
+
+      &.open {
+        opacity: 1;
+        display: flex;
+        justify-content: center;
         align-items: center;
-
-        &:hover {
-            color: $mainColor;
-        }
-    }
-
-    .fas {
-        color: $mainColor;
-
-        &:hover {
-            color: $mainColor;
-        }
-    }
-    
-    .fab {
         color: $textColor;
+        @include size(20);
+        height: 12%;
 
-        &:hover {
-            color: $mainColor;
+        &:link {
+          color: $textColor;
         }
-    }
-    
-    .fa-brands {
+
+        &:visited {
+          color: $textColor;
+        }
+      }
+
+      &.closed {
+        @media screen and (min-width: $largeDesktop) {
+          padding: 0;
+          width: 100%;
+          margin-left: 2px;
+        }
+      }
+
+      @media screen and (min-width: $largeDesktop) {
+        margin: 0;
+        padding: 4px;
+        color: $primaryColor;
+
+        &.open {
+          margin: 10px;
+          @include size(20);
+        }
+      }
+
+      &:link {
         color: $textColor;
+      }
 
-        &:hover {
-            color: $mainColor;
-        }
+      &:visited {
+        color: $textColor;
+      }
+
+      &:active {
+        color: $primaryColor;
+      }
+
+      &:hover {
+        color: $primaryColor;
+        background: $secondaryTextColor;
+      }
     }
+  }
 }
 
 .logo {
+  &__icon {
+    color: $textColor;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      color: $mainColor;
+    }
+  }
+
+  .fas {
+    color: $mainColor;
+
+    &:hover {
+      color: $mainColor;
+    }
+  }
+
+  .fab {
+    color: $textColor;
+
+    &:hover {
+      color: $mainColor;
+    }
+  }
+
+  .fa-brands {
+    color: $textColor;
+
+    &:hover {
+      color: $mainColor;
+    }
+  }
+}
+
+.logo {
+  height: 100%;
+  width: 100%;
+
+  &__container {
     height: 70px;
     width: 40px;
+  }
 }
 
 .logo:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-@media (max-width: $smallDesktop) {
-    .navbar {
-        &__right ul {
-            display: none;
-        }
-
-        .logos {
-            &__logo {
-                height: 55px;
-                width: 55px;
-            }
-        }
-
-        .links {
-            opacity: 0;
-
-            &--active {
-                opacity: 1;
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-                width: 100%;
-                height: 100vh;
-                background-color: $secondaryTextColor;
-                left: 0;
-                transition: all 0.6 ease;
-                position: absolute;
-            } 
-        }
-
-        .meet-gang {
-            opacity: 0;
-
-            &--active {
-                opacity: 1;
-            }
-        }
-
-        .fa {
-            .fa-times {
-                font-size: 2rem;
-            }
-        }
-
-        &__bottom {
-            display: flex;
-            justify-content: center;
-            width: 33%;
-        }
-
-        &__button {
-            &--mobile {
-                display: block;
-                position: absolute;
-                top: 0;
-                right: 0;
-                transform: translate(-100%, 60%);
-                font-size: 1.8rem;
-                cursor: pointer;
-                color: $textColor;
-                margin-top: -10px;
-            }
-        }
-
-        .links {
-            &__link {
-                display: flex;
-                justify-content: flex-end;
-                width: 100%;
-                margin: 10px;
-
-                &--config {
-                    text-align: center;
-                    padding: 1.5rem;
-                    width: 100%;
-                    display: table;
-                    background: none;
-                    font-size: 1.3rem;
-                }
-            }
-        }
+@media screen and (max-width: $largeDesktop) {
+  .navbar {
+    &__right ul {
+      display: none;
     }
 
-    .hero-container {
-        position: relative;
+    .logos {
+      &__logo {
+        height: 55px;
+        width: 55px;
+      }
     }
-    .cards {
-        position: relative;
-    }
-}
 
-#gang-sublinks {
-    // visibility: hidden;
-    // height: 0;
-    // width: 0;
-}
+    .links {
+      opacity: 0;
+      transition: opacity 0.7s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 45px;
+      z-index: 9999;
+      cursor: pointer;
+      padding-bottom: 12px;
+      position: relative;
 
-//, 
-
-#meet-the-gang:hover ~ #gang-sublinks, #gang-sublinks:hover {
-    // display: block;
-    @media screen and (min-width: 1025px) {
+      @media screen and (min-width: $largeDesktop) {
         opacity: 1;
-        visibility: visible;
-        height: 225px;
-        width: 129px;
+      }
+
+      .links-hidden {
+        opacity: 1;
+      }
+
+      &.open {
+        opacity: 1;
+        transform: translateY(0);
+        padding-top: 12px;
+        top: 92px;
         position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        background-color: $secondaryTextColor;
+        width: 100%;
+        height: 88vh;
+        left: 0;
+      }
+
+      &.closed {
+        opacity: 0;
+        transition: opacity 0.7s ease;
+
+        #meet-the-gang {
+          visibility: hidden;
+        }
+      }
+    }
+
+    .meet-gang {
+      opacity: 0;
+
+      &--active {
+        opacity: 1;
+      }
+    }
+
+    .fa {
+      .fa-times {
+        @include size(32);
+      }
+    }
+
+    &__bottom {
+      background: transparent;
+      height: 0 !important;
+      padding: 0 !important;
+      margin: 0;
+      font-size: 0;
+      display: block;
+
+      &--active {
+        height: 100%;
         background: $secondaryTextColor;
-        padding: 10px;
+        display: flex;
+        justify-content: center;
+        width: 33%;
+      }
     }
-}
 
-@media screen and (max-width: 320px) {
-    .footer-wrapper .right ul {
-        display: none;
-    }
-}
+    &__button {
+      &--mobile {
+        display: block;
+        position: absolute;
+        top: 22px;
+        right: 22px;
+        @include size(28);
+        cursor: pointer;
+        color: $textColor;
 
-@media screen and (min-width: 375px) {
-    .footer-wrapper .right ul {
-        display: none;
+        .fas {
+          @include size(32);
+          color: $textColor;
+        }
+      }
     }
+
+    .links {
+      &__link {
+        opacity: 1;
+        transition: opacity 0.7s ease;
+
+        &.links-hidden {
+          opacity: 0;
+          pointer-events: none;
+        }
+
+        &--gang {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: $textColor;
+          @include size(20);
+          height: 12%;
+          width: 100%;
+          opacity: 1;
+          transition: opacity 0.7s ease;
+          margin: 10px;
+          padding: 10px;
+
+          &.open {
+            opacity: 0;
+          }
+
+          .links__link--config {
+            &--gang {
+              text-align: center;
+              padding: 1rem;
+              width: 100%;
+              display: table;
+              background: none;
+              @include size(20);
+              border: none;
+              color: $textColor;
+              z-index: 999;
+
+              &.open {
+                position: absolute;
+                left: 30px;
+                top: -58px;
+                @include size(28);
+                background: none;
+                color: inherit;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+                outline: inherit;
+                width: auto;
+              }
+
+              &.closed {
+                position: relative;
+                text-align: center;
+                padding: 1rem;
+                width: 100%;
+                display: table;
+                background: none;
+                @include size(20);
+                border: none;
+                color: $textColor;
+                z-index: 999;
+              }
+            }
+          }
+        }
+
+        &.open {
+          display: flex;
+          justify-content: flex-end;
+          width: 100%;
+          margin: 10px;
+        }
+
+        &.closed {
+          margin: 0;
+        }
+
+        &--config {
+          &.open {
+            text-align: center;
+            padding: 1rem;
+            width: 100%;
+            display: table;
+            background: none;
+            @include size(20);
+            border: none;
+            color: $textColor;
+            z-index: 999;
+          }
+        }
+      }
+    }
+  }
 }

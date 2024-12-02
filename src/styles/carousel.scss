@@ -1,188 +1,241 @@
+@keyframes fadeInImage {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 50%;
+  }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadeInImage {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 50%;
+  }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadeInImage {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 50%;
+  }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadeInImage {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 50%;
+  }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadeInImage {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 50%;
+  }
+}
+
 .carousel {
-    position: relative;
-    z-index: 0;
-    height: 100vh;
-    object-fit: cover;
-    object-position: center;
-    min-width: 320px;
-    width: 100vw;
-    background: black;
+  position: relative;
+  z-index: 0;
+  height: 100%;
+  min-width: 320px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .slide {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: $secondaryTextColor;
+
+  > * {
+    opacity: 1;
+  }
+
+  &__content {
+    height: calc(100vh - var(--navbar-height));
     display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
-    justify-content: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    transition: filter 3.5s;
-    background-color: black;
+    text-align: center;
+    box-sizing: border-box;
+
+    h2 {
+      padding: 24px 36px 0px 36px;
+      text-align: center;
+      @include size(36);
+      line-height: 1.1;
+      color: $textColor;
+      text-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+      width: 100%;
+      z-index: 1;
+      position: relative;
+
+      @media screen and (min-width: $smallDesktop) {
+        @include size(48);
+      }
+
+      @media screen and (min-width: $monitor) {
+        @include size(64);
+      }
+    }
+
+    p {
+      padding: 24px 48px;
+      @include size(16);
+      text-align: center;
+      color: $textColor;
+      width: 100%;
+      z-index: 1;
+      position: relative;
+
+      @media screen and (min-width: $monitor) {
+        @include size(24);
+      }
+    }
 
     > * {
-        opacity: 0;
-        transform: translateY(55px);
-        transition: all 0.4s;
+      opacity: 0;
+      transform: translateY(-45px);
+      transition: all 1s;
     }
 
-    &__content {
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background: #000000cc;
-    
-        h2 {
-            padding: 0px 36px 24px 36px;
-            text-align: center;
-            @include size(36);
-            line-height: 1.1;
-            color: $textColor;
-            text-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
-
-            @media screen and (min-width: $smallDesktop) {
-                @include size(48);
-            }
-
-            @media screen and (min-width: $monitor) {
-                @include size(64);
-            }
-        }
-    
-        p {
-            padding: 0px 48px;
-            @include size(16);
-            text-align: center;
-            color: $textColor;
-
-            @media screen and (min-width: $monitor) {
-                @include size(24);
-            }
-        }
-    
-        > * {
-            opacity: 0;
-            transform: translateY(-45px);
-            transition: all 1s;
-        }
+    .content__btn {
+      transition-delay: unset !important;
+      transition: unset !important;
     }
+  }
 }
 
 .swiper {
-    overflow: hidden;
-    list-style: none;
-    padding: 0;
-    display: block;
-    max-width: 750px;
-    height: auto;
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+  display: block;
+  height: 100%;
 
-    .swiper-wrapper {
-        position: relative;
-        z-index: 1;
-        display: flex;
-        transition-property: transform;
-        transition-timing-function: var(--swiper-wrapper-transition-timing-function, initial);
-    }
+  .swiper-wrapper {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    transition-timing-function: var(
+      --swiper-wrapper-transition-timing-function,
+      initial
+    );
+  }
 }
 
 .content {
-    &__btn {
-        border: none;
-        position: absolute;
-        top: auto;
-        bottom: 110px;
-        @include size(18);
-        color: $textColor;
-        background-color: $primaryColor;
-        display: block;
-        padding: 12px 24px;
-        text-decoration: none;
-        border-radius: 8px;
+  &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 50%;
+    height: 100%;
+  }
 
-        // &:link {
-        //     background: $mainColorHover;
-        // }
+  &__btn {
+    width: fit-content;
+    border: none;
+    position: absolute;
+    margin-bottom: 24px;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 64px;
+    left: 0;
+    right: 0;
+    top: auto;
+    @include size(18);
+    color: $textColor;
+    background-color: $primaryColor;
+    display: block;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 8px;
 
-        // &:active {
-        //     background: $mainColorHover;
-        // }
+    &:active {
+      background: $mainColorHover;
     }
+  }
+}
+
+.swiper-slide {
+  height: 100%;
 }
 
 .swiper-slide-active {
-    .slide {
-        > * {
-            opacity: 1;
-            transform: none;
+  .content__image {
+    animation: fadeInImage 5s forwards;
+  }
 
-            @for $i from 0 to 15 {
-                &:nth-child(#{$i+ 1}) {
-                    transition-delay: $i * 0.7 + 1.5s;
-                }
-            }
-        }
-
-        &__content {
-            &__btn { 
-                transition-delay: initial!important; 
-            }
-
-            > * {
-                opacity: 1;
-                transform: none;
-    
-                @for $i from 0 to 15 {
-                    &:nth-child(#{$i + 1}) {
-                        transition-delay: $i * 0.3 + 0.2s;
-                    }
-
-                    &:last-child {
-                        transition-delay: 0.1s;
-                    }
-                }
-            }
-        }
+  .slide {
+    &__content {
+      > * {
+        opacity: 100%;
+        transform: none;
+      }
     }
+  }
 }
 
 .swiper {
-    // &__btn { 
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: $textColor;
+    top: auto;
+    bottom: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    background: $primaryColor;
+    bottom: 48px;
+    margin-bottom: 24px;
+    bottom: 0;
 
-    .swiper-button-prev, .swiper-button-next {
-        color: $textColor;
-        top: auto;
-        bottom: 30px;
-        width: 40px;
-        height: 40px;
-        border-radius: 50px;
-        background: $primaryColor;
-        transition-duration: 0.7s;
-
-        &:after {
-            font-size: 22px;
-            font-weight: bold;
-        }
-
-        &:hover {
-            background-size: 4px 20px;
-            background: $mainColorHover;
-            color: $textColor;
-        }
+    &:after {
+      @include size(22);
+      font-weight: bold;
     }
 
-    .swiper-button-prev {
-        left: 50%;
-        margin-left: -44px;
-        right: auto;
+    &:hover {
+      background-size: 4px 20px;
+      background: $mainColorHover;
+      color: $textColor;
     }
+  }
 
-    .swiper-button-next {
-        right: auto;
-        left: 50%;
-        margin-left: 4px;
-    }
+  .swiper-button-prev {
+    left: 50%;
+    margin-left: -44px;
+    right: auto;
+  }
+
+  .swiper-button-next {
+    right: auto;
+    left: 50%;
+    margin-left: 4px;
+  }
 }

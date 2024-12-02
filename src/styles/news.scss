@@ -1,261 +1,258 @@
-.newspage, .news-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 144px;
+.newspage,
+.news-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 144px;
 
-    @media screen and (min-width: $smallDesktop) {
-        margin-top: 200px;
-        padding: 0px 48px 0px 48px;
-    }
+  @media screen and (min-width: $smallDesktop) {
+    padding: 0px 48px 0px 48px;
+  }
 }
 
 .news-list {
-    &__image-container {
-        display: flex;
-        height: 267px;
-        width: 300px;
-        position: relative;
-        margin: auto;
-        padding-top: 48px;
-        overflow: hidden;
+  &__image-container {
+    display: flex;
+    height: 267px;
+    width: 300px;
+    position: relative;
+    margin: auto;
+    padding-top: 48px;
+    overflow: hidden;
 
-        @media screen and (min-width: $smallDesktop) {
-            padding-top: 0px;
-        }
-
-        @media screen and (min-width: $largeDesktop) {
-            width: 500px;
-        }
+    @media screen and (min-width: $smallDesktop) {
+      padding-top: 0px;
     }
 
-    &__header {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
+    @media screen and (min-width: $largeDesktop) {
+      width: 500px;
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 24px;
+    max-width: 388px;
+
+    @media screen and (min-width: $smallDesktop) {
+      padding: 0px 24px 0px 48px;
     }
 
-    &__content {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 0px 24px;
-        max-width: 388px;
+    @media screen and (min-width: $largeDesktop) {
+      max-width: 424px;
+    }
+  }
 
-        @media screen and (min-width: $smallDesktop) {
-            padding: 0px 24px 0px 48px;
-        }
+  &__heading {
+    margin-bottom: 48px;
+    padding: 0px 24px;
+    color: $mainColor;
+    text-align: left;
+    @include size(48);
+    line-height: 1.2;
 
-        @media screen and (min-width: $largeDesktop) {
-            max-width: 424px;
-        }
+    @media screen and (min-width: $smallDesktop) {
+      margin: 48px 0px;
+      padding: 0px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 2px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__author {
+    margin-bottom: 2px;
+    color: $metadataColor;
+  }
+
+  &__divider {
+    border-color: $secondaryColor;
+    width: 320px;
+
+    @media screen and (min-width: $tablet) {
+      width: 375px;
     }
 
-    &__heading {
-        margin-bottom: 48px;
-        padding: 0px 24px;
-        color: $mainColor;
-        text-align: center;
-        @include size(48);
-        line-height: 1.2;
-
-        @media screen and (min-width: $smallDesktop) {
-            margin: 48px 0px;
-            padding: 0px;
-        }
+    @media screen and (min-width: 576px) {
+      width: 540px;
     }
 
-    &__title {
-        margin-bottom: 2px;
-
-        &:hover {
-            text-decoration: underline;
-        } 
+    @media screen and (min-width: $smallDesktop) {
+      display: none;
     }
+  }
 
-    &__author {
-        margin-bottom: 2px;
-        color: #989797;
+  &__date {
+    margin-top: 48px;
+    padding: 0px 24px;
+    color: $metadataColor;
+
+    @media screen and (min-width: $smallDesktop) {
+      margin-top: 4px;
+      padding: 0px;
     }
+  }
 
-    &__divider {
-        border-color: $secondaryColor;
-        width: 320px;
+  &__summary {
+    margin-top: 24px;
+    width: 100%;
+  }
 
-        @media screen and (min-width: $tablet) {
-            width: 375px;
-        }
+  &__article {
+    padding: 0px 0px 48px 0px;
+    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
 
-        @media screen and (min-width: 576px) {
-            width: 540px;
-        }
+    @media screen and (min-width: $smallDesktop) {
+      flex-direction: row;
+      margin-top: 48px;
+      padding: 0px 0px 72px 0px;
+      border-bottom: 1px solid $secondaryColor;
 
-        @media screen and (min-width: $smallDesktop) {
-            display: none;
-        }
-    }
-
-    &__date {
-        margin-top: 48px;
-        padding: 0px 24px;
-        color: #989797;
-
-        @media screen and (min-width: $smallDesktop) {
-            margin-top: 4px;
-            padding: 0px;
-        }
-    }
-
-    &__summary {
-        margin-top: 24px;
-        width: 100%;
-    }
-
-    &__article {
-        padding: 0px 0px 48px 0px;
-        // border-bottom: 1px solid $textColor;
+      &:first-of-type {
+        border-top: 1px solid $secondaryColor;
         margin-top: 0px;
-        display: flex;
-        flex-direction: column;
+        padding: 48px 0px 72px 0px;
+      }
 
-        @media screen and (min-width: $smallDesktop) {
-            flex-direction: row;
-            margin-top: 48px;
-            // max-width: 1130px;
-            padding: 0px 0px 72px 0px;
-            border-bottom: 1px solid $secondaryColor;
+      &:last-of-type {
+        border-bottom: none;
+      }
+    }
+  }
 
-            &:first-of-type {
-                border-top: 1px solid $secondaryColor;
-                margin-top: 0px;
-                padding: 48px 0px 72px 0px;
-            }
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s;
+    display: block;
+    transform: scale(1);
 
-            &:last-of-type {
-                border-bottom: none;
-            }
-        }
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__button {
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (min-width: $smallDesktop) {
+      flex-direction: row;
     }
 
-    &__image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: all 0.3s;
-        display: block;
-        transform: scale(1);
-
-        &:hover {
-            transform: scale(1.1);
-        }
+    &:link {
+      color: $textColor;
     }
 
-    &__button {
-        display: flex;
-        flex-direction: column;
-
-        @media screen and (min-width: $smallDesktop) {
-            flex-direction: row;
-        }
-
-        &:link {
-            color: $textColor;
-        }
-
-        &:visited {
-            color: $textColor;
-        }
-
-        &:hover {
-            color: $textColor;
-            background: none;
-        }
-
-        &:active {
-            color: $textColor;
-        }
+    &:visited {
+      color: $textColor;
     }
+
+    &:hover {
+      color: $textColor;
+      background: none;
+    }
+
+    &:active {
+      color: $textColor;
+    }
+  }
 }
 
 .newspage {
-    &__article {
-        padding: 0px 24px;
+  &__article {
+    padding: 0px 24px;
+  }
+
+  &__heading {
+    @include size(48);
+    color: $mainColor;
+  }
+
+  &__date {
+    color: $metadataColor;
+    margin-bottom: 48px;
+  }
+
+  &__author {
+    color: $metadataColor;
+  }
+
+  &__image-container {
+    display: flex;
+    height: 267px;
+    width: 300px;
+    position: relative;
+    overflow: hidden;
+
+    @media screen and (min-width: $smallDesktop) {
+      padding-top: 0px;
+      height: 475px;
+      width: 500px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s;
+    display: block;
+    transform: scale(1);
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__content {
+    margin: 48px 0px 64px 0px;
+  }
+
+  &__copy {
+    max-width: 1130px;
+    margin-bottom: 48px;
+
+    p {
+      margin-bottom: 16px;
     }
 
-    &__heading {
-        @include size(48);
-        color: $mainColor;
+    a {
+      color: $secondaryColor;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
+  }
 
-    &__date {
-        color: #989797;
-        margin-bottom: 48px;
-    }
-
-    &__author {
-        color: #989797;
-    }
-
-    &__image-container {
-        display: flex;
-        height: 267px;
-        width: 300px;
-        position: relative;
-        // margin: auto;
-        overflow: hidden;
-
-        @media screen and (min-width: $smallDesktop) {
-            padding-top: 0px;
-            height: 475px;
-            width: 500px;
-        }
-    }
-
-    &__image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: all 0.3s;
-        display: block;
-        transform: scale(1);
-
-        &:hover {
-            transform: scale(1.1);
-        }
-    }
-
-    &__content {
-        margin: 48px 0px 64px 0px;
-    }
-
-    &__copy {
-        max-width: 1130px;
-        margin-bottom: 48px;
-
-        p {
-            margin-bottom: 16px;
-        }
-
-        a {
-            color: $secondaryColor;
-
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-    }
-
-    &__cta {
-        border: none;
-        background: $primaryColor;
-        color: $textColor;
-        border-radius: 8px;
-        padding: 12px 24px;
-        text-decoration: none;
-        display: block;
-        width: 224px;
-        @include size(18);
-        transition-duration: 0.7s;
-    }
+  &__cta {
+    border: none;
+    background: $primaryColor;
+    color: $textColor;
+    border-radius: 8px;
+    padding: 12px 24px;
+    text-decoration: none;
+    display: block;
+    width: 224px;
+    @include size(18);
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
