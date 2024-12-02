@@ -3,6 +3,7 @@
   flex-direction: column;
   background: $secondaryTextColor;
   padding: 48px;
+  padding-top: var(--navbar-height);
 
   @media screen and (min-width: $smallDesktop) {
     padding: 96px 96px 48px 96px;
