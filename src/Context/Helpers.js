@@ -181,7 +181,6 @@ export const extractTheGangData = (responseData) => {
 
 export const extractAllNewsPostsData = (responseData) => {
   const { items } = responseData;
-  console.log('responseData', responseData);
   const extractedNewsPosts = items.map((item) => {
     const { fields } = item;
     const { id } = item.sys;
@@ -192,6 +191,7 @@ export const extractAllNewsPostsData = (responseData) => {
     const { createdDate } = fields;
     const { summary } = fields;
     const content = getHTMLData(fields?.postContent);
+    const { soundcloudEmbed } = fields;
 
     const updatedNewsPost = {
       id,
@@ -202,6 +202,7 @@ export const extractAllNewsPostsData = (responseData) => {
       createdDate,
       summary,
       content,
+      soundcloudEmbed,
     };
 
     return updatedNewsPost;
