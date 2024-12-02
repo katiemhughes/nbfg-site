@@ -176,33 +176,44 @@
 }
 
 .newspage {
-  &__article {
-    padding: 0px 24px;
-  }
-
   &__heading {
     @include size(48);
     color: $mainColor;
+    padding: 0px 24px;
+
+    @media screen and (min-width: $smallDesktop) {
+      padding: 0px;
+    }
+  }
+
+  &__author {
+    color: $metadataColor;
+    padding: 0px 24px;
+
+    @media screen and (min-width: $smallDesktop) {
+      padding: 0px;
+    }
   }
 
   &__date {
     color: $metadataColor;
     margin-bottom: 48px;
-  }
+    padding: 0px 24px;
 
-  &__author {
-    color: $metadataColor;
+    @media screen and (min-width: $smallDesktop) {
+      padding: 0px;
+    }
   }
 
   &__image-container {
     display: flex;
     height: 267px;
-    width: 300px;
+    padding: 0px 12px;
     position: relative;
     overflow: hidden;
 
     @media screen and (min-width: $smallDesktop) {
-      padding-top: 0px;
+      padding: 0px;
       height: 475px;
       width: 500px;
     }
@@ -223,6 +234,11 @@
 
   &__content {
     margin: 48px 0px 64px 0px;
+    padding: 0px 24px;
+
+    @media screen and (min-width: $smallDesktop) {
+      padding: 0px;
+    }
   }
 
   &__copy {

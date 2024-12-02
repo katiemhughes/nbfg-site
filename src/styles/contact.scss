@@ -1,142 +1,146 @@
+.footer {
+  width: 100%;
+}
+
 .contact {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  background: $secondaryTextColor;
+  color: $textColor;
+  align-items: center;
+
+  &__line {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid $secondaryColor;
+    padding: 0;
+    width: 90vw;
+  }
+
+  &__information {
     display: flex;
-    justify-content: space-around;
     flex-direction: column;
-    background: $secondaryTextColor;
-    color: $textColor;
+    justify-content: center;
     align-items: center;
+    width: 100%;
+    padding: 24px;
+  }
 
-    &__line {
-        display: block;
-        height: 1px;
-        border: 0;
-        border-top: 1px solid $secondaryColor;
-        padding: 0;
-        width: 90vw;
-    }
-
-    &__information {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        padding: 24px;
-    }
-
-    &__details {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 24px;
-    }
+  &__details {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+  }
 }
 
 .text-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    color: $mainColor;
+    @include size(36);
+    line-height: 1.2;
+    margin: 24px 0px;
+    text-align: center;
+  }
+
+  &__container {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-
-    &__title {
-        color: $mainColor;
-        @include size(36);
-        line-height: 1.2;
-        margin: 24px 0px;
-        text-align: center;
-    }
-
-    &__container {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: space-between;
-    }
+    flex-direction: column;
+    justify-content: space-between;
+  }
 }
 
 .enquiries {
-    &__text {
-        @include size(12);
+  &__text {
+    @include size(12);
+  }
+
+  &__email {
+    text-decoration: underline;
+    @include size(12);
+    margin-bottom: 24px;
+    color: $secondaryColor;
+
+    &:link {
+      color: $secondaryColor;
     }
 
-    &__email {
-        text-decoration: underline;
-        @include size(12);
-        margin-bottom: 24px;
-        color: $secondaryColor;
-
-        &:link {
-            color: $secondaryColor;
-        }
-
-        &:visited {
-            color: $secondaryColor;
-        }
-
-        &:hover {
-            color: $secondaryColor;
-        }
-
-        &:active {
-            color: $secondaryColor;
-        }
+    &:visited {
+      color: $secondaryColor;
     }
+
+    &:hover {
+      color: $secondaryColor;
+    }
+
+    &:active {
+      color: $secondaryColor;
+    }
+  }
 }
 
 .details {
-    &__signature {
-        color: $secondaryColor;
-        @include size(12);
-        text-align: center;
-        margin: 24px 0px;
+  &__signature {
+    color: $secondaryColor;
+    @include size(12);
+    text-align: center;
+    margin: 24px 0px;
+  }
+
+  &__portfolio {
+    text-decoration: underline;
+    color: $secondaryColor;
+
+    &:link {
+      color: $secondaryColor;
     }
 
-    &__portfolio {
-        text-decoration: underline;
-        color: $secondaryColor;
-
-        &:link {
-            color: $secondaryColor;
-        }
-
-        &:visited {
-            color: $secondaryColor;
-        }
-
-        &:hover {
-            color: $secondaryColor;
-        }
-
-        &:active {
-            color: $secondaryColor;
-        }
+    &:visited {
+      color: $secondaryColor;
     }
+
+    &:hover {
+      color: $secondaryColor;
+    }
+
+    &:active {
+      color: $secondaryColor;
+    }
+  }
 }
 
 .logos {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
 
-    &__logo {
-        margin: 0 8px;
-        color: $textColor;
+  &__logo {
+    margin: 0 8px;
+    color: $textColor;
 
-        &:link {
-            color: $textColor;
-        }
-
-          a:visited {
-            color: $textColor;
-          }
-
-          a:active {
-            color: $textColor;
-          }
-
-          a:hover {
-            color: $mainColorHover;
-            background: none;
-          }
+    &:link {
+      color: $textColor;
     }
+
+    a:visited {
+      color: $textColor;
+    }
+
+    a:active {
+      color: $textColor;
+    }
+
+    a:hover {
+      color: $mainColorHover;
+      background: none;
+    }
+  }
 }
