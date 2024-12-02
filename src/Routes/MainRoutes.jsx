@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import NotFound from '../components/NotFound/NotFound';
 import Newspage from '../components/News/Newspage';
@@ -9,33 +9,31 @@ import GangMember from '../components/MeetTheGang/GangMember';
 import Contact from '../components/Contact/Contact';
 
 function MainRoutes() {
+  const navbarRef = useRef();
   useEffect(() => {
-    const navbar = document.querySelector('.navbar');
     const root = document.documentElement;
 
-    if (navbar) {
-      root.style.setProperty('--navbar-height', `${navbar.offsetHeight}px`);
-    }
-
-    const handleResize = () => {
-      if (navbar) {
-        root.style.setProperty('--navbar-height', `${navbar.offsetHeight}px`);
+    const updateNavbarHeight = () => {
+      if (navbarRef.current) {
+        root.style.setProperty('--navbar-height', `${navbarRef.current.offsetHeight}px`);
       }
     };
 
-    window.addEventListener('resize', handleResize);
+    updateNavbarHeight();
+    window.addEventListener('resize', updateNavbarHeight);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', updateNavbarHeight);
     };
   }, []);
+
   return (
     <>
-      <nav className="navbar">
+      <nav className="navbar" ref={navbarRef}>
         <Navbar />
       </nav>
       <Routes>
-        <Route path="/" exact element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/news" element={<NewsList />} />
         <Route path="/:gangMember" element={<GangMember />} />
         <Route path="/news/articles/:newsArticle" element={<Newspage />} />

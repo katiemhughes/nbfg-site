@@ -39,7 +39,6 @@
   &__content {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     padding: 0px 24px;
     max-width: 388px;
 
@@ -253,7 +252,6 @@
     display: block;
     width: 224px;
     @include size(18);
-    transition-duration: 0.7s;
     margin-left: auto;
     margin-right: auto;
   }
