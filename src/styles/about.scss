@@ -23,6 +23,7 @@
     @include size(48);
     line-height: 1.2;
     margin-bottom: 48px;
+    font-weight: 700;
   }
 
   &__description {
@@ -30,6 +31,7 @@
 
     p {
       margin-bottom: 24px;
+      font-weight: 500;
     }
   }
 

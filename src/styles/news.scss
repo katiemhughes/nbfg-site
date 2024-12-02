@@ -58,6 +58,7 @@
     text-align: left;
     @include size(48);
     line-height: 1.2;
+    font-weight: 700;
 
     @media screen and (min-width: $smallDesktop) {
       margin: 48px 0px;
@@ -67,6 +68,7 @@
 
   &__title {
     margin-bottom: 2px;
+    font-weight: 700;
 
     &:hover {
       text-decoration: underline;
@@ -109,6 +111,7 @@
   &__summary {
     margin-top: 24px;
     width: 100%;
+    font-weight: 500;
   }
 
   &__article {
@@ -180,6 +183,7 @@
     @include size(48);
     color: $mainColor;
     padding: 0px 24px;
+    font-weight: 700;
 
     @media screen and (min-width: $smallDesktop) {
       padding: 0px;
@@ -247,6 +251,7 @@
 
     p {
       margin-bottom: 16px;
+      font-weight: 500;
     }
 
     a {
