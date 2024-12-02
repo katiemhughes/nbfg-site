@@ -89,6 +89,7 @@
       width: 100%;
       z-index: 1;
       position: relative;
+      font-weight: 700;
 
       @media screen and (min-width: $smallDesktop) {
         @include size(48);
@@ -107,6 +108,7 @@
       width: 100%;
       z-index: 1;
       position: relative;
+      font-weight: 500;
 
       @media screen and (min-width: $monitor) {
         @include size(24);
