@@ -27,7 +27,7 @@ function CarouselSlide({
             const url = image?.file?.url;
 
             return (
-              <img key={url || index} src={url} alt={slideTitle} className="content__image" />
+              <img key={url || index} src={url} alt={slideTitle} className="content__image" loading="lazy" />
             );
           })}
         </picture>

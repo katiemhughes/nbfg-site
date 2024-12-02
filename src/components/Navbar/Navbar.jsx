@@ -130,7 +130,7 @@ function Navbar() {
       <div className={`navbar__top ${(click && !isDesktop) ? 'open' : 'closed'}`}>
         <div className="navbar__left">
           <div className="logo__container" onClick={goToHome} onKeyDown={goToHome} tabIndex="0" role="button">
-            <img src={icon} alt={iconAlt} className="logo" />
+            <img src={icon} alt={iconAlt} className="logo" loading="lazy" />
           </div>
         </div>
         <div className="navbar__right">

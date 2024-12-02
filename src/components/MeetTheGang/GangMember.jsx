@@ -48,7 +48,7 @@ function GangMember() {
     <section className="meet" id={slug}>
       <h2 className="meet__title">{title}</h2>
       <div className="meet__image-container">
-        <img className="meet__image" src={image} alt={title} />
+        <img className="meet__image" src={image} alt={title} loading="lazy" />
       </div>
       <p className="meet__description" dangerouslySetInnerHTML={{ __html: description }} />
       {soundcloudEmbed ? (
@@ -68,27 +68,27 @@ function GangMember() {
       <div className="meet__contact">
         {email ? (
           <a href={`mailto:${email}`} className="meet__contact--link">
-            <img src={EmailIcon} alt="Email Icon" className="contact__svg" />
+            <img src={EmailIcon} alt="Email Icon" className="contact__svg" loading="lazy" />
           </a>
         ) : null}
         {instagram ? (
           <a href={instagram} className="meet__contact--link">
-            <img src={InstagramIcon} alt="Instagram Icon" className="contact__svg" />
+            <img src={InstagramIcon} alt="Instagram Icon" className="contact__svg" loading="lazy" />
           </a>
         ) : null}
         {facebook ? (
           <a href={facebook} className="meet__contact--link">
-            <img src={FacebookIcon} alt="Facebook Icon" className="contact__svg" />
+            <img src={FacebookIcon} alt="Facebook Icon" className="contact__svg" loading="lazy" />
           </a>
         ) : null}
         {soundcloud ? (
           <a href={soundcloud} className="meet__contact--link">
-            <img src={SoundcloudIcon} alt="Soundcloud Icon" className="contact__svg" />
+            <img src={SoundcloudIcon} alt="Soundcloud Icon" className="contact__svg" loading="lazy" />
           </a>
         ) : null}
         {mixcloud ? (
           <a href={mixcloud} className="meet__contact--link">
-            <img src={MixcloudIcon} alt="Mixcloud Icon" className="contact__svg" />
+            <img src={MixcloudIcon} alt="Mixcloud Icon" className="contact__svg" loading="lazy" />
           </a>
         ) : null}
       </div>

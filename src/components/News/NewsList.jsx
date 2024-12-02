@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from '../../Context/Context';
 import Loader from '../Loader/Loader';
@@ -14,6 +14,10 @@ function NewsList() {
   if (!newsPosts) {
     return <NotFound />;
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const sortedNewsPosts = newsPosts.sort((a, b) => {
     const dateA = new Date(a.createdDate);
@@ -46,7 +50,7 @@ function NewsList() {
                 <p className="news-list__summary">{post.summary}</p>
               </div>
               <div className="news-list__image-container">
-                <img className="news-list__image" src={post.image} alt={post.title} />
+                <img className="news-list__image" src={post.image} alt={post.title} loading="lazy" />
               </div>
             </Link>
           </section>

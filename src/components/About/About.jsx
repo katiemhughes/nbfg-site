@@ -19,7 +19,7 @@ function About() {
         <p className="about__description" dangerouslySetInnerHTML={{ __html: aboutPageDescription }} />
       </div>
       <div className="about__image-content">
-        <img className="about__image" src={aboutPageImage} alt={aboutPageTitle} />
+        <img className="about__image" src={aboutPageImage} alt={aboutPageTitle} loading="lazy" />
       </div>
     </section>
   );
