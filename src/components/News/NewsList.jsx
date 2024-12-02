@@ -15,10 +15,16 @@ function NewsList() {
     return <NotFound />;
   }
 
+  const sortedNewsPosts = newsPosts.sort((a, b) => {
+    const dateA = new Date(a.createdDate);
+    const dateB = new Date(b.createdDate);
+    return dateB - dateA;
+  });
+
   return (
     <div className="news-list" id="id">
       <h1 className="news-list__heading">What&apos;s the latest from NOT BAD FOR A GIRL?</h1>
-      {newsPosts.map((post) => (
+      {sortedNewsPosts.map((post) => (
         <div key={post.id}>
           <hr className="news-list__divider" />
           <section className="news-list__article">
