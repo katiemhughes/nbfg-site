@@ -8,6 +8,7 @@ import {
   extractUnderConstructionData,
   extractTheGangData,
   extractAllNewsPostsData,
+  extractNotFoundData,
 } from './Helpers';
 
 export const Context = React.createContext();
@@ -27,6 +28,8 @@ export function Provider(props) {
   const [isTheGangLoading, setIsTheGangLoading] = useState(false);
   const [newsPosts, setNewsPosts] = useState([]);
   const [isNewsPostsLoading, setIsNewsPostsLoading] = useState(false);
+  const [notFound, setNotFound] = useState({});
+  const [isNotFoundLoading, setIsNotFoundLoading] = useState(false);
 
   const saveCarouselData = useCallback((carouselData) => {
     const extractedCarouselData = extractCarouselData(carouselData);
@@ -216,6 +219,33 @@ export function Provider(props) {
     getAllNewsPosts();
   }, [getAllNewsPosts]);
 
+  const saveNotFoundData = useCallback((notFoundData) => {
+    const extractedNotFoundData = extractNotFoundData(notFoundData);
+    setNotFound(extractedNotFoundData);
+  }, []);
+
+  const getNotFound = useCallback(async () => {
+    setIsNotFoundLoading(true);
+
+    try {
+      const response = await client.getEntry('5yWHqZdv61eJ8YBpS43TRa');
+
+      if (response) {
+        saveNotFoundData(response);
+      } else {
+        setNotFound({});
+      }
+      setIsNotFoundLoading(false);
+    } catch (error) {
+      console.error(error);
+      setIsNotFoundLoading(false);
+    }
+  }, [saveUnderConstructionData]);
+
+  useEffect(() => {
+    getNotFound();
+  }, [getNotFound]);
+
   const contextData = {
     carouselSlides,
     isCarouselLoading,
@@ -231,6 +261,8 @@ export function Provider(props) {
     isTheGangLoading,
     newsPosts,
     isNewsPostsLoading,
+    notFound,
+    isNotFoundLoading,
   };
 
   const { children } = props;

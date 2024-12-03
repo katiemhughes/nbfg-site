@@ -210,3 +210,18 @@ export const extractAllNewsPostsData = (responseData) => {
 
   return extractedNewsPosts;
 };
+
+export const extractNotFoundData = (responseData) => {
+  const { sys, fields } = responseData;
+  const { id } = sys;
+  const notFoundDescription = getHTMLData(fields.content);
+  const notFoundImage = fields.image.fields.file.url;
+  const notFoundImageAlt = fields.title;
+  const notFoundButtonText = fields.buttonText;
+
+  const updatedNotFound = {
+    id, notFoundDescription, notFoundImage, notFoundImageAlt, notFoundButtonText,
+  };
+
+  return updatedNotFound;
+};
