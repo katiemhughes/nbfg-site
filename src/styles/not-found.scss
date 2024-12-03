@@ -39,15 +39,15 @@
 
     &:hover {
       background-size: 4px 20px;
-      background: $mainColorHover;
+      background: $primaryColorHover;
     }
 
     &:link {
-      background: $mainColorHover;
+      background: $primaryColorHover;
     }
 
     &:active {
-      background: $mainColorHover;
+      background: $primaryColorHover;
     }
   }
 }

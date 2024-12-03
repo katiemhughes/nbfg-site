@@ -8,7 +8,7 @@
 }
 
 a:hover {
-  background: $mainColorHover;
+  background: $primaryColorHover;
 }
 
 .navbar {
@@ -32,6 +32,10 @@ a:hover {
     align-items: center;
     z-index: 1;
 
+    @media screen and (min-width: $largeDesktop) {
+      justify-content: center;
+    }
+
     &.open {
       padding-top: 12px;
       width: 100%;
@@ -48,20 +52,6 @@ a:hover {
     justify-content: center;
     align-items: center;
     flex: 1;
-
-    @media screen and (min-width: $largeDesktop) {
-      justify-content: flex-end;
-      flex: 1 28%;
-      margin-right: -28px;
-    }
-  }
-
-  &__right {
-    @media screen and (min-width: $largeDesktop) {
-      display: flex;
-      justify-content: flex-end;
-      flex: 1 28%;
-    }
   }
 
   &__bottom {
@@ -179,8 +169,8 @@ a:hover {
                 @include size(14);
                 background: linear-gradient(
                   to bottom,
-                  $mainColor 0%,
-                  $mainColor 100%
+                  $primaryColor 0%,
+                  $primaryColor 100%
                 );
                 background-position: 0 100%;
                 background-repeat: repeat-x;
@@ -212,8 +202,8 @@ a:hover {
           cursor: pointer;
           background: linear-gradient(
             to bottom,
-            $mainColor 0%,
-            $mainColor 100%
+            $primaryColor 0%,
+            $primaryColor 100%
           );
           background-position: 0 100%;
           background-repeat: repeat-x;
@@ -379,15 +369,15 @@ a:hover {
     align-items: center;
 
     &:hover {
-      color: $mainColor;
+      color: $primaryColor;
     }
   }
 
   .fas {
-    color: $mainColor;
+    color: $primaryColor;
 
     &:hover {
-      color: $mainColor;
+      color: $primaryColor;
     }
   }
 
@@ -395,7 +385,7 @@ a:hover {
     color: $textColor;
 
     &:hover {
-      color: $mainColor;
+      color: $primaryColor;
     }
   }
 
@@ -403,7 +393,7 @@ a:hover {
     color: $textColor;
 
     &:hover {
-      color: $mainColor;
+      color: $primaryColor;
     }
   }
 }
@@ -413,8 +403,8 @@ a:hover {
   width: 100%;
 
   &__container {
-    height: 70px;
-    width: 40px;
+    height: 72px;
+    width: 178px;
   }
 }
 
@@ -522,6 +512,9 @@ a:hover {
         @include size(28);
         cursor: pointer;
         color: $textColor;
+        border: none;
+        outline: inherit;
+        background: none;
 
         .fas {
           @include size(32);

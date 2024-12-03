@@ -14,7 +14,7 @@
     display: block;
     height: 1px;
     border: 0;
-    border-top: 1px solid $secondaryColor;
+    border-top: 1px solid $primaryColor;
     padding: 0;
     width: 90vw;
   }
@@ -42,7 +42,7 @@
   align-items: center;
 
   &__title {
-    color: $mainColor;
+    color: $primaryColor;
     @include size(36);
     line-height: 1.2;
     margin: 24px 0px;
@@ -139,7 +139,7 @@
     }
 
     a:hover {
-      color: $mainColorHover;
+      color: $primaryColorHover;
       background: none;
     }
   }
