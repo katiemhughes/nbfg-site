@@ -40,7 +40,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
   @media screen and (min-width: $largeDesktop) {
-    background: $mainColor;
+    background: $primaryColor;
     border-radius: 5px;
   }
 }
