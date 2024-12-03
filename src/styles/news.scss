@@ -56,12 +56,13 @@
     padding: 0px 24px;
     color: $primaryColor;
     text-align: left;
-    @include size(48);
+    @include size(40);
     line-height: 1.2;
     font-weight: 700;
 
     @media screen and (min-width: $smallDesktop) {
       margin: 48px 0px;
+      @include size(48);
       padding: 0px;
     }
   }
@@ -180,14 +181,15 @@
 
 .newspage {
   &__heading {
-    @include size(48);
+    @include size(40);
     color: $primaryColor;
     padding: 0px 24px;
     font-weight: 700;
-    margin-top: 24px;
 
     @media screen and (min-width: $smallDesktop) {
       padding: 0px;
+      margin-top: 48px;
+      @include size(48);
     }
   }
 

@@ -27,15 +27,21 @@ body {
 }
 
 .navbar + .not-found {
-  margin-top: var(--navbar-height);
+  @media screen and (min-width: $smallDesktop) {
+    margin-top: var(--navbar-height);
+  }
 }
 
 .navbar + .news-list {
-  margin-top: var(--navbar-height);
+  @media screen and (min-width: $smallDesktop) {
+    margin-top: var(--navbar-height);
+  }
 }
 
 .navbar + .newspage {
-  margin-top: var(--navbar-height);
+  @media screen and (min-width: $smallDesktop) {
+    margin-top: var(--navbar-height);
+  }
 }
 
 ::-webkit-scrollbar {
