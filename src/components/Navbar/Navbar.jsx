@@ -100,11 +100,10 @@ function Navbar() {
   };
 
   const scrollToContact = () => {
-    scroller.scrollTo('contact', {
-      duration: 200,
-      delay: 0,
-      smooth: true,
-      offset: 0,
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      left: 0,
+      behavior: 'smooth',
     });
 
     closeMobileMenu();
@@ -113,11 +112,10 @@ function Navbar() {
   const goToHomeAndScrollToContact = async () => {
     await closeMobileMenu();
     await navigate('/');
-    await scroller.scrollTo('contact', {
-      duration: 200,
-      delay: 0,
-      smooth: true,
-      offset: 0,
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      left: 0,
+      behavior: 'smooth',
     });
   };
   // const play = () => {
