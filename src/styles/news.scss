@@ -184,6 +184,7 @@
     color: $primaryColor;
     padding: 0px 24px;
     font-weight: 700;
+    margin-top: 24px;
 
     @media screen and (min-width: $smallDesktop) {
       padding: 0px;
@@ -264,16 +265,17 @@
   }
 
   &__cta {
+    padding: 12px;
+    text-decoration: none;
+    display: block;
+    width: 180px;
+    @include size(16);
+    margin-left: auto;
+    margin-right: auto;
     border: none;
     background: $primaryColor;
     color: $textColor;
     border-radius: 8px;
-    padding: 12px 24px;
-    text-decoration: none;
-    display: block;
-    width: 224px;
-    @include size(18);
-    margin-left: auto;
-    margin-right: auto;
+    cursor: pointer;
   }
 }
