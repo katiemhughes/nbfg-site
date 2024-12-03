@@ -101,7 +101,7 @@
     }
 
     p {
-      padding: 24px 48px 12px 48px;
+      padding: 24px 48px;
       @include size(16);
       text-align: center;
       color: $textColor;
@@ -207,38 +207,50 @@
   .swiper-button-prev,
   .swiper-button-next {
     color: $textColor;
-    position: relative;
-    bottom: 48px;
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     border-radius: 50px;
     background: $primaryColor;
-    margin-bottom: 24px;
+    margin: 0px;
+
+    @media screen and (min-width: $smallDesktop) {
+      bottom: 48px;
+      width: 40px;
+      height: 40px;
+
+      &:hover {
+        background: $mainColorHover;
+      }
+    }
+
+    @media screen and (min-width: $largeDesktop) {
+      margin: -24px 24px 0 24px;
+    }
+
+    @media screen and (min-width: $smallDesktop) {
+      .swiper-button-prev {
+        left: 50%;
+        margin-left: -44px;
+        right: auto;
+        top: -67px;
+      }
+
+      .swiper-button-next {
+        right: auto;
+        left: 50%;
+        margin-left: 4px;
+        bottom: 89px;
+        top: -108px;
+      }
+    }
 
     &:after {
-      @include size(22);
+      @include size(16);
       font-weight: bold;
+
+      @media screen and (min-width: $smallDesktop) {
+        @include size(22);
+      }
     }
-
-    &:hover {
-      background-size: 4px 20px;
-      background: $mainColorHover;
-      color: $textColor;
-    }
-  }
-
-  .swiper-button-prev {
-    left: 50%;
-    margin-left: -44px;
-    right: auto;
-    top: -67px;
-  }
-
-  .swiper-button-next {
-    right: auto;
-    left: 50%;
-    margin-left: 4px;
-    bottom: 89px;
-    top: -108px;
   }
 }
