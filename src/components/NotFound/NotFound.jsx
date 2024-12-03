@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Context } from '../../Context/Context';
+import Loader from '../Loader/Loader';
 
 function NotFound() {
+  const { isNotFoundLoading, notFound } = useContext(Context);
   const navigate = useNavigate();
+
+  if (isNotFoundLoading) {
+    return <Loader />;
+  }
+
+  const {
+    notFoundDescription,
+    notFoundImage,
+    notFoundImageAlt,
+    notFoundButtonText,
+  } = notFound;
 
   const goToHome = () => {
     navigate('/');
@@ -11,10 +25,10 @@ function NotFound() {
   return (
     <div className="not-found">
       <div className="not-found__image-content">
-        <img className="not-found__image" src="nbfg-logo.png" alt="NBFG logo" loading="lazy" />
+        <img className="not-found__image" src={notFoundImage} alt={notFoundImageAlt} loading="lazy" />
       </div>
-      <p data-testid="description" className="not-found__description">Oops! We couldn&apos;t find what you&apos;re looking for.</p>
-      <button className="not-found__button" type="button" onClick={goToHome}>Go back to homepage</button>
+      <p data-testid="description" className="not-found__description" dangerouslySetInnerHTML={{ __html: notFoundDescription }} />
+      <button className="not-found__button" type="button" onClick={goToHome}>{notFoundButtonText}</button>
     </div>
   );
 }
