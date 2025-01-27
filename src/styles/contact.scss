@@ -12,6 +12,12 @@
       display: flex;
       flex-direction: column;
     }
+
+    &--right {
+      display: flex;
+      flex-direction: column;
+      @include size(12);
+    }
   }
 
   &__line {

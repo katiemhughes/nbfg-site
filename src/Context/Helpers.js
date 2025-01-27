@@ -225,3 +225,24 @@ export const extractNotFoundData = (responseData) => {
 
   return updatedNotFound;
 };
+
+export const extractPrivacyPolicyData = (responseData) => {
+  const { sys, fields } = responseData;
+  const { id } = sys;
+  const privacyPolicyTitle = fields.title;
+  const privacyPolicyDescription = getHTMLData(fields.content);
+  const privacyPolicyImage = fields.image.fields.file.url;
+  const privacyPolicyImageAlt = fields.title;
+  const privacyPolicyButtonText = fields.buttonText;
+
+  const updatedPrivacyPolicy = {
+    id,
+    privacyPolicyTitle,
+    privacyPolicyDescription,
+    privacyPolicyImage,
+    privacyPolicyImageAlt,
+    privacyPolicyButtonText,
+  };
+
+  return updatedPrivacyPolicy;
+};

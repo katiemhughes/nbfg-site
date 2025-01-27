@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar/Navbar';
 import Home from '../components/Home/Home';
 import GangMember from '../components/MeetTheGang/GangMember';
 import Contact from '../components/Contact/Contact';
+import PrivacyPolicy from '../components/PrivacyPolicy/PrivacyPolicy';
 
 function MainRoutes() {
   const navbarRef = useRef();
@@ -35,6 +36,7 @@ function MainRoutes() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/news" element={<NewsList />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/:gangMember" element={<GangMember />} />
         <Route path="/news/articles/:newsArticle" element={<Newspage />} />
         <Route path="*" element={<NotFound />} />

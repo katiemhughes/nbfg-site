@@ -9,6 +9,7 @@ import {
   extractTheGangData,
   extractAllNewsPostsData,
   extractNotFoundData,
+  extractPrivacyPolicyData,
 } from './Helpers';
 
 export const Context = React.createContext();
@@ -30,6 +31,8 @@ export function Provider(props) {
   const [isNewsPostsLoading, setIsNewsPostsLoading] = useState(false);
   const [notFound, setNotFound] = useState({});
   const [isNotFoundLoading, setIsNotFoundLoading] = useState(false);
+  const [privacyPolicy, setPrivacyPolicy] = useState({});
+  const [isPrivacyPolicyLoading, setIsPrivacyPolicyLoading] = useState(false);
 
   const saveCarouselData = useCallback((carouselData) => {
     const extractedCarouselData = extractCarouselData(carouselData);
@@ -240,11 +243,38 @@ export function Provider(props) {
       console.error(error);
       setIsNotFoundLoading(false);
     }
-  }, [saveUnderConstructionData]);
+  }, [saveNotFoundData]);
 
   useEffect(() => {
     getNotFound();
   }, [getNotFound]);
+
+  const savePrivacyPolicyData = useCallback((privacyPolicyData) => {
+    const extractedPrivacyPolicyData = extractPrivacyPolicyData(privacyPolicyData);
+    setPrivacyPolicy(extractedPrivacyPolicyData);
+  }, []);
+
+  const getPrivacyPolicy = useCallback(async () => {
+    setIsPrivacyPolicyLoading(true);
+
+    try {
+      const response = await client.getEntry('1hO80cAqTyUZdJJeeKw3Io');
+
+      if (response) {
+        savePrivacyPolicyData(response);
+      } else {
+        setPrivacyPolicy({});
+      }
+      setIsPrivacyPolicyLoading(false);
+    } catch (error) {
+      console.error(error);
+      setIsPrivacyPolicyLoading(false);
+    }
+  }, [savePrivacyPolicyData]);
+
+  useEffect(() => {
+    getPrivacyPolicy();
+  }, [getPrivacyPolicy]);
 
   const contextData = {
     carouselSlides,
@@ -263,6 +293,8 @@ export function Provider(props) {
     isNewsPostsLoading,
     notFound,
     isNotFoundLoading,
+    privacyPolicy,
+    isPrivacyPolicyLoading,
   };
 
   const { children } = props;

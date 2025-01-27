@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Loader from '../Loader/Loader';
 import { Context } from '../../Context/Context';
 
 function Contact() {
   const { contact, isContactLoading } = useContext(Context);
+  const navigate = useNavigate();
 
   if (isContactLoading) {
     return <Loader />;
@@ -22,6 +24,11 @@ function Contact() {
     portfolioLinkName,
     portfolioLink,
   } = contact;
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    navigate('/privacy-policy', { replace: true });
+  };
 
   return (
     <footer className="contact" id="about" name="contact">
@@ -85,8 +92,15 @@ function Contact() {
           </p>
         </div>
         <div className="footer__bottom--right">
-          <p className="details__signature">Privacy Policy</p>
-          <p className="details__signature">Terms and Conditions</p>
+          <Link
+            className="details__portfolio"
+            to="/privacy-policy"
+            onClick={handleClick}
+            onKeyDown={handleClick}
+          >
+            Privacy Policy
+          </Link>
+          <a className="details__portfolio" href={portfolioLink} target="_blank" rel="noreferrer">Terms and Conditions</a>
         </div>
       </div>
     </footer>
