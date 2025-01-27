@@ -1,5 +1,27 @@
 .footer {
   width: 100%;
+  padding: 0px 48px;
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    width: 90vw;
+    padding: 24px 0px;
+
+    &--left {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__line {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ec2c9121;
+    padding: 0;
+    width: 90vw;
+  }
 }
 
 .contact {
@@ -21,11 +43,10 @@
 
   &__information {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 24px;
+    justify-content: space-between;
+    width: 90vw;
+    padding: 24px 0px;
+    margin-bottom: 24px;
   }
 
   &__details {
@@ -38,35 +59,66 @@
 .text-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+
+  &__newsletter {
+    display: flex;
+    flex-direction: column;
+    max-width: 240px;
+  }
+
+  &__link {
+    text-decoration: underline;
+    @include size(14);
+    margin-top: 12px;
+    color: $secondaryColor;
+    width: fit-content;
+
+    &:link {
+      color: $secondaryColor;
+    }
+
+    &:visited {
+      color: $secondaryColor;
+    }
+
+    &:hover {
+      color: $secondaryColor;
+    }
+
+    &:active {
+      color: $secondaryColor;
+    }
+  }
 
   &__title {
     color: $primaryColor;
     @include size(36);
     line-height: 1.2;
     margin: 24px 0px;
-    text-align: center;
+    font-weight: 700;
+    width: 100%;
   }
 
   &__container {
     display: flex;
-    align-items: center;
     flex-direction: column;
     justify-content: space-between;
+    width: 100%;
   }
 }
 
 .enquiries {
   &__text {
-    @include size(12);
+    @include size(14);
   }
 
   &__email {
     text-decoration: underline;
-    @include size(12);
+    @include size(14);
     margin-bottom: 24px;
     color: $secondaryColor;
+    width: fit-content;
 
     &:link {
       color: $secondaryColor;
@@ -88,10 +140,9 @@
 
 .details {
   &__signature {
-    color: $secondaryColor;
+    color: $textColor;
     @include size(12);
-    text-align: center;
-    margin: 24px 0px;
+    margin: 0px 0px 12px 0px;
   }
 
   &__portfolio {
@@ -118,9 +169,8 @@
 
 .logos {
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 64px;
+  justify-content: space-between;
 
   &__logo {
     margin: 0 8px;
