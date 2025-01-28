@@ -44,6 +44,12 @@ body {
   }
 }
 
+.navbar + .privacy-policy {
+  @media screen and (min-width: $smallDesktop) {
+    margin-top: var(--navbar-height);
+  }
+}
+
 ::-webkit-scrollbar {
   @media screen and (min-width: $largeDesktop) {
     width: 8px;

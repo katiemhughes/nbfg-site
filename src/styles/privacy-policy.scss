@@ -1,0 +1,112 @@
+.privacy-policy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    color: $primaryColor;
+    @include size(40);
+    line-height: 1.2;
+    margin-bottom: 48px;
+    font-weight: 700;
+    margin-top: 32px;
+
+    @media screen and (min-width: $smallDesktop) {
+      @include size(48);
+    }
+
+    @media screen and (min-width: $largeDesktop) {
+      margin-top: 64px;
+    }
+  }
+
+  &__description {
+    margin: 40px 0px;
+    padding: 0px 72px;
+
+    h2 {
+      color: $secondaryColor;
+      margin-bottom: 12px;
+      @include size(28);
+    }
+
+    p,
+    ul {
+      margin-bottom: 20px;
+
+      @media screen and (min-width: $smallDesktop) {
+        @include size(16);
+      }
+    }
+
+    ul {
+      margin-top: -6px;
+    }
+
+    a {
+      text-decoration: underline;
+      margin-top: 12px;
+      color: $secondaryColor;
+      width: fit-content;
+
+      &:link {
+        color: $secondaryColor;
+      }
+
+      &:visited {
+        color: $secondaryColor;
+      }
+
+      &:hover {
+        color: $secondaryColor;
+      }
+
+      &:active {
+        color: $secondaryColor;
+      }
+    }
+
+    ul {
+      li {
+        list-style: none;
+        padding: 10px 28px;
+        background-image: url(../../public/nbfg-new-bally.png);
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: 16px;
+      }
+    }
+  }
+
+  &__button {
+    padding: 12px;
+    text-decoration: none;
+    display: block;
+    width: 180px;
+    @include size(16);
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    background: $primaryColor;
+    color: $textColor;
+    border-radius: 8px;
+    cursor: pointer;
+
+    &:hover {
+      background-size: 4px 20px;
+      background: $primaryColorHover;
+    }
+
+    &:link {
+      background: $primaryColorHover;
+    }
+
+    &:active {
+      background: $primaryColorHover;
+    }
+  }
+
+  ~ .footer {
+    margin-top: 72px;
+  }
+}

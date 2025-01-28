@@ -18,6 +18,29 @@
       flex-direction: column;
       @include size(12);
     }
+
+    &--details {
+      margin-bottom: 12px;
+      text-decoration: underline;
+      color: $secondaryColor;
+      width: fit-content;
+
+      &:link {
+        color: $secondaryColor;
+      }
+
+      &:visited {
+        color: $secondaryColor;
+      }
+
+      &:hover {
+        color: $secondaryColor;
+      }
+
+      &:active {
+        color: $secondaryColor;
+      }
+    }
   }
 
   &__line {
