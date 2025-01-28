@@ -72,10 +72,15 @@
 
   &__information {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     width: 90vw;
     padding: 24px 0px;
     margin-bottom: 24px;
+
+    @media screen and (min-width: $smallDesktop) {
+      flex-direction: row;
+    }
   }
 
   &__details {
@@ -88,12 +93,16 @@
 .text-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
+
+  @media screen and (min-width: $smallDesktop) {
+    align-items: center;
+  }
 
   &__newsletter {
     display: flex;
     flex-direction: column;
     max-width: 240px;
+    margin-bottom: 24px;
   }
 
   &__link {
@@ -199,7 +208,10 @@
 .logos {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+
+  @media screen and (min-width: $smallDesktop) {
+    justify-content: space-between;
+  }
 
   &__logo {
     margin: 0 8px;
