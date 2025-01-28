@@ -231,18 +231,31 @@ export const extractPrivacyPolicyData = (responseData) => {
   const { id } = sys;
   const privacyPolicyTitle = fields.title;
   const privacyPolicyDescription = getHTMLData(fields.content);
-  const privacyPolicyImage = fields.image.fields.file.url;
-  const privacyPolicyImageAlt = fields.title;
   const privacyPolicyButtonText = fields.buttonText;
 
   const updatedPrivacyPolicy = {
     id,
     privacyPolicyTitle,
     privacyPolicyDescription,
-    privacyPolicyImage,
-    privacyPolicyImageAlt,
     privacyPolicyButtonText,
   };
 
   return updatedPrivacyPolicy;
+};
+
+export const extractTermsAndConditionsData = (responseData) => {
+  const { sys, fields } = responseData;
+  const { id } = sys;
+  const termsAndConditionsTitle = fields.title;
+  const termsAndConditionsDescription = getHTMLData(fields.content);
+  const termsAndConditionsButtonText = fields.buttonText;
+
+  const updatedTermsAndConditions = {
+    id,
+    termsAndConditionsTitle,
+    termsAndConditionsDescription,
+    termsAndConditionsButtonText,
+  };
+
+  return updatedTermsAndConditions;
 };

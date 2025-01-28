@@ -10,6 +10,7 @@ import {
   extractAllNewsPostsData,
   extractNotFoundData,
   extractPrivacyPolicyData,
+  extractTermsAndConditionsData,
 } from './Helpers';
 
 export const Context = React.createContext();
@@ -33,6 +34,8 @@ export function Provider(props) {
   const [isNotFoundLoading, setIsNotFoundLoading] = useState(false);
   const [privacyPolicy, setPrivacyPolicy] = useState({});
   const [isPrivacyPolicyLoading, setIsPrivacyPolicyLoading] = useState(false);
+  const [termsAndConditions, setTermsAndConditions] = useState({});
+  const [isTermsAndConditionsLoading, setIsTermsAndConditionsLoading] = useState(false);
 
   const saveCarouselData = useCallback((carouselData) => {
     const extractedCarouselData = extractCarouselData(carouselData);
@@ -276,6 +279,33 @@ export function Provider(props) {
     getPrivacyPolicy();
   }, [getPrivacyPolicy]);
 
+  const saveTermsAndConditionsData = useCallback((termsAndConditionsData) => {
+    const extractedTermsAndConditionsData = extractTermsAndConditionsData(termsAndConditionsData);
+    setTermsAndConditions(extractedTermsAndConditionsData);
+  }, []);
+
+  const getTermsAndConditions = useCallback(async () => {
+    setIsTermsAndConditionsLoading(true);
+
+    try {
+      const response = await client.getEntry('4WC7eBZMZ8pduZzUHLz2n');
+
+      if (response) {
+        saveTermsAndConditionsData(response);
+      } else {
+        setTermsAndConditions({});
+      }
+      setIsTermsAndConditionsLoading(false);
+    } catch (error) {
+      console.error(error);
+      setIsTermsAndConditionsLoading(false);
+    }
+  }, [saveTermsAndConditionsData]);
+
+  useEffect(() => {
+    getTermsAndConditions();
+  }, [getTermsAndConditions]);
+
   const contextData = {
     carouselSlides,
     isCarouselLoading,
@@ -295,6 +325,8 @@ export function Provider(props) {
     isNotFoundLoading,
     privacyPolicy,
     isPrivacyPolicyLoading,
+    termsAndConditions,
+    isTermsAndConditionsLoading,
   };
 
   const { children } = props;
