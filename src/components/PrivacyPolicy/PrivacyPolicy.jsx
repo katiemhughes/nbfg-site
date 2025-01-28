@@ -12,23 +12,21 @@ function PrivacyPolicy() {
   }
 
   const {
+    privacyPolicyTitle,
     privacyPolicyDescription,
-    privacyPolicyImage,
-    privacyPolicyImageAlt,
     privacyPolicyButtonText,
   } = privacyPolicy;
 
   const goToHome = () => {
     navigate('/');
+    window.scrollTo(0, 0);
   };
 
   return (
-    <div className="not-found">
-      <div className="not-found__image-content">
-        <img className="not-found__image" src={privacyPolicyImage} alt={privacyPolicyImageAlt} loading="lazy" />
-      </div>
-      <p data-testid="description" className="not-found__description" dangerouslySetInnerHTML={{ __html: privacyPolicyDescription }} />
-      <button className="not-found__button" type="button" onClick={goToHome}>{privacyPolicyButtonText}</button>
+    <div className="privacy-policy">
+      <h1 className="privacy-policy__title">{privacyPolicyTitle}</h1>
+      <p data-testid="description" className="privacy-policy__description" dangerouslySetInnerHTML={{ __html: privacyPolicyDescription }} />
+      <button className="privacy-policy__button" type="button" onClick={goToHome}>{privacyPolicyButtonText}</button>
     </div>
   );
 }
