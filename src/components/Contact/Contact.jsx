@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Loader from '../Loader/Loader';
 import { Context } from '../../Context/Context';
 
 function Contact() {
   const { contact, isContactLoading } = useContext(Context);
-  const navigate = useNavigate();
 
   if (isContactLoading) {
     return <Loader />;
@@ -25,9 +24,9 @@ function Contact() {
     portfolioLink,
   } = contact;
 
-  const handleClick = (e) => {
+  const handleClick = (e, path) => {
     e.preventDefault();
-    navigate('/privacy-policy', { replace: true });
+    window.open(path, '_blank');
   };
 
   return (
@@ -93,14 +92,23 @@ function Contact() {
         </div>
         <div className="footer__bottom--right">
           <Link
-            className="details__portfolio"
+            className="footer__bottom--details"
             to="/privacy-policy"
-            onClick={handleClick}
-            onKeyDown={handleClick}
+            onClick={(e) => handleClick(e, '/privacy-policy')}
+            onKeyDown={(e) => handleClick(e, '/privacy-policy')}
+            target="_blank"
           >
             Privacy Policy
           </Link>
-          <a className="details__portfolio" href={portfolioLink} target="_blank" rel="noreferrer">Terms and Conditions</a>
+          <Link
+            className="footer__bottom--details"
+            to="/terms-and-conditions"
+            onClick={(e) => handleClick(e, '/terms-and-conditions')}
+            onKeyDown={(e) => handleClick(e, '/terms-and-conditions')}
+            target="_blank"
+          >
+            Terms and Conditions
+          </Link>
         </div>
       </div>
     </footer>
