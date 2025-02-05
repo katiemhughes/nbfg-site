@@ -44,11 +44,12 @@ function Contact() {
             <a href={`mailto:${financeEmail}`} className="enquiries__email">{financeEmail}</a>
           </div>
         </div>
-        <div className="text-content__newsletter">
+        {/* <div className="text-content__newsletter">
           <p className="text-content__title">Newsletter</p>
-          <p className="enquiries__text">Sign up to our newsletter for exclusive content and updates.</p>
+          <p className="enquiries__text">
+          Sign up to our newsletter for exclusive content and updates.</p>
           <a className="text-content__link" href="https://mailchi.mp/1b3b4b3b4b3b/your-newsletter" target="_blank" rel="noreferrer">Sign up</a>
-        </div>
+        </div> */}
         <div className="text-content">
           <p className="text-content__title">Socials</p>
           <ul className="logos">
