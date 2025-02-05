@@ -9,6 +9,8 @@ import {
   extractTheGangData,
   extractAllNewsPostsData,
   extractNotFoundData,
+  extractPrivacyPolicyData,
+  extractTermsAndConditionsData,
 } from './Helpers';
 
 export const Context = React.createContext();
@@ -30,6 +32,10 @@ export function Provider(props) {
   const [isNewsPostsLoading, setIsNewsPostsLoading] = useState(false);
   const [notFound, setNotFound] = useState({});
   const [isNotFoundLoading, setIsNotFoundLoading] = useState(false);
+  const [privacyPolicy, setPrivacyPolicy] = useState({});
+  const [isPrivacyPolicyLoading, setIsPrivacyPolicyLoading] = useState(false);
+  const [termsAndConditions, setTermsAndConditions] = useState({});
+  const [isTermsAndConditionsLoading, setIsTermsAndConditionsLoading] = useState(false);
 
   const saveCarouselData = useCallback((carouselData) => {
     const extractedCarouselData = extractCarouselData(carouselData);
@@ -240,11 +246,65 @@ export function Provider(props) {
       console.error(error);
       setIsNotFoundLoading(false);
     }
-  }, [saveUnderConstructionData]);
+  }, [saveNotFoundData]);
 
   useEffect(() => {
     getNotFound();
   }, [getNotFound]);
+
+  const savePrivacyPolicyData = useCallback((privacyPolicyData) => {
+    const extractedPrivacyPolicyData = extractPrivacyPolicyData(privacyPolicyData);
+    setPrivacyPolicy(extractedPrivacyPolicyData);
+  }, []);
+
+  const getPrivacyPolicy = useCallback(async () => {
+    setIsPrivacyPolicyLoading(true);
+
+    try {
+      const response = await client.getEntry('1hO80cAqTyUZdJJeeKw3Io');
+
+      if (response) {
+        savePrivacyPolicyData(response);
+      } else {
+        setPrivacyPolicy({});
+      }
+      setIsPrivacyPolicyLoading(false);
+    } catch (error) {
+      console.error(error);
+      setIsPrivacyPolicyLoading(false);
+    }
+  }, [savePrivacyPolicyData]);
+
+  useEffect(() => {
+    getPrivacyPolicy();
+  }, [getPrivacyPolicy]);
+
+  const saveTermsAndConditionsData = useCallback((termsAndConditionsData) => {
+    const extractedTermsAndConditionsData = extractTermsAndConditionsData(termsAndConditionsData);
+    setTermsAndConditions(extractedTermsAndConditionsData);
+  }, []);
+
+  const getTermsAndConditions = useCallback(async () => {
+    setIsTermsAndConditionsLoading(true);
+
+    try {
+      const response = await client.getEntry('4WC7eBZMZ8pduZzUHLz2n');
+
+      if (response) {
+        saveTermsAndConditionsData(response);
+      } else {
+        setTermsAndConditions({});
+      }
+      setIsTermsAndConditionsLoading(false);
+    } catch (error) {
+      console.error(error);
+      setIsTermsAndConditionsLoading(false);
+    }
+  }, [saveTermsAndConditionsData]);
+
+  useEffect(() => {
+    getTermsAndConditions();
+  }, [getTermsAndConditions]);
 
   const contextData = {
     carouselSlides,
@@ -263,6 +323,10 @@ export function Provider(props) {
     isNewsPostsLoading,
     notFound,
     isNotFoundLoading,
+    privacyPolicy,
+    isPrivacyPolicyLoading,
+    termsAndConditions,
+    isTermsAndConditionsLoading,
   };
 
   const { children } = props;

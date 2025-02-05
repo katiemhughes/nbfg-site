@@ -3,6 +3,11 @@
   flex-direction: column;
   align-items: center;
   margin: 0px 40px;
+  padding: 120px 24px 48px 24px;
+
+  @media screen and (min-width: $smallDesktop) {
+    padding: 72px 84px 48px 84px;
+  }
 
   &__image-content {
     width: 106px;
