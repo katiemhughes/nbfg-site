@@ -16,17 +16,17 @@
     @media screen and (min-width: $smallMobile) {
       flex-wrap: nowrap;
       white-space: nowrap;
-      gap: 18px;
+      gap: 24px;
     }
 
     @media screen and (min-width: $mediumMobile) {
       padding: 24px 18px;
-      gap: 0px;
+      gap: 28px;
       white-space: unset;
     }
 
     @media screen and (min-width: $smallDesktop) {
-      padding: 24px 40px;
+      padding: 24px 62px 24px 40px;
     }
 
     &--left {
