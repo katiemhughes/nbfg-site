@@ -26,12 +26,6 @@ body {
   margin-top: var(--navbar-height);
 }
 
-.navbar + .not-found {
-  @media screen and (min-width: $smallDesktop) {
-    margin-top: var(--navbar-height);
-  }
-}
-
 .navbar + .news-list {
   @media screen and (min-width: $smallDesktop) {
     margin-top: var(--navbar-height);
