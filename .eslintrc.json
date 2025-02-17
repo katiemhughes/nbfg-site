@@ -12,5 +12,12 @@
         "react/prop-types": "off",
         "no-console": "off",
         "react/jsx-no-constructed-context-values": "off"
+    },
+    "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
     }
+  }
 }

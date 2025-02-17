@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+// eslint-disable-next-line import/no-unresolved
+import { Analytics } from '@vercel/analytics/react';
 import { Provider } from './Context/Context';
 // eslint-disable-next-line no-unused-vars
 // import Enter from './components/Enter/Enter';
@@ -7,8 +9,12 @@ import MainRoutes from './Routes/MainRoutes';
 import './styles.scss';
 
 function App() {
-  const storedHiddenValue = JSON.parse(window.localStorage.getItem('ENTER_PAGE_HIDDEN'));
-  const storedStyleValue = JSON.parse(window.localStorage.getItem('CUSTOM_NAV_STYLE'));
+  const storedHiddenValue = JSON.parse(
+    window.localStorage.getItem('ENTER_PAGE_HIDDEN'),
+  );
+  const storedStyleValue = JSON.parse(
+    window.localStorage.getItem('CUSTOM_NAV_STYLE'),
+  );
   const [showEnterScreen, setShowEnterScreen] = useState(
     storedHiddenValue !== null ? storedHiddenValue : true,
   );
@@ -32,16 +38,22 @@ function App() {
   };
 
   useEffect(() => {
-    window.localStorage.setItem('ENTER_PAGE_HIDDEN', JSON.stringify(showEnterScreen));
+    window.localStorage.setItem(
+      'ENTER_PAGE_HIDDEN',
+      JSON.stringify(showEnterScreen),
+    );
   }, [showEnterScreen]);
 
   return (
-    <Provider>
-      <BrowserRouter>
-        {/* {showEnterScreen ? <Enter hideVideo={hideEnterVideo} /> : <MainRoutes />} */}
-        <MainRoutes />
-      </BrowserRouter>
-    </Provider>
+    <>
+      <Provider>
+        <BrowserRouter>
+          {/* {showEnterScreen ? <Enter hideVideo={hideEnterVideo} /> : <MainRoutes />} */}
+          <MainRoutes />
+        </BrowserRouter>
+      </Provider>
+      <Analytics />
+    </>
   );
 }
 
