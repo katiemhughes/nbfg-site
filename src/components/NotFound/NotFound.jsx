@@ -1,11 +1,10 @@
 import React, { useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Context } from '../../Context/Context';
 import Loader from '../Loader/Loader';
 
 function NotFound() {
   const { isNotFoundLoading, notFound } = useContext(Context);
-  const navigate = useNavigate();
 
   if (isNotFoundLoading) {
     return <Loader />;
@@ -17,10 +16,6 @@ function NotFound() {
     notFoundImageAlt,
     notFoundButtonText,
   } = notFound;
-
-  const goToHome = () => {
-    navigate('/');
-  };
 
   useEffect(() => {
     document.getElementsByClassName('navbar')[0].style.display = 'none';
@@ -41,9 +36,9 @@ function NotFound() {
         className="not-found__description"
         dangerouslySetInnerHTML={{ __html: notFoundDescription }}
       />
-      <button className="not-found__button" type="button" onClick={goToHome}>
+      <Link className="not-found__button" type="button" reloadDocument to="/">
         {notFoundButtonText}
-      </button>
+      </Link>
     </div>
   );
 }
