@@ -4,14 +4,18 @@ import { NavLink } from 'react-router-dom';
 function MeetTheGangNavbar({ handleClick, isSubnavOpen, isLinksHidden }) {
   return (
     <ul
-      className={`sublinks ${
-        isSubnavOpen ? 'open' : 'closed'
-      }`}
+      className={`sublinks ${isSubnavOpen ? 'open' : 'closed'}`}
       id="gang-sublinks"
     >
-      <li className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${!isLinksHidden ? 'links-hidden' : ''}`}>
+      <li
+        className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${
+          !isLinksHidden ? 'links-hidden' : ''
+        }`}
+      >
         <NavLink
-          className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${!isLinksHidden ? 'links-hidden' : ''}`}
+          className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${
+            !isLinksHidden ? 'links-hidden' : ''
+          }`}
           to="../moll"
           onClick={handleClick}
           onKeyDown={handleClick}
@@ -19,9 +23,15 @@ function MeetTheGangNavbar({ handleClick, isSubnavOpen, isLinksHidden }) {
           Moll
         </NavLink>
       </li>
-      <li className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${!isLinksHidden ? 'links-hidden' : ''}`}>
+      <li
+        className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${
+          !isLinksHidden ? 'links-hidden' : ''
+        }`}
+      >
         <NavLink
-          className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${!isLinksHidden ? 'links-hidden' : ''}`}
+          className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${
+            !isLinksHidden ? 'links-hidden' : ''
+          }`}
           to="../maracuya"
           onClick={handleClick}
           onKeyDown={handleClick}
@@ -29,9 +39,15 @@ function MeetTheGangNavbar({ handleClick, isSubnavOpen, isLinksHidden }) {
           Maracuya
         </NavLink>
       </li>
-      <li className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${!isLinksHidden ? 'links-hidden' : ''}`}>
+      <li
+        className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${
+          !isLinksHidden ? 'links-hidden' : ''
+        }`}
+      >
         <NavLink
-          className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${!isLinksHidden ? 'links-hidden' : ''}`}
+          className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${
+            !isLinksHidden ? 'links-hidden' : ''
+          }`}
           to="../daisu"
           onClick={handleClick}
           onKeyDown={handleClick}
@@ -39,9 +55,15 @@ function MeetTheGangNavbar({ handleClick, isSubnavOpen, isLinksHidden }) {
           DaiSu
         </NavLink>
       </li>
-      <li className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${!isLinksHidden ? 'links-hidden' : ''}`}>
+      <li
+        className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${
+          !isLinksHidden ? 'links-hidden' : ''
+        }`}
+      >
         <NavLink
-          className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${!isLinksHidden ? 'links-hidden' : ''}`}
+          className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${
+            !isLinksHidden ? 'links-hidden' : ''
+          }`}
           to="../thtgrl"
           onClick={handleClick}
           onKeyDown={handleClick}
@@ -49,9 +71,15 @@ function MeetTheGangNavbar({ handleClick, isSubnavOpen, isLinksHidden }) {
           Tht Grl
         </NavLink>
       </li>
-      <li className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${!isLinksHidden ? 'links-hidden' : ''}`}>
+      <li
+        className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${
+          !isLinksHidden ? 'links-hidden' : ''
+        }`}
+      >
         <NavLink
-          className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${!isLinksHidden ? 'links-hidden' : ''}`}
+          className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${
+            !isLinksHidden ? 'links-hidden' : ''
+          }`}
           to="../eggontoast"
           onClick={handleClick}
           onKeyDown={handleClick}
@@ -59,9 +87,47 @@ function MeetTheGangNavbar({ handleClick, isSubnavOpen, isLinksHidden }) {
           Egg On Toast
         </NavLink>
       </li>
-      <li className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${!isLinksHidden ? 'links-hidden' : ''}`}>
+      <li
+        className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${
+          !isLinksHidden ? 'links-hidden' : ''
+        }`}
+      >
         <NavLink
-          className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${!isLinksHidden ? 'links-hidden' : ''}`}
+          className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${
+            !isLinksHidden ? 'links-hidden' : ''
+          }`}
+          to="../urbi"
+          onClick={handleClick}
+          onKeyDown={handleClick}
+        >
+          Urbi
+        </NavLink>
+      </li>
+      <li
+        className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${
+          !isLinksHidden ? 'links-hidden' : ''
+        }`}
+      >
+        <NavLink
+          className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${
+            !isLinksHidden ? 'links-hidden' : ''
+          }`}
+          to="../miggs"
+          onClick={handleClick}
+          onKeyDown={handleClick}
+        >
+          Miggs
+        </NavLink>
+      </li>
+      <li
+        className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${
+          !isLinksHidden ? 'links-hidden' : ''
+        }`}
+      >
+        <NavLink
+          className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${
+            !isLinksHidden ? 'links-hidden' : ''
+          }`}
           to="../martha"
           onClick={handleClick}
           onKeyDown={handleClick}
@@ -69,9 +135,15 @@ function MeetTheGangNavbar({ handleClick, isSubnavOpen, isLinksHidden }) {
           Martha
         </NavLink>
       </li>
-      <li className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${!isLinksHidden ? 'links-hidden' : ''}`}>
+      <li
+        className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${
+          !isLinksHidden ? 'links-hidden' : ''
+        }`}
+      >
         <NavLink
-          className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${!isLinksHidden ? 'links-hidden' : ''}`}
+          className={`sublinks__link ${isSubnavOpen ? 'open' : 'closed'} ${
+            !isLinksHidden ? 'links-hidden' : ''
+          }`}
           to="../sophie"
           onClick={handleClick}
           onKeyDown={handleClick}
