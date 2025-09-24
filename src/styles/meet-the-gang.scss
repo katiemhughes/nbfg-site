@@ -62,3 +62,9 @@
     }
   }
 }
+
+#gang-sublinks {
+  @media screen and (max-width: $smallDesktop) {
+    padding-bottom: 52px;
+  }
+}
